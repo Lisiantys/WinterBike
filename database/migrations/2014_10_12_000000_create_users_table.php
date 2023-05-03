@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->mediumText('image_path');
-            $table->unsignedTinyInteger('role_id');
+            $table->mediumText('image_path')->default('../../public/moto.jpg');
+            $table->unsignedTinyInteger('role_id')->default(1);
             $table->foreign('role_id')->references('id')->on('roles');
         });
         Schema::enableForeignKeyConstraints();
