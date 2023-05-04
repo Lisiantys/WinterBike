@@ -25,10 +25,9 @@ return new class extends Migration
             $table->string('website')->nullable()->default(null);
             $table->string('facebook')->nullable()->default(null);
             $table->mediumText('description');
-            $table->boolean('is_promoted');
-            $table->boolean('is_validated');
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->boolean('is_promoted')->default(0);
+            $table->boolean('is_validated')->default(0);
+            $table->timestamps();
             $table->unsignedTinyInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
             $table->unsignedTinyInteger('region_id');

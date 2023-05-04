@@ -17,6 +17,10 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [EventController::class, 'index']);
 
+Route::get('/welcome', function(){
+    return view('welcome');
+});
+
 Route::resource('events', EventController::class);
 
 Route::get('/dashboard', function () {
