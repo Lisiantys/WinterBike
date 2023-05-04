@@ -21,6 +21,13 @@ class EventController extends Controller
         return view('events.index', compact('events'));
     }
 
+    public function myEvents()
+    {
+        $user = auth()->user();
+        $events = Event::where('user_id', $user->id)->get();
+        return view('events.my_events', compact('events'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -96,6 +103,12 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
+        $user = auth()->user();
+
+        // Vérifier si l'utilisateur actuel est le propriétaire de l'événement ou un administrateur (avec l'id 4)
+        if ($user->id !== $event->user_id && $user->id !== 4) {
+            return redirect()->route('events.show', $event->id)->with('error', "Vous n'êtes pas autorisé à modifier cet événement.");
+        }
 
         $regions = Region::all();
         $departments = Department::all();
@@ -109,13 +122,6 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-
-        $user = auth()->user();
-
-        // Vérifier si l'utilisateur actuel est le propriétaire de l'événement ou un administrateur (avec l'id 4)
-        if ($user->id !== $event->user_id && $user->id !== 4) {
-            return redirect()->route('events.show', $event)->with('error', "Vous n'êtes pas autorisé à modifier cet événement.");
-        }
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -146,7 +152,11 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        $user = auth()->user();
+        if ($user->id !== $event->user_id && $user->id !== 4) {
+            return redirect()->route('events.show', $event)->with('error', "Vous n'êtes pas autorisé à supprimer cet événement.");
+        }
         $event->delete();
-        return redirect()->route('events.index');
+        return redirect()->route('events.myEvents')->with('success', 'Événement supprimé avec succès.');
     }
 }

@@ -21,6 +21,8 @@ Route::get('/welcome', function(){
     return view('welcome');
 });
 
+Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
+
 Route::resource('events', EventController::class);
 
 Route::get('/dashboard', function () {
