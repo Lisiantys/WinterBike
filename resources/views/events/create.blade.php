@@ -70,29 +70,27 @@
         <div>
             <label for="department_id">Department* :</label>
             <select id="department_id" name="department_id" required>
-                <option value="1" @if(old('department_id') == 1) selected @endif>Catégorie 1</option>
-                <option value="2" @if(old('department_id') == 2) selected @endif>Catégorie 2</option>
-                <option value="3" @if(old('department_id') == 3) selected @endif>Catégorie 3</option>
+                @foreach ($departments as $department)
+                    <option value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>{{ $department->name }}</option>
+                @endforeach
             </select>
         </div>
     
         <div>
             <label for="region_id">Region* :</label>
-            <select id="region_id" name="category_id" required>
-                <option value="">Select a region</option>
-                <option value="1" @if(old('category_id') == 1) selected @endif>Catégorie 1</option>
-                <option value="2" @if(old('category_id') == 2) selected @endif>Catégorie 2</option>
-                <option value="3" @if(old('category_id') == 3) selected @endif>Catégorie 3</option>
+            <select id="region_id" name="region_id" required>
+                @foreach ($regions as $region)
+                    <option value="{{ $region->id }}" {{ old('region_id') == $region->id ? 'selected' : '' }}>{{ $region->name }}</option>
+                @endforeach
             </select>
         </div>
     
         <div>
             <label for="type_id">Type* :</label>
             <select id="type_id" name="type_id" required>
-                <option value="">Select a type</option>
-                <option value="1" @if(old('type_id') == 1) selected @endif>Catégorie 1</option>
-                <option value="2" @if(old('type_id') == 2) selected @endif>Catégorie 2</option>
-                <option value="3" @if(old('type_id') == 3) selected @endif>Catégorie 3</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                @endforeach
             </select>
         </div>
 

@@ -71,34 +71,6 @@
         </div>
 
         <div>
-            <label for="department_id">Department* :</label>
-            <select id="department_id" name="department_id" required>
-                <option value="">Select a department</option>
-                <option value="1">Department 1</option>
-                <option value="2">Department 2</option>
-            </select>
-        </div>
-    
-        <div>
-            <label for="region_id">Region* :</label>
-            <select id="region_id" name="region_id" required>
-                <option value="">Select a region</option>
-                <option value="1">Region 1</option>
-                <option value="2">Region 2</option>
-            </select>
-        </div>
-    
-        <div>
-            <label for="type_id">Type* :</label>
-            <select id="type_id" name="type_id" required>
-                <option value="">Select a type</option>
-                <option value="1">Type 1</option>
-                <option value="2">Type 2</option>
-            </select>
-        </div>
-
-        {{-- Relation des regions, type, et department non mis en place --}}
-        {{-- <div>
             <label for="region_id">Région :</label>
             <select id="region_id" name="region_id" required>
                 @foreach ($regions as $region)
@@ -124,10 +96,8 @@
                 @endforeach
             </select>
         </div>
-         --}}
-
+        
         <!-- Add other fields like department_id, region_id, type_id, and user_id as needed -->
-
         <button type="submit">Create Event</button>
     </form>
 </body>

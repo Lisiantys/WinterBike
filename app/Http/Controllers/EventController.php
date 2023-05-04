@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
 use App\Models\Event;
+use App\Models\Region;
+use App\Models\Department;
 use Illuminate\Http\Request;
 //Request permet de récuperer les informations passées par le protocole http (get / post)
 
@@ -23,7 +26,11 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('events.create');
+        $regions = Region::all();
+        $departments = Department::all();
+        $types = Type::all();
+
+        return view('events.create', compact('regions', 'departments', 'types'));
     }
 
     /**
@@ -56,7 +63,7 @@ class EventController extends Controller
             'type_id' => 'required|integer|exists:types,id',
         ]);
         
-        Event::create([
+        $event = Event::create([
             'name' => $request->name,
             'image_path' => $request->image_path,
             'beginningDate' => $request->beginningDate,
@@ -73,7 +80,7 @@ class EventController extends Controller
             'user_id' => $user->id // Set the user_id to the currently authenticated user
         ]);
 
-        return redirect()->route('events.create')->with('success', 'Event created successfully!');
+        return redirect()->route('events.show', $event->id)->with('success', 'Event created successfully!');
     }
 
     /**
@@ -89,7 +96,12 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('events.edit', compact('event'));
+
+        $regions = Region::all();
+        $departments = Department::all();
+        $types = Type::all();
+
+        return view('events.edit', compact('event', 'regions', 'departments', 'types'));
     }
 
     /**
@@ -105,7 +117,7 @@ class EventController extends Controller
             return redirect()->route('events.show', $event)->with('error', "Vous n'êtes pas autorisé à modifier cet événement.");
         }
 
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'image_path' => 'required|string|max:255',
             //'image_path' => 'required|string|image|max:255',
@@ -122,23 +134,10 @@ class EventController extends Controller
             'type_id' => 'required|integer|exists:types,id',
         ]);
 
-        Event::update([
-            'name' => $request->name,
-            'image_path' => $request->image_path,
-            'beginningDate' => $request->beginningDate,
-            'endDate' => $request->endDate,
-            'address' => $request->address,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'website' => $request->website,
-            'facebook' => $request->facebook,
-            'description' => $request->description,
-            'department_id' => $request->department_id,
-            'region_id' => $request->region_id,
-            'type_id' => $request->type_id,
-        ]);
+        // Mise à jour de l'événement avec les données validées
+        $event->update($validatedData);
 
-        return redirect()->route('events.show', $event)->with('success', 'Événement mis à jour avec succès.');
+        return redirect()->route('events.show', $event->id)->with('success', 'Événement mis à jour avec succès.');
 
     }
 

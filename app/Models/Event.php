@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Type;
 use App\Models\User;
+use App\Models\Region;
+use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -12,6 +15,18 @@ class Event extends Model
 
     public function User(){
         return $this->belongsTo(User::class);
+    }
+
+    public function Region(){
+        return $this->belongsTo(Region::class);
+    }
+
+    public function Department(){
+        return $this->belongsTo(Department::class);
+    }
+
+    public function Type(){
+        return $this->belongsTo(Type::class);
     }
 
     protected $fillable = [
