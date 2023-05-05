@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    @include('events.partials.navbar')
     <h1>Mes evenements</h1>
     <a href="{{ route('events.create') }}">Créer un évènement</a>
     @foreach ($events as $event)

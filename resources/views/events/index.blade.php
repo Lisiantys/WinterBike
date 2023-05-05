@@ -5,31 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <style>
+        #pagination nav{
+            display: flex;
+        }
+        #pagination nav .hidden{
+            display: flex;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            @auth
-            <ul>
-                <li><a href="{{ route('index') }}">Évènement</a></li>
-                <li><a href="{{ route('events.myEvents') }}">Mes Évènements</a></li>
-                <li><a href="">Évènements en attente</a></li>
-                <li><a href="">Gérer les Utilisateurs</a></li>
-            </ul>
-            @endauth
-            @guest
-            <ul>
-                <li><a href="{{ route('index') }}">Évènement</a></li>
-            </ul>
-            @endguest
-        </nav>
-    </header>
+   @include('events.partials.navbar')
     <h1>Affiche la liste des evenements</h1>
     @foreach ($events as $event)
-    <div>
-        <h1><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h1>
-    </div>
-       
+        <div>
+            <h1><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h1>
+            <p>Auteur: {{ $event->user->name }}</p>
+        </div>
     @endforeach
+    <div id="pagination">{{ $events->links() }}</div>
+    
 </body>
 </html>

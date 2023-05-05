@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    @include('events.partials.navbar')
     <h1>Editer un Event</h1>
 
     @if ($errors->any())

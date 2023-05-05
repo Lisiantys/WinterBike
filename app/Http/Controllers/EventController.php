@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Region;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 //Request permet de récuperer les informations passées par le protocole http (get / post)
 
 
@@ -17,7 +18,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::with('user')->where('is_validated', 1)->paginate(10);;
         return view('events.index', compact('events'));
     }
 
@@ -28,6 +29,22 @@ class EventController extends Controller
         return view('events.my_events', compact('events'));
     }
 
+        public function pending()
+        {
+            $pendingEvents = Event::where('is_validated', 0)->get();
+            return view('events.pending', compact('pendingEvents'));
+        }
+
+        public function validateEvent(Request $request, Event $event)
+        {
+            //Log::info('validateEvent called for event id: ' . $event->id);
+            //$event->update(['is_validated' => 1]);
+            $event->is_validated = 1;
+            $event->save();
+            //Log::info('Event validation status updated to: ' . $event->is_validated);
+        
+            return redirect()->route('events.pending')->with('success', 'Événement validé avec succès.');
+        }
     /**
      * Show the form for creating a new resource.
      */
@@ -133,7 +150,6 @@ class EventController extends Controller
         $event->update($validatedData);
 
         return redirect()->route('events.show', $event->id)->with('success', 'Événement mis à jour avec succès.');
-
     }
 
     /**

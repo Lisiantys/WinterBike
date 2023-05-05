@@ -7,6 +7,7 @@
     <title>{{ $event->name }}</title>
 </head>
 <body>
+    @include('events.partials.navbar')
     <h1>{{ $event->name }}</h1>
     <p>{{ $event->description }}</p>
 
