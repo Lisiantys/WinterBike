@@ -25,14 +25,8 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
-        $user = auth()->user();
-
-        if ($user->id === $comment->user_id || $user->id === 3 || $user->id === 4) {
-            $comment->delete();
-
-            return redirect()->back()->with('success', 'Le commentaire a été supprimé.');
-        }
-
-        return redirect()->back()->with('error', "Vous n'êtes pas autorisé à supprimer ce commentaire.");
+        $this->authorize('delete', $comment);
+        $comment->delete();
+        return redirect()->back()->with('success', 'Le commentaire a été supprimé.');
     }
 }

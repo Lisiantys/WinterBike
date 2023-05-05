@@ -46,13 +46,6 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
-
-        if ($user === null) {
-            // L'utilisateur n'est pas connecté, vous pouvez gérer cette situation ici, par exemple :
-
-            return redirect()->back()->with('error', 'You must be logged in to create an event.');
-        }
-
         $request->validate([
             'name' => 'required|string|max:255',
             'image_path' => 'required|string|max:255',
@@ -104,12 +97,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        $user = auth()->user();
-
-        // Vérifier si l'utilisateur actuel est le propriétaire de l'événement ou un administrateur (avec l'id 4)
-        if ($user->id !== $event->user_id && $user->id !== 4) {
-            return redirect()->route('events.show', $event->id)->with('error', "Vous n'êtes pas autorisé à modifier cet événement.");
-        }
+        $this->authorize('update', $event);
 
         $regions = Region::all();
         $departments = Department::all();
@@ -153,10 +141,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        $user = auth()->user();
-        if ($user->id !== $event->user_id && $user->id !== 4) {
-            return redirect()->route('events.show', $event)->with('error', "Vous n'êtes pas autorisé à supprimer cet événement.");
-        }
+        $this->authorize('delete', $event);
         $event->delete();
         return redirect()->route('events.myEvents')->with('success', 'Événement supprimé avec succès.');
     }
