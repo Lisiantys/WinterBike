@@ -16,12 +16,11 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->mediumText('description');
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('events_id');
-            $table->foreign('events_id')->references('id')->on('events');
+            $table->unsignedBigInteger('event_id');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
 
         Schema::enableForeignKeyConstraints();

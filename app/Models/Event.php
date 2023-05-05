@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Type;
 use App\Models\User;
 use App\Models\Region;
+use App\Models\Comment;
 use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,6 +28,11 @@ class Event extends Model
 
     public function Type(){
         return $this->belongsTo(Type::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     protected $fillable = [

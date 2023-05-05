@@ -95,7 +95,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('events.show', compact('event'));
+        $comments = $event->comments()->orderBy('created_at', 'desc')->get();
+        return view('events.show', compact('event', 'comments'));
     }
 
     /**

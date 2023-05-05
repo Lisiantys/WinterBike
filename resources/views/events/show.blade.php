@@ -9,5 +9,34 @@
 <body>
     <h1>{{ $event->name }}</h1>
     <p>{{ $event->description }}</p>
+
+    {{-- @if(auth()->check() && auth()->user()->email_verified_at !== null) --}}
+    @if(auth()->check())
+    <form action="{{ route('comments.store', $event->id) }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="description">Commentaire:</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
+    </form>
+    @else
+        <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+    @endif
+    @foreach($event->comments as $comment)
+    <div>
+        <strong>{{ $comment->user->name }}</strong>
+        <p>Le : {{ $comment->created_at->format('d/m/Y H:i') }}</p>
+        <p>{{ $comment->description }}</p>
+        @if(auth()->check() && (auth()->id() === $comment->user_id || auth()->id() === 3 || auth()->id() === 4))
+            <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">Supprimer</button>
+            </form>
+        @endif
+    </div>
+    @endforeach
+
 </body>
 </html>

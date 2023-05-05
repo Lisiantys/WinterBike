@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -15,7 +16,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', [EventController::class, 'index']);
+Route::get('/', [EventController::class, 'index'])->name('index');
 
 Route::get('/welcome', function(){
     return view('welcome');
@@ -24,6 +25,10 @@ Route::get('/welcome', function(){
 Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
 
 Route::resource('events', EventController::class);
+
+Route::post('events/{event}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

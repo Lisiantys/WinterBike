@@ -7,6 +7,23 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <nav>
+            @auth
+            <ul>
+                <li><a href="{{ route('index') }}">Évènement</a></li>
+                <li><a href="{{ route('events.myEvents') }}">Mes Évènements</a></li>
+                <li><a href="">Évènements en attente</a></li>
+                <li><a href="">Gérer les Utilisateurs</a></li>
+            </ul>
+            @endauth
+            @guest
+            <ul>
+                <li><a href="{{ route('index') }}">Évènement</a></li>
+            </ul>
+            @endguest
+        </nav>
+    </header>
     <h1>Affiche la liste des evenements</h1>
     @foreach ($events as $event)
     <div>

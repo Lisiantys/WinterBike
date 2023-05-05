@@ -35,7 +35,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::enableForeignKeyConstraints();
