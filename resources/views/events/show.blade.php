@@ -40,6 +40,7 @@
     @endif
     @foreach($event->comments as $comment)
     <div>
+        <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
         <strong>{{ $comment->user->name }}</strong>
         <p>Le : {{ $comment->created_at->format('d/m/Y H:i') }}</p>
         <p>{{ $comment->description }}</p>

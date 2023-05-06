@@ -16,6 +16,8 @@
                 <div class="event">
                     <h2>{{ $event->name }}</h2>
                     <p>{{ $event->description }}</p>
+                    <img src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
+
 
                     <form action="{{ route('events.validate', $event) }}" method="POST">
                         @csrf

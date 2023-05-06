@@ -12,6 +12,7 @@
     <a href="{{ route('events.create') }}">Créer un évènement</a>
     @foreach ($events as $event)
         <h2>{{ $event->name }}</h2>
+        <img src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
         <p>{{ $event->description }}</p>
         <a href="{{ route('events.edit', $event->id) }}">Modifier</a>
         <form action="{{ route('events.destroy', $event->id) }}" method="POST">

@@ -21,6 +21,7 @@
     @foreach ($events as $event)
         <div>
             <h1><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h1>
+            <img src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
             <p>Auteur: {{ $event->user->name }}</p>
         </div>
     @endforeach

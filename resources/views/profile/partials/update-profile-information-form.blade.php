@@ -9,11 +9,13 @@
         </p>
     </header>
 
+    <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil de {{ $user->name }}" style="max-width: 200px;">
+
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -47,6 +49,11 @@
             @endif
         </div>
 
+        <div>
+            <label for="image_path">Image :</label>
+            <input type="file" id="image_path" name="image_path">
+        </div>
+        
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

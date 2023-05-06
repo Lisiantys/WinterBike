@@ -26,13 +26,13 @@ class EventController extends Controller
     public function myEvents()
     {
         $user = auth()->user();
-        $events = Event::where('user_id', $user->id)->get();
+        $events = Event::with('user')->where('user_id', $user->id)->get();
         return view('events.my_events', compact('events'));
     }
 
         public function pending()
         {
-            $pendingEvents = Event::where('is_validated', 0)->get();
+            $pendingEvents = Event::with('user')->where('is_validated', 0)->get();
             return view('events.pending', compact('pendingEvents'));
         }
 
@@ -114,7 +114,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $comments = $event->comments()->orderBy('created_at', 'desc')->get();
+        $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->get();
         return view('events.show', compact('event', 'comments'));
     }
 
