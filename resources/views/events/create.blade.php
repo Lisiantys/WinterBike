@@ -25,7 +25,8 @@
 
         <div>
             <label for="image_path">Image* :</label>
-            <input type="text" id="image_path" value="{{ old('image_path') }}" name="image_path" required>
+            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg+xml" max-size="2048" required>
+            <img id="image-preview" src="" alt="Aperçu de l'image" style="display: none; max-width: 100%;">
         </div>
 
         <div>
@@ -97,5 +98,13 @@
 
         <button type="submit">Create Event</button>
     </form>
+
+    <script>
+        function loadImagePreview(event) {
+            const imagePreview = document.getElementById('image-preview');
+            imagePreview.src = URL.createObjectURL(event.target.files[0]);
+            imagePreview.style.display = 'block';
+        }
+    </script>
 </body>
 </html>

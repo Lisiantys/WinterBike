@@ -10,6 +10,8 @@
     @include('events.partials.navbar')
     <h1>{{ $event->name }}</h1>
     <p>{{ $event->description }}</p>
+    <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
+
 
     @if(auth()->check() && (auth()->user()->id === $event->user_id || auth()->user()->role_id === 4))
     {{-- @if(auth()->check() && auth()->user()->email_verified_at !== null && (auth()->user()->id === $event->user_id || auth()->user()->role_id === 4)) --}}

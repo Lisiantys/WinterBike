@@ -16,8 +16,7 @@
         @endforeach
     @endif
 
-    
-    <form action="{{ route('events.update', $event) }}" method="POST">
+    <form action="{{ route('events.update', $event) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT') {{-- Ceci indique que nous utilisons la méthode HTTP PUT pour la mise à jour --}}
 
@@ -28,7 +27,8 @@
 
         <div>
             <label for="image_path">Image* :</label>
-            <input type="text" id="image_path" value="{{ $event->image_path }}" name="image_path" required>
+            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)"  accept="image/jpeg,image/png,image/jpg,image/svg+xml" max-size="2048">
+            <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
         </div>
 
         <div>
@@ -101,5 +101,6 @@
         <!-- Add other fields like department_id, region_id, type_id, and user_id as needed -->
         <button type="submit">Create Event</button>
     </form>
+
 </body>
 </html>

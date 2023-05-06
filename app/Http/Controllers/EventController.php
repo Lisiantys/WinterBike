@@ -8,6 +8,7 @@ use App\Models\Region;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 //Request permet de récuperer les informations passées par le protocole http (get / post)
 
 
@@ -57,16 +58,11 @@ class EventController extends Controller
         return view('events.create', compact('regions', 'departments', 'types'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    private function validationRules($isUpdate = false)
     {
-        $user = auth()->user();
-        $request->validate([
+        $rules = [
             'name' => 'required|string|max:255',
-            'image_path' => 'required|string|max:255',
-            //'image_path' => 'required|string|image|max:255',
+            'image_path' => $isUpdate ? 'nullable' : 'required' . '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'beginningDate' => 'required|date',
             'endDate' => 'required|date|after_or_equal:beginningDate',
             'address' => 'required|string|max:255',
@@ -78,11 +74,24 @@ class EventController extends Controller
             'department_id' => 'required|integer|exists:departments,id',
             'region_id' => 'required|integer|exists:regions,id',
             'type_id' => 'required|integer|exists:types,id',
-        ]);
-        
+        ];
+    
+        return $rules;
+    }
+    
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $request->validate($this->validationRules());
+
+        $imageName = $request->file('image_path')->store('events', 'public');        
         $event = Event::create([
             'name' => $request->name,
-            'image_path' => $request->image_path,
+            'image_path' => $imageName,
             'beginningDate' => $request->beginningDate,
             'endDate' => $request->endDate,
             'address' => $request->address,
@@ -128,26 +137,26 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
+        $this->authorize('update', $event);
 
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'image_path' => 'required|string|max:255',
-            //'image_path' => 'required|string|image|max:255',
-            'beginningDate' => 'required|date',
-            'endDate' => 'required|date|after_or_equal:beginningDate',
-            'address' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|min:10|max:10',
-            'website' => 'nullable|url|max:255',
-            'facebook' => 'nullable|url|max:255',
-            'description' => 'required|string|min:20|max:5000',
-            'department_id' => 'required|integer|exists:departments,id',
-            'region_id' => 'required|integer|exists:regions,id',
-            'type_id' => 'required|integer|exists:types,id',
-        ]);
+        $request->validate($this->validationRules(true));
 
-        // Mise à jour de l'événement avec les données validées
-        $event->update($validatedData);
+        $data = $request->all();
+
+        // Check if a new image is uploaded
+        if ($request->hasFile('image_path')) {
+            // Delete the old image
+            //Storage::delete($event->image_path);
+            Storage::disk('public')->delete($event->image_path);
+    
+            // Store the new image
+            $imagePath = $request->file('image_path')->store('events', 'public');
+    
+            // Update the image_path in the data array
+            $data['image_path'] = $imagePath;
+        }
+    
+        $event->update($data);
 
         return redirect()->route('events.show', $event->id)->with('success', 'Événement mis à jour avec succès.');
     }
