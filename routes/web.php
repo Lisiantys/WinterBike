@@ -23,17 +23,31 @@ Route::get('/welcome', function(){
 });
 
 //(Middleware AUTH + verif)
-Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
 
-//Modérateurs et Administateurs (Middleware manquant) + //(Middleware AUTH + verif)
-Route::get('/evenements-en-attentes', [EventController::class, 'pending'])->name('events.pending');
-Route::patch('/evenements/{event}/valider', [EventController::class, 'validateEvent'])->name('events.validate');
+    //Routes Commentaires
+    Route::post('events/{event}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+});
+
+//Modérateurs et Administateurs + + Middleware Auth + Verif -> Event
+Route::middleware(['auth', 'verified', 'moderatorOrAdmin'])->group(function () {
+    Route::get('/evenements-en-attentes', [EventController::class, 'pending'])->name('events.pending');
+    Route::patch('/evenements/{event}/valider', [EventController::class, 'validateEvent'])->name('events.validate');
+});
+
+//Administateurs + + Middleware Auth + Verif -> Users
+Route::middleware(['auth', 'verified', 'isAdmin'])->group(function () {
+    Route::get('/gerer-utilisateurs', [ProfileController::class, 'manage'])->name('profile.manage');
+    Route::put('/profile/{user}/update-role', [ProfileController::class, 'updateRole'])->name('profile.updateRole');
+});
+
 
 Route::resource('events', EventController::class);
 
-//Routes Commentaires + //(Middleware AUTH + verif)
-Route::post('events/{event}/comments', [CommentController::class, 'store'])->name('comments.store');
-Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+
 
 
 Route::get('/dashboard', function () {

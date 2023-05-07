@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +15,27 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
+    public function manage()
+    {
+        $roles = Role::all();
+        $users = User::with('role')->get();
+        return view('profile.manage', compact('users', 'roles'));
+    }
+
+                
+    public function updateRole(Request $request, User $user)
+    {
+        $validatedData = $request->validate([
+            'role_id' => 'required|exists:roles,id',
+        ]);
+    
+        $user->update([
+            'role_id' => $validatedData['role_id'],
+        ]);
+    
+        return redirect()->route('profile.manage')->with('status', 'Le rôle de l\'utilisateur a été mis à jour.');
+    }
+
     /**
      * Display the user's profile form.
      */

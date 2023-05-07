@@ -12,12 +12,10 @@
     <p>{{ $event->description }}</p>
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
 
-    @if(auth()->check() && (auth()->user()->id === $event->user_id && $event->is_validated == 0 || auth()->user()->role_id === 4))
-    {{-- @if(auth()->check() && auth()->user()->email_verified_at !== null && (auth()->user()->id === $event->user_id || auth()->user()->role_id === 4)) --}}
+    @if(auth()->user()->id === $event->user_id && $event->is_validated == 0 || auth()->user()->role_id === 4)
         <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning">Modifier l'événement</a>
-
     @endif
-    @if(auth()->check() && (auth()->user()->id === $event->user_id || auth()->user()->role_id === 4))
+    @if(auth()->user()->id === $event->user_id || auth()->user()->role_id === 4)
         <form action="{{ route('events.destroy', $event->id) }}" method="POST" style="display:inline;">
             @csrf
             @method('DELETE')
@@ -25,8 +23,7 @@
         </form>
     @endif
 
-    {{-- @if(auth()->check() && auth()->user()->email_verified_at !== null) --}}
-    @if(auth()->check())
+    @if(auth()->check() && auth()->user()->email_verified_at !== null)
     <form action="{{ route('comments.store', $event->id) }}" method="POST">
         @csrf
         <div class="form-group">
