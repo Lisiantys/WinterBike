@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -29,32 +30,32 @@ class ProfileController extends Controller
     {
         $user = $request->user(); //
 
-        $request->user()->fill($request->validated());
+        // Filtrer l'image_path des données validées
+        $validatedData = $request->validated();
+        unset($validatedData['image_path']);
+       
+        $user->fill($validatedData);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
         
-                     // Ajoutez ce bloc pour la gestion de l'image
-                     if ($request->hasFile('image_path')) {
-                        // Stocker la nouvelle image et récupérer son chemin
-                        $newImagePath = $request->file('image_path')->store('users', 'public');
+            if ($request->hasFile('image_path')) {
+
+            // Stocker la nouvelle image et récupérer son chemin
+            $newImagePath = $request->file('image_path')->store('users', 'public');
+
+            // Vérifier si l'image actuelle n'est pas l'image par défaut
+            if ($user->image_path !== 'users/default_user_image.jpg') {
+                // Supprimer l'ancienne image du stockage
+                Storage::disk('public')->delete($user->image_path);               
+            }
+            // Mettre à jour le chemin de l'image pour l'utilisateur
+            $user->image_path = $newImagePath;
+        }
                 
-                        // Vérifier si l'image actuelle n'est pas l'image par défaut
-                        if ($user->image_path !== 'users/defaultImage.jpg') {
-                            // Supprimer l'ancienne image du stockage
-                            Storage::disk('public')->delete('users/' . $user->image_path);
-                        }
-                
-                        // Mettre à jour le chemin de l'image pour l'utilisateur
-                        $user->image_path = $newImagePath;
-                    }
-                
-                    // Mettre à jour les autres attributs de l'utilisateur
-                    // ...
-                
-                    // Enregistrer les modifications de l'utilisateur
-                    $user->save();
+        // Enregistrer les modifications de l'utilisateur
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
