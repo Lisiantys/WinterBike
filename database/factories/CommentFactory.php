@@ -20,8 +20,8 @@ class CommentFactory extends Factory
         
         return [
             'description' => $faker->paragraph(3),
-            'user_id' => $faker->numberBetween(1, 3),
-            'event_id' => $faker->numberBetween(2, 34),
+            'user_id' => $faker->numberBetween(1, 10), //10 Utilisateurs générés au préalable
+            'event_id' => $faker->numberBetween(1, 30), //30 Évènements générés au préalable
         ];
     }
 }

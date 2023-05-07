@@ -79,7 +79,6 @@ class EventController extends Controller
         return $rules;
     }
     
-
     /**
      * Store a newly created resource in storage.
      */
