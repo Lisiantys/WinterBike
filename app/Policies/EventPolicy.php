@@ -40,7 +40,7 @@ class EventPolicy
      */
     public function update(User $user, Event $event): bool
     {
-        return $user->id === $event->user_id || $user->role_id === 4;
+        return ($user->id === $event->user_id && $event->is_validated == 0) || $user->role_id === 4;    
     }
 
     /**

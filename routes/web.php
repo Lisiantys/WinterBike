@@ -22,15 +22,16 @@ Route::get('/welcome', function(){
     return view('welcome');
 });
 
+//(Middleware AUTH + verif)
 Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
 
-//Modérateurs et Administateurs (Middleware manquant)
+//Modérateurs et Administateurs (Middleware manquant) + //(Middleware AUTH + verif)
 Route::get('/evenements-en-attentes', [EventController::class, 'pending'])->name('events.pending');
 Route::patch('/evenements/{event}/valider', [EventController::class, 'validateEvent'])->name('events.validate');
 
 Route::resource('events', EventController::class);
 
-//Routes Commentaires
+//Routes Commentaires + //(Middleware AUTH + verif)
 Route::post('events/{event}/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 

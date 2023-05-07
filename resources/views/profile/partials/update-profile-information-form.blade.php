@@ -51,7 +51,7 @@
 
         <div>
             <label for="image_path">Image :</label>
-            <input type="file" id="image_path" name="image_path">
+            <input type="file" id="image_path" name="image_path" accept="image/jpeg,image/png,image/jpg,image/svg" max-size="600">
         </div>
         
         <div class="flex items-center gap-4">

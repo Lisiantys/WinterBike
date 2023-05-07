@@ -25,7 +25,7 @@
 
         <div>
             <label for="image_path">Image* :</label>
-            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg+xml" max-size="2048" required>
+            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg" max-size="2048" required>
             <img id="image-preview" src="" alt="Aperçu de l'image" style="display: none; max-width: 100%;">
         </div>
 

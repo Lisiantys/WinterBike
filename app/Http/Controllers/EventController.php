@@ -62,7 +62,7 @@ class EventController extends Controller
     {
         $rules = [
             'name' => 'required|string|max:255',
-            'image_path' => $isUpdate ? 'nullable' : 'required' . '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image_path' => $isUpdate ? 'nullable' : 'required' . '|image|mimes:jpeg,png,jpg,svg|max:2048',
             'beginningDate' => 'required|date',
             'endDate' => 'required|date|after_or_equal:beginningDate',
             'address' => 'required|string|max:255',
@@ -75,7 +75,6 @@ class EventController extends Controller
             'region_id' => 'required|integer|exists:regions,id',
             'type_id' => 'required|integer|exists:types,id',
         ];
-    
         return $rules;
     }
     

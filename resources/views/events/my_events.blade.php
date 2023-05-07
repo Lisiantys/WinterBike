@@ -10,16 +10,16 @@
     @include('events.partials.navbar')
     <h1>Mes evenements</h1>
     <a href="{{ route('events.create') }}">Créer un évènement</a>
-    @foreach ($events as $event)
-        <h2>{{ $event->name }}</h2>
-        <img src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
-        <p>{{ $event->description }}</p>
-        <a href="{{ route('events.edit', $event->id) }}">Modifier</a>
-        <form action="{{ route('events.destroy', $event->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">Supprimer</button>
-        </form>
+
+    <h2>Événements non validés</h2>
+    @foreach ($events->where('is_validated', 0) as $event)
+        @include('events.partials.event_card')
+    @endforeach
+
+    <h2>Événements validés</h2>
+    @foreach ($events->where('is_validated', 1) as $event)
+        @include('events.partials.event_card', ['disableEditButton' => true])
     @endforeach
 </body>
+
 </html>
