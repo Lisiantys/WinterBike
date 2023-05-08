@@ -7,10 +7,10 @@
     <title>Document</title>
 
     <style>
-        #pagination nav{
+        .pagination nav{
             display: flex;
         }
-        #pagination nav .hidden{
+        .pagination nav .hidden{
             display: flex;
         }
     </style>
@@ -25,7 +25,7 @@
             <p>Auteur: {{ $event->user->name }}</p>
         </div>
     @endforeach
-    <div id="pagination">{{ $events->links() }}</div>
+    <div class="pagination">{{ $events->links() }}</div>
     
 </body>
 </html>

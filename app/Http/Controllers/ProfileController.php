@@ -15,10 +15,16 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
-    public function manage()
+    public function manage(Request $request)
     {
         $roles = Role::all();
-        $users = User::with('role')->get();
+        //$users = User::with('role')->get();
+        $search = $request->input('search');
+        $users = User::with('role')->when($search, function ($query, $search) {
+            return $query->where('name', 'like', '%' . $search . '%')
+                         ->orWhere('email', 'like', '%' . $search . '%');
+        })->paginate(15);
+    
         return view('profile.manage', compact('users', 'roles'));
     }
 
@@ -28,11 +34,9 @@ class ProfileController extends Controller
         $validatedData = $request->validate([
             'role_id' => 'required|exists:roles,id',
         ]);
-    
-        $user->update([
-            'role_id' => $validatedData['role_id'],
-        ]);
-    
+
+        $user->role_id = $validatedData['role_id'];
+        $user->save();
         return redirect()->route('profile.manage')->with('status', 'Le rôle de l\'utilisateur a été mis à jour.');
     }
 

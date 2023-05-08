@@ -38,12 +38,8 @@ class EventController extends Controller
 
         public function validateEvent(Request $request, Event $event)
         {
-            //Log::info('validateEvent called for event id: ' . $event->id);
-            //$event->update(['is_validated' => 1]);
             $event->is_validated = 1;
-            $event->save();
-            //Log::info('Event validation status updated to: ' . $event->is_validated);
-        
+            $event->save();        
             return redirect()->route('events.pending')->with('success', 'Événement validé avec succès.');
         }
     /**
@@ -166,6 +162,12 @@ class EventController extends Controller
     {
         $this->authorize('delete', $event);
         $event->delete();
-        return redirect()->route('events.myEvents')->with('success', 'Événement supprimé avec succès.');
+
+        //Supression depuis la page pending.blade.php
+        if (request('fromEventPending') == 'pending') {
+            return redirect()->route('events.pending')->with('status', 'Événement supprimé avec succès.');
+        } else {
+            return redirect()->route('events.myEvents')->with('status', 'Événement supprimé avec succès.');
+        }
     }
 }
