@@ -43,6 +43,7 @@
                 <th>Email</th>
                 <th>Rôle</th>
                 <th>Action</th>
+                <th>Bloquer</th>
             </tr>
         </thead>
         <tbody>
@@ -70,6 +71,21 @@
                                 @endforeach
                             </select>
                         </form>
+                    </td>
+                    <td>
+                        @if(!$user->is_banned)
+                            <form action="{{ route('profile.banUser', $user->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez vous bannir {{ $user->name }}?');">Bannir</button>
+                            </form>
+                        @else
+                            <form action="{{ route('profile.unbanUser', $user->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-success" onclick="return confirm('Voulez vous débannir {{ $user->name }}?');">Débannir</button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach

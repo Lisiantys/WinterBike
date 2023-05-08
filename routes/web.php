@@ -48,6 +48,8 @@ Route::middleware(['auth', 'verified', 'moderatorOrAdmin'])->group(function () {
 Route::middleware(['auth', 'verified', 'isAdmin'])->group(function () {
     Route::get('/gerer-utilisateurs', [ProfileController::class, 'manage'])->name('profile.manage');
     Route::put('/profile/{user}/update-role', [ProfileController::class, 'updateRole'])->name('profile.updateRole');
+    Route::put('/profile/{user}/ban', [ProfileController::class, 'banUser'])->name('profile.banUser');
+    Route::put('/profile/{user}/unban', [ProfileController::class, 'unbanUser'])->name('profile.unbanUser');
 });
 
 
