@@ -33,6 +33,14 @@
                 <button class="btn btn-outline-primary" type="submit">Rechercher</button>
             </div>
         </div>
+
+        <label for="filter-role">Filtrer par grade :</label>
+        <select name="role_id" id="filter-role" onchange="this.form.submit()">
+            <option value="">Tous les grades</option>
+            @foreach($roles as $role)
+                <option value="{{ $role->id }}" {{ request('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
+            @endforeach
+        </select>
     </form>
     
     <table>

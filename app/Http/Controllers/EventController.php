@@ -26,15 +26,29 @@ class EventController extends Controller
     public function myEvents()
     {
         $user = auth()->user();
-        $events = Event::with('user')->where('user_id', $user->id)->get();
+        $events = Event::with('user')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
         return view('events.my_events', compact('events'));
     }
 
         public function pending()
         {
-            $pendingEvents = Event::with('user')->where('is_validated', 0)->get();
+            $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->get();
             return view('events.pending', compact('pendingEvents'));
         }
+
+        public function storeStaffMessage(Request $request, Event $event)
+        {
+            $request->validate([
+                'staffMessage' => 'required|string|max:255|min:10',
+            ]);
+        
+            $event->update([
+                'staffMessage' => $request->staffMessage,
+            ]);
+        
+            return redirect()->back()->with('status', 'Le message a été envoyé à l\'utilisateur.');
+        }
+        
 
         public function validateEvent(Request $request, Event $event)
         {

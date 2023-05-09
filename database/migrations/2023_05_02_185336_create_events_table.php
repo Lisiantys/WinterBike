@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('website')->nullable()->default(null);
             $table->string('facebook')->nullable()->default(null);
             $table->mediumText('description');
+            $table->string('staffMessage')->nullable()->default(null);
             $table->boolean('is_promoted')->default(0);
             $table->boolean('is_validated')->default(0);
             $table->timestamps();

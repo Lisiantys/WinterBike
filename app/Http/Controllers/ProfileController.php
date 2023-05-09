@@ -18,11 +18,14 @@ class ProfileController extends Controller
     public function manage(Request $request)
     {
         $roles = Role::all();
-        //$users = User::with('role')->get();
+        
         $search = $request->input('search');
+        $selectedRole = $request->input('role_id');
         $users = User::with('role')->when($search, function ($query, $search) {
             return $query->where('name', 'like', '%' . $search . '%')
                          ->orWhere('email', 'like', '%' . $search . '%');
+        })->when($selectedRole, function ($query, $selectedRole) {
+            return $query->where('role_id', $selectedRole);
         })->paginate(15);
     
         return view('profile.manage', compact('users', 'roles'));

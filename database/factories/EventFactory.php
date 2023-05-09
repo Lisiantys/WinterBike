@@ -28,6 +28,7 @@ class EventFactory extends Factory
             'website' => $faker->url,
             'facebook' => $faker->url,
             'description' => $faker->paragraph,
+            'staffMessage' => $faker->sentence,
             'is_promoted' => $faker->boolean,
             'is_validated' => $faker->boolean,
             'department_id' => rand(1, 96), //96 Départements générés au préalable

@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 
+    //Mes évènements
     Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
 
     //Routes Commentaires
@@ -38,10 +39,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 //Route show en dessous de create, sinon Erreur 404 sur la route create
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
-//Modérateurs et Administateurs + + Middleware Auth + Verif -> Event
+//Modérateurs et Administateurs + Middleware Auth + Verif -> Event
 Route::middleware(['auth', 'verified', 'moderatorOrAdmin'])->group(function () {
     Route::get('/evenements-en-attentes', [EventController::class, 'pending'])->name('events.pending');
-    Route::patch('/evenements/{event}/valider', [EventController::class, 'validateEvent'])->name('events.validate');
+    Route::post('/events/{event}/staff-message', [EventController::class, 'storeStaffMessage'])->name('events.storeStaffMessage');
+    Route::patch('/events/{event}/valider', [EventController::class, 'validateEvent'])->name('events.validate');
 });
 
 //Administateurs + Middleware Auth + Verif

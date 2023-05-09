@@ -37,7 +37,7 @@ class Event extends Model
 
     protected $fillable = [
         'name', 'image_path', 'beginningDate', 'endDate', 'address',
-        'email', 'phone', 'website', 'facebook', 'description',
+        'email', 'phone', 'website', 'facebook', 'description', 'staffMessage',
         'department_id', 'region_id',
         'type_id', 'user_id',
     ];

@@ -17,6 +17,7 @@
                     
                         <h2>{{ $event->name }}</h2>
                         <p>{{ $event->description }}</p>
+                        <p style="color:red;">Message de l'équipe : {{ $event->staffMessage }}</p>
                         <img src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
                     
 
@@ -24,6 +25,14 @@
                         @csrf
                         @method('PATCH')
                         <button type="submit" class="btn btn-success">Valider l'événement</button>
+                    </form>
+                    <form action="{{ route('events.storeStaffMessage', $event) }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="staffMessage">Message du staff :</label>
+                            <textarea name="staffMessage" id="staffMessage" class="form-control" required maxlength="255" minlength="10"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
                     </form>
                     @if(auth()->user()->role_id === 4) {{-- ok --}}
                         <form action="{{ route('events.destroy', $event->id) }}" method="POST" style="display:inline;">
