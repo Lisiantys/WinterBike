@@ -68,7 +68,7 @@ class EventController extends Controller
                 'staffMessage' => $request->staffMessage,
             ]);
         
-            return redirect()->back()->with('status', 'Le message a été envoyé à l\'utilisateur.');
+            return redirect()->back()->withSuccess('Le message a été envoyé à l\'utilisateur.');
         }
         
 
@@ -76,7 +76,7 @@ class EventController extends Controller
         {
             $event->is_validated = 1;
             $event->save();        
-            return redirect()->route('events.pending')->with('success', 'Événement validé avec succès.');
+            return redirect()->route('events.pending')->withSuccess('Événement validé avec succès.');
         }
     /**
      * Show the form for creating a new resource.
@@ -136,7 +136,7 @@ class EventController extends Controller
             'user_id' => $user->id // Set the user_id to the currently authenticated user
         ]);
 
-        return redirect()->route('events.show', $event->id)->with('success', 'Event created successfully!');
+        return redirect()->route('events.show', $event->id)->withSuccess('Évènement crée avec succès !');
     }
 
     /**
@@ -188,7 +188,7 @@ class EventController extends Controller
     
         $event->update($data);
 
-        return redirect()->route('events.show', $event->id)->with('success', 'Événement mis à jour avec succès.');
+        return redirect()->route('events.show', $event->id)->withSuccess('Événement mis à jour avec succès !');
     }
 
     /**
@@ -201,9 +201,9 @@ class EventController extends Controller
 
         //Supression depuis la page pending.blade.php
         if (request('fromEventPending') == 'pending') {
-            return redirect()->route('events.pending')->with('status', 'Événement supprimé avec succès.');
+            return redirect()->route('events.pending')->withSuccess('Événement supprimé avec succès !');
         } else {
-            return redirect()->route('events.myEvents')->with('status', 'Événement supprimé avec succès.');
+            return redirect()->route('events.myEvents')->withSuccess('Événement supprimé avec succès !');
         }
     }
 }

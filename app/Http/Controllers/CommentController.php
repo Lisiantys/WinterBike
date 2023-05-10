@@ -20,13 +20,13 @@ class CommentController extends Controller
             'event_id' => $event->id,
         ]);
 
-        return redirect()->route('events.show', $event->id)->with('success', 'Votre commentaire a été ajouté.');
+        return redirect()->route('events.show', $event->id)->withSuccess('Votre commentaire a été ajouté !');
     }
 
     public function destroy(Comment $comment)
     {
         $this->authorize('delete', $comment);
         $comment->delete();
-        return redirect()->back()->with('success', 'Le commentaire a été supprimé.');
+        return redirect()->back()->withSuccess('Le commentaire a été supprimé !');
     }
 }

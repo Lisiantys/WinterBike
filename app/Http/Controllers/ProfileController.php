@@ -39,19 +39,19 @@ class ProfileController extends Controller
 
         $user->role_id = $validatedData['role_id'];
         $user->save();
-        return redirect()->route('profile.manage')->with('status', 'Le rôle de l\'utilisateur a été mis à jour.');
+        return redirect()->route('profile.manage')->withSuccess('Le rôle de l\'utilisateur a été mis à jour.');
     }
 
     public function banUser(User $user)
     {
         $user->update(['is_banned' => 1]);
-        return redirect()->route('profile.manage')->with('status', "L'utilisateur a été banni.");
+        return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été banni.");
     }
     
     public function unbanUser(User $user)
     {
         $user->update(['is_banned' => 0]);
-        return redirect()->route('profile.manage')->with('status', "L'utilisateur a été débanni.");
+        return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été débanni.");
     }
     
     /**
