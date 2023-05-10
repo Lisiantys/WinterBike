@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             TypesTableSeeder::class
         ]);
         
-        \App\Models\User::factory(50)->create();
+        \App\Models\User::factory(30)->create();
         \App\Models\Event::factory(30)->create();
         \App\Models\Comment::factory(200)->create();
     }
