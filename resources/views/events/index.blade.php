@@ -1,4 +1,5 @@
 <x-app-layout>
+    <div>
     <h1>Affiche la liste des evenements</h1>
 
     <form action="{{ route('events.index') }}" method="get">
@@ -56,4 +57,5 @@
         @endforeach
         <div class="pagination">{{ $events->links() }}</div>
     @endif
+    </div>
 </x-app-layout>
