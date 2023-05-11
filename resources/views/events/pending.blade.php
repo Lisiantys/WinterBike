@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    @include('events.partials.navbar')
+<x-app-layout>
     <div class="container">
         <h1>Événements en attente</h1>
 
@@ -46,5 +37,4 @@
             @endforeach
         </div>
     </div>
-</body>
-</html>
+</x-app-layout>

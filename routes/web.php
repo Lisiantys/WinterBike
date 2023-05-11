@@ -27,10 +27,6 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('verified')->group(function () {
          
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
-
         Route::group(['prefix' => 'events'], function () {
             Route::get('/create', [EventController::class, 'create'])->name('events.create');
             Route::post('/', [EventController::class, 'store'])->name('events.store');
@@ -64,9 +60,5 @@ Route::middleware('auth')->group(function () {
 
 // Route show en dessous de create, sinon Erreur 404 sur la route create
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
-
-Route::get('/welcome', function(){
-    return view('welcome');
-});
 
 require __DIR__.'/auth.php';

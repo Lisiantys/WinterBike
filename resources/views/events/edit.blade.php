@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    @include('events.partials.navbar')
+<x-app-layout>
     <h1>Editer un Event</h1>
 
     @if ($errors->any())
@@ -101,6 +92,4 @@
         <!-- Add other fields like department_id, region_id, type_id, and user_id as needed -->
         <button type="submit">Create Event</button>
     </form>
-
-</body>
-</html>
+</x-app-layout>

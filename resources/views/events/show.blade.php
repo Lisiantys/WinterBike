@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $event->name }}</title>
-</head>
-<body>
-    @include('events.partials.navbar')
+<x-app-layout>
     <h1>{{ $event->name }}</h1>
     <p>{{ $event->description }}</p>
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
@@ -59,6 +50,4 @@
         @endauth
     </div>
     @endforeach
-
-</body>
-</html>
+</x-app-layout>
