@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @auth
-                        <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
                             {{ __('Évènements') }}
                         </x-nav-link>
                         <x-nav-link :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
@@ -31,7 +31,7 @@
                         @endif
                     @endauth
                     @guest
-                        <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
                             {{ __('Évènements') }}
                         </x-nav-link>
                         <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
@@ -96,9 +96,35 @@
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
             <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                @auth
+                <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
                     {{ __('Évènements') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
+                    {{ __('Mes Évènements') }}
+                </x-responsive-nav-link>
+                @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
+                    <x-responsive-nav-link  :href="route('events.pending')" :active="request()->routeIs('events.pending')">
+                        {{ __('Évènements en attente') }}
+                    </x-responsive-nav-link>
+                @endif
+                @if(auth()->user()->role_id === 4)
+                    <x-responsive-nav-link  :href="route('profile.manage')" :active="request()->routeIs('profile.manage')">
+                        {{ __('Gérer les Utilisateurs') }}
+                    </x-responsive-nav-link>
+                @endif
+            @endauth
+            @guest
+                <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
+                    {{ __('Évènements') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Connexion') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Inscription') }}
+                </x-responsive-nav-link>
+            @endguest
             </div>
 
             <!-- Responsive Settings Options -->

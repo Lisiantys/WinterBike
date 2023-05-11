@@ -24,19 +24,19 @@ class EventController extends Controller
     $types = Type::all();
 
     $events = Event::with('user')->where('is_validated', 1)
-        ->when($request->input('department_id'), function ($query, $department_id) {
+        ->when($request->input('departement'), function ($query, $department_id) {
             return $query->where('department_id', $department_id);
         })
-        ->when($request->input('region_id'), function ($query, $region_id) {
+        ->when($request->input('region'), function ($query, $region_id) {
             return $query->where('region_id', $region_id);
         })
-        ->when($request->input('type_id'), function ($query, $type_id) {
+        ->when($request->input('type'), function ($query, $type_id) {
             return $query->where('type_id', $type_id);
         })
-        ->when($request->input('beginning_date'), function ($query, $beginning_date) {
+        ->when($request->input('beginning'), function ($query, $beginning_date) {
             return $query->where('beginningDate', '>=', $beginning_date);
         })
-        ->when($request->input('end_date'), function ($query, $end_date) {
+        ->when($request->input('end'), function ($query, $end_date) {
             return $query->where('endDate', '<=', $end_date);
         })
         ->orderBy('beginningDate', 'asc')->paginate(10);
