@@ -18,6 +18,6 @@ class CheckAdmin
         if (auth()->user()->role_id === 4) {
             return $next($request);
         }
-        return redirect()->route('index')->with('error', "Vous n'avez pas les permissions nécessaires pour accéder à cette page.");
+        return redirect()->route('index');
     }
 }
