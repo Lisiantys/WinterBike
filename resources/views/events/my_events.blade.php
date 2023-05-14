@@ -9,6 +9,6 @@
 
     <h2>Événements validés</h2>
     @foreach ($events->where('is_validated', 1) as $event)
-        @include('events.partials.event_card', ['disableEditButton' => true])
+        @include('events.partials.event_card')
     @endforeach
 </x-app-layout>

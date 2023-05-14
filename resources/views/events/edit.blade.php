@@ -90,6 +90,6 @@
         </div>
         
         <!-- Add other fields like department_id, region_id, type_id, and user_id as needed -->
-        <button type="submit">Create Event</button>
+        <button type="submit">Modifié l'évènement</button>
     </form>
 </x-app-layout>

@@ -36,14 +36,13 @@
         <button type="submit">Rechercher</button>
     </form>
 
+    <a href="{{ route('events.create') }}">Créer un évènement</a>
+
     @if($events->isEmpty())
         <p>Il n'y a pas d'événement avec ces options de recherche.</p>
     @else
         @foreach ($events as $event)   
-        <div>
-            <img src="" alt="">
-        </div>
-        <div class="w-2/5" style="background:red;">
+            <div class="w-2/5" style="background:red;">
                 <h1 class="text-2xl font-bold underline"><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h1>
 
                 <p>Du {{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }} - {{ $event->type->name }} </p>

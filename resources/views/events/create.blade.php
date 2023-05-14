@@ -87,7 +87,7 @@
             </select>
         </div>
 
-        <button type="submit">Create Event</button>
+        <button type="submit">Créer l'évènement</button>
     </form>
 
     <script>

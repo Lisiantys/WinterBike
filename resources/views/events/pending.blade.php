@@ -5,13 +5,19 @@
         <div class="event-list">
             @foreach($pendingEvents as $event)
                 <div class="event">
-                    
-                        <h2>{{ $event->name }}</h2>
-                        <p>{{ $event->description }}</p>
+                    <div>
+                        <h1 class="text-2xl font-bold underline"><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h1>
+        
+                        <p>Du {{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }} - {{ $event->type->name }} </p>
+                        <p>{{ $event->region->name }} - {{ $event->department->name }}</p>
+                        <div class="flex items-center">
+                            <img src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
+                            <p>Auteur: {{ $event->user->name }}</p>
+                        </div>
+                        <p>{{ Str::limit($event->description, $limit = 100, $end = '...') }}</p>
                         <p style="color:red;">Message de l'équipe : {{ $event->staffMessage }}</p>
-                        <img src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
-                    
-
+                    </div>
+       
                     <form action="{{ route('events.validate', $event) }}" method="POST">
                         @csrf
                         @method('PATCH')
@@ -34,6 +40,7 @@
                         </form>
                     @endif
                 </div>
+                <p>------------------------------------------------</p>
             @endforeach
         </div>
     </div>

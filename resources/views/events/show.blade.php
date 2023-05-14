@@ -4,7 +4,7 @@
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
 
     @auth
-        @if(auth()->user()->id === $event->user_id && $event->is_validated == 0 || auth()->user()->role_id === 4) {{-- ok --}}
+        @if(auth()->user()->id === $event->user_id || auth()->user()->role_id === 4) {{-- ok --}}
             <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning">Modifier l'événement</a>
         @endif
     
@@ -17,20 +17,21 @@
         @endif
     @endauth
     
-    @if(auth()->check() && auth()->user()->email_verified_at !== null)  {{-- ok --}}
-    <form action="{{ route('comments.store', $event->id) }}" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="description">Commentaire:</label>
-            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
-    </form>
-    
-    @else
-        <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
-    @endif
-    
+    @auth
+        @if(auth()->user()->email_verified_at !== null)  {{-- ok --}}
+            <form action="{{ route('comments.store', $event->id) }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="description">Commentaire:</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
+            </form>
+        @else
+            <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+        @endif
+    @endauth
+  
     @foreach($event->comments as $comment)
     <div>
         <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
