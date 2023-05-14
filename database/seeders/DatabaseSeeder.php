@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Event;
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RolesTableSeeder;
 use Database\Seeders\TypesTableSeeder;
@@ -23,8 +26,9 @@ class DatabaseSeeder extends Seeder
             TypesTableSeeder::class
         ]);
         
-        \App\Models\User::factory(30)->create();
-        \App\Models\Event::factory(30)->create();
-        \App\Models\Comment::factory(200)->create();
+        //Les factories accueillent un nombre dynamique
+        User::factory(50)->create();
+        Event::factory(20)->create();
+        Comment::factory(500)->create();
     }
 }

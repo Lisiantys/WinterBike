@@ -41,10 +41,10 @@
     @if($events->isEmpty())
         <p>Il n'y a pas d'événement avec ces options de recherche.</p>
     @else
-    @foreach ($events as $event)   
-       <x-events.event-list :event="$event" />
-    @endforeach
-        <div class="pagination">{{ $events->links() }}</div>
+        @foreach ($events as $event)   
+        <x-events.event-list :event="$event" />
+        @endforeach
+        <div>{{ $events->links() }}</div>
     @endif
     </div>
 </x-app-layout>

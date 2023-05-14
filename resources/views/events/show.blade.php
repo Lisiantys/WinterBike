@@ -31,24 +31,29 @@
             <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
         @endif
     @endauth
-  
-    @foreach($event->comments as $comment)
-    <div>
-        <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
-        <strong>{{ $comment->user->name }}</strong>
-        <p>Le : {{ $comment->created_at->format('d/m/Y H:i') }}</p>
-        <p>{{ $comment->description }}</p>
 
-        @auth
-            @if(auth()->user()->id === $comment->user_id || auth()->user()->role_id === 4 || auth()->user()->role_id === 3)
-                {{-- ok --}}
-                <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">Supprimer</button>
-                </form>
-            @endif
-        @endauth
-    </div>
+    @guest
+        <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+    @endguest
+  
+    @foreach($comments as $comment)
+        <div>
+            <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
+            <strong>{{ $comment->user->name }}</strong>
+            <p>Le : {{ $comment->created_at->format('d/m/Y H:i') }}</p>
+            <p>{{ $comment->description }}</p>
+
+            @auth
+                @if(auth()->user()->id === $comment->user_id || auth()->user()->role_id === 4 || auth()->user()->role_id === 3)
+                    {{-- ok --}}
+                    <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');">Supprimer</button>
+                    </form>
+                @endif
+            @endauth
+        </div>
     @endforeach
+    <div>{{ $comments->links() }}</div>
 </x-app-layout>

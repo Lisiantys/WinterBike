@@ -144,7 +144,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->get();
+        $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->paginate(10);
         return view('events.show', compact('event', 'comments'));
     }
 

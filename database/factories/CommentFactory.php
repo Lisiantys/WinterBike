@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,8 +22,12 @@ class CommentFactory extends Factory
         
         return [
             'description' => $faker->paragraph(3),
-            'user_id' => $faker->numberBetween(1, 10), //10 Utilisateurs générés au préalable
-            'event_id' => $faker->numberBetween(1, 30), //30 Évènements générés au préalable
+            'user_id' => function () {
+                return User::inRandomOrder()->first()->id;
+            },
+            'event_id' => function () {
+                return Event::inRandomOrder()->first()->id;
+            },
         ];
     }
 }
