@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('340WN60n'), // password
+            'password' => Hash::make('1234'), // password
             'image_path' => 'users/default_user_image.jpg',
             'remember_token' => Str::random(10),
             'role_id' => rand(1,4)

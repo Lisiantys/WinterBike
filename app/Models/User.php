@@ -30,6 +30,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Role::class);
     }
 
+    public function favorites(){
+        return $this->belongsToMany(Event::class, 'favorites', 'user_id', 'event_id');
+    }
+    
     /**
      * The attributes that are mass assignable.
      *

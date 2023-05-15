@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Comment;
+use App\Models\Favorite;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RolesTableSeeder;
 use Database\Seeders\TypesTableSeeder;
@@ -27,8 +28,9 @@ class DatabaseSeeder extends Seeder
         ]);
         
         //Les factories accueillent un nombre dynamique
-        User::factory(50)->create();
-        Event::factory(20)->create();
-        Comment::factory(500)->create();
+        User::factory(10)->create();
+        Event::factory(60)->create();
+        Comment::factory(100)->create();
+        //Favorite::factory(200)->create();
     }
 }

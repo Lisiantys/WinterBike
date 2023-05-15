@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
         });
 
         Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
+        Route::get('/mes-favoris', [EventController::class, 'myFavorites'])->name('events.favorite');
 
         // Modérateurs et Administrateurs
         Route::middleware('moderatorOrAdmin')->group(function () {

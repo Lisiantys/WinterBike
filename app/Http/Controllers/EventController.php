@@ -8,6 +8,7 @@ use App\Models\Region;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 //Request permet de récuperer les informations passées par le protocole http (get / post)
 
@@ -41,9 +42,8 @@ class EventController extends Controller
         })
         ->orderBy('beginningDate', 'asc')->paginate(10);
 
-    return view('events.index', compact('events', 'departments', 'regions', 'types', 'request'));
-}
-
+        return view('events.index', compact('events', 'departments', 'regions', 'types', 'request'));
+    }
 
     public function myEvents()
     {
@@ -52,32 +52,55 @@ class EventController extends Controller
         return view('events.my_events', compact('events'));
     }
 
-        public function pending()
-        {
-            $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->get();
-            return view('events.pending', compact('pendingEvents'));
-        }
+    public function myFavorites()
+{
+    $user = auth()->user();
+    Log::info('User: ', ['user' => $user]); // Ajoute un log de l'utilisateur connecté
+        
+    $favorites = $user->favorites;
+    Log::info('Favorites: ', ['favorites' => $favorites]); // Ajoute un log des favoris de l'utilisateur
 
-        public function storeStaffMessage(Request $request, Event $event)
-        {
-            $request->validate([
-                'staffMessage' => 'required|string|max:255|min:10',
-            ]);
-        
-            $event->update([
-                'staffMessage' => $request->staffMessage,
-            ]);
-        
-            return redirect()->back()->withSuccess('Le message a été envoyé à l\'utilisateur.');
+    if ($favorites) {
+        foreach ($favorites as $favorite) {
+            if (!$favorite->event) {
+                Log::warning('No event for favorite: ', ['favorite' => $favorite]); // Ajoute un avertissement lorsque l'événement favori n'est pas trouvé
+            }
         }
+    } else {
+        Log::warning('No favorites for user: ', ['user' => $user]); // Ajoute un avertissement lorsque l'utilisateur n'a pas de favoris
+    }
         
+    return view('events.favorite', compact('favorites'));
+}
 
-        public function validateEvent(Request $request, Event $event)
-        {
-            $event->is_validated = 1;
-            $event->save();        
-            return redirect()->route('events.pending')->withSuccess('Événement validé avec succès.');
-        }
+
+    public function pending()
+    {
+        $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->get();
+        return view('events.pending', compact('pendingEvents'));
+    }
+
+    public function storeStaffMessage(Request $request, Event $event)
+    {
+        $request->validate([
+            'staffMessage' => 'required|string|max:255|min:10',
+        ]);
+    
+        $event->update([
+            'staffMessage' => $request->staffMessage,
+        ]);
+    
+        return redirect()->back()->withSuccess('Le message a été envoyé à l\'utilisateur.');
+    }
+    
+
+    public function validateEvent(Request $request, Event $event)
+    {
+        $event->is_validated = 1;
+        $event->save();        
+        return redirect()->route('events.pending')->withSuccess('Événement validé avec succès.');
+    }
+    
     /**
      * Show the form for creating a new resource.
      */
