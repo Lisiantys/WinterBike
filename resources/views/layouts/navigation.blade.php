@@ -19,6 +19,9 @@
                         <x-nav-link :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
                             {{ __('Mes Évènements') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
+                            {{ __('Mes Favoris') }}
+                        </x-nav-link>
                         @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
                             <x-nav-link :href="route('events.pending')" :active="request()->routeIs('events.pending')">
                                 {{ __('Évènements en attente') }}
@@ -102,6 +105,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
                     {{ __('Mes Évènements') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
+                    {{ __('Mes Favoris') }}
                 </x-responsive-nav-link>
                 @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
                     <x-responsive-nav-link  :href="route('events.pending')" :active="request()->routeIs('events.pending')">

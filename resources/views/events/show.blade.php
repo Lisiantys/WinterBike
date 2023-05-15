@@ -2,6 +2,29 @@
     <h1>{{ $event->name }}</h1>
     <p>{{ $event->description }}</p>
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
+   
+    <p>Nombre de favoris : {{ $event->favoritedBy->count() }}</p>
+
+    @auth
+        @if(auth()->user()->email_verified_at !== null) 
+            @php
+            $isFavorite = auth()->user()->favoritedEvents->contains($event->id);
+            @endphp
+
+            @if($isFavorite)
+                <form action="{{ route('favorites.remove', $event->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Remove from favorites</button>
+                </form>
+            @else
+                <form action="{{ route('favorites.add', $event->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Add to favorites</button>
+                </form>
+            @endif
+        @endif
+    @endauth
 
     @auth
         @if(auth()->user()->id === $event->user_id || auth()->user()->role_id === 4) {{-- ok --}}

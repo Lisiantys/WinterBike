@@ -40,7 +40,10 @@ Route::middleware('auth')->group(function () {
         });
 
         Route::get('/mes-evenements', [EventController::class, 'myEvents'])->name('events.myEvents');
+
         Route::get('/mes-favoris', [EventController::class, 'myFavorites'])->name('events.favorite');
+        Route::post('favorites/add/{event}', [EventController::class, 'addFavorite'])->name('favorites.add');
+        Route::delete('favorites/remove/{event}', [EventController::class, 'removeFavorite'])->name('favorites.remove');    
 
         // Modérateurs et Administrateurs
         Route::middleware('moderatorOrAdmin')->group(function () {

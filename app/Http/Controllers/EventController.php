@@ -53,25 +53,26 @@ class EventController extends Controller
     }
 
     public function myFavorites()
-{
-    $user = auth()->user();
-    Log::info('User: ', ['user' => $user]); // Ajoute un log de l'utilisateur connecté
-        
-    $favorites = $user->favorites;
-    Log::info('Favorites: ', ['favorites' => $favorites]); // Ajoute un log des favoris de l'utilisateur
-
-    if ($favorites) {
-        foreach ($favorites as $favorite) {
-            if (!$favorite->event) {
-                Log::warning('No event for favorite: ', ['favorite' => $favorite]); // Ajoute un avertissement lorsque l'événement favori n'est pas trouvé
-            }
-        }
-    } else {
-        Log::warning('No favorites for user: ', ['user' => $user]); // Ajoute un avertissement lorsque l'utilisateur n'a pas de favoris
+    {
+        $user = auth()->user();        
+        $favorites = $user->favoritedEvents;         
+        return view('events.favorite', compact('favorites'));
     }
-        
-    return view('events.favorite', compact('favorites'));
-}
+
+    public function addFavorite($eventId)
+    {
+        $user = auth()->user();
+        $user->favoritedEvents()->attach($eventId);
+    
+        return redirect()->back()->withSuccess('Évènement ajouté au favoris');
+    }
+
+    public function removeFavorite($eventId)
+    {
+        $user = auth()->user();
+        $user->favoritedEvents()->detach($eventId);        
+        return redirect()->back()->withSuccess('Évènement supprimé des favoris');
+    }
 
 
     public function pending()
