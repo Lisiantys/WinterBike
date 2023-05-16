@@ -19,28 +19,31 @@ class EventController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-{
-    $departments = Department::all();
-    $regions = Region::all();
-    $types = Type::all();
+    {
+        $departments = Department::all();
+        $regions = Region::all();
+        $types = Type::all();
 
-    $events = Event::with('user')->where('is_validated', 1)
-        ->when($request->input('departement'), function ($query, $department_id) {
-            return $query->where('department_id', $department_id);
-        })
-        ->when($request->input('region'), function ($query, $region_id) {
-            return $query->where('region_id', $region_id);
-        })
-        ->when($request->input('type'), function ($query, $type_id) {
-            return $query->where('type_id', $type_id);
-        })
-        ->when($request->input('beginning'), function ($query, $beginning_date) {
-            return $query->where('beginningDate', '>=', $beginning_date);
-        })
-        ->when($request->input('end'), function ($query, $end_date) {
-            return $query->where('endDate', '<=', $end_date);
-        })
-        ->orderBy('beginningDate', 'asc')->paginate(10);
+        $events = Event::with('user')->where('is_validated', 1)
+            ->when($request->input('keyword'), function ($query, $keyword) {
+                return $query->where('name', 'like', '%' . $keyword . '%');
+            })
+            ->when($request->input('departement'), function ($query, $department_id) {
+                return $query->where('department_id', $department_id);
+            })
+            ->when($request->input('region'), function ($query, $region_id) {
+                return $query->where('region_id', $region_id);
+            })
+            ->when($request->input('type'), function ($query, $type_id) {
+                return $query->where('type_id', $type_id);
+            })
+            ->when($request->input('beginning'), function ($query, $beginning_date) {
+                return $query->where('beginningDate', '>=', $beginning_date);
+            })
+            ->when($request->input('end'), function ($query, $end_date) {
+                return $query->where('endDate', '<=', $end_date);
+            })
+            ->orderBy('beginningDate', 'asc')->paginate(10);
 
         return view('events.index', compact('events', 'departments', 'regions', 'types', 'request'));
     }

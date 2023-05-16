@@ -10,6 +10,5 @@
         @method('DELETE')
         <button type="submit">Retirer l'évènement des favoris</button>
     </form>
-    <p>Nombre de favoris : {{ $favorite->favoritedBy->count() }}</p>
 @endforeach
 </x-app-layout>

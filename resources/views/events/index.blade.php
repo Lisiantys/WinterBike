@@ -3,6 +3,9 @@
     <h1>Affiche la liste des evenements</h1>
 
     <form action="{{ route('events.index') }}" method="get">
+        <label for="keyword">Mot-clé :</label>
+        <input type="text" name="keyword" id="keyword" value="{{ $request->input('keyword') }}">
+
         <label for="department_id">Département :</label>
         <select name="departement" id="departement">
             <option value="">Sélectionnez un département</option>

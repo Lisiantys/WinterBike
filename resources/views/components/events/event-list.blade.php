@@ -8,4 +8,5 @@
         <p>Auteur: {{ $event->user->name }}</p>
     </div>
     <p>{{ Str::limit($event->description, $limit = 100, $end = '...') }}</p>
+    <p>Nombre de favoris : {{ $event->favoritedBy->count() }}</p>
 </div>
