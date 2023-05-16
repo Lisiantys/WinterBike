@@ -15,6 +15,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
+
     public function manage(Request $request)
     {
         $roles = Role::all();
@@ -26,7 +27,7 @@ class ProfileController extends Controller
                          ->orWhere('email', 'like', '%' . $search . '%');
         })->when($selectedRole, function ($query, $selectedRole) {
             return $query->where('role_id', $selectedRole);
-        })->paginate(15);
+        })->paginate(30);
     
         return view('profile.manage', compact('users', 'roles'));
     }
@@ -54,9 +55,23 @@ class ProfileController extends Controller
         return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été débanni.");
     }
     
+ 
+    public function show(User $user)
+    {
+        // Récupérer les commentaires de l'utilisateur
+        $comments = $user->comments()->orderBy('created_at', 'desc')->paginate(10);
+     
+        // Récupérer les événements créés par l'utilisateur qui sont validés
+        $events = $user->events()->where('is_validated', 1)->orderBy('created_at', 'desc')->paginate(5);
+     
+        // Retourner la vue de profil avec les données
+        return view('profile.show', compact('user', 'comments', 'events'));
+    }
+     
     /**
      * Display the user's profile form.
      */
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [

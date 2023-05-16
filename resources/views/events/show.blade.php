@@ -68,11 +68,12 @@
         <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
     @endguest
   
-    @foreach($comments as $comment)
+    @forelse($comments as $comment)
         <div>
             <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
-            <strong>{{ $comment->user->name }}</strong>
-            <p>Le : {{ $comment->created_at->format('d/m/Y H:i') }}</p>
+            <strong><a href="{{ route('profile.show', $comment->user->id) }}">{{ $comment->user->name }}</a></strong>
+
+            <p>Le : {{ \Carbon\Carbon::parse($comment->created_at)->isoFormat('LLL') }}</p>
             <p>{{ $comment->description }}</p>
 
             @auth
@@ -86,7 +87,9 @@
                 @endif
             @endauth
         </div>
-    @endforeach
+    @empty
+    <p>Soyez le premier à commenter cet évènement !</p>
+    @endforelse
     <div>{{ $comments->links() }}</div>
 
     <script>

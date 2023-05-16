@@ -52,14 +52,14 @@ class EventController extends Controller
     public function myEvents()
     {
         $user = auth()->user();
-        $events = Event::with('user')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->get();
+        $events = Event::with('user')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->paginate(10);
         return view('events.my_events', compact('events'));
     }
 
     public function myFavorites()
     {
         $user = auth()->user();        
-        $favorites = $user->favoritedEvents;         
+        $favorites = $user->favoritedEvents()->paginate(10);         
         return view('events.favorite', compact('favorites'));
     }
 
@@ -81,7 +81,7 @@ class EventController extends Controller
 
     public function pending()
     {
-        $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->get();
+        $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->paginate(15);
         return view('events.pending', compact('pendingEvents'));
     }
 

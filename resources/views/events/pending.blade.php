@@ -3,7 +3,7 @@
         <h1>Événements en attente</h1>
 
         <div class="event-list">
-            @foreach($pendingEvents as $event)
+            @forelse($pendingEvents as $event)
                 <div class="event">
                     <x-events.event-list :event="$event" />
        
@@ -30,7 +30,10 @@
                     @endif
                 </div>
                 <p>------------------------------------------------</p>
-            @endforeach
+            @empty
+             <p>Il n'y a pas de nouveaux évènements à accepter !</p>
+            @endforelse
+            <div>{{ $pendingEvents->withQueryString()->links('pagination-links') }}</div>
         </div>
     </div>
 </x-app-layout>

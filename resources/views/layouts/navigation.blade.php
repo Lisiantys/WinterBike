@@ -64,8 +64,12 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link :href="route('profile.show', Auth::id())">
                                 {{ __('Mon profile') }}
+                            </x-dropdown-link>
+
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Paramètres') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -141,8 +145,12 @@
                 </div>
 
                 <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')">
+                    <x-responsive-nav-link :href="route('profile.show', Auth::id())">
                         {{ __('Mon profile') }}
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('Paramètres') }}
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->
