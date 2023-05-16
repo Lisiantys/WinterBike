@@ -3,7 +3,11 @@
     <p>{{ $event->description }}</p>
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
    
-    <p>Nombre de favoris : {{ $event->favoritedBy->count() }}</p>
+    @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
+        <p><i class="fa-solid fa-star fa-xl" style="color: #FFD700;">{{ $event->favoritedBy->count() }}</i></p>
+    @else
+        <p><i class="fa-regular fa-star fa-xl" style="color: #e7ca25;">{{ $event->favoritedBy->count() }}</i></p>
+    @endif
 
     <a href="{{ $shareButtons['facebook'] }}"><i class="fa-brands fa-facebook fa-xl" style="color: #005eff;"></i></a>
     <a href="{{ $shareButtons['twitter'] }}"><i class="fa-brands fa-twitter fa-xl" style="color: #1DA1F2;"></i></a>
@@ -20,12 +24,12 @@
                 <form action="{{ route('favorites.remove', $event->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Remove from favorites</button>
+                    <button type="submit" class="btn btn-danger">Retirer des favoris</button>
                 </form>
             @else
                 <form action="{{ route('favorites.add', $event->id) }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-primary">Add to favorites</button>
+                    <button type="submit" class="btn btn-primary">Ajouter au favoris</button>
                 </form>
             @endif
         @endif

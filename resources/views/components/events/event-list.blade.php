@@ -8,5 +8,9 @@
         <p>Auteur: {{ $event->user->name }}</p>
     </div>
     <p>{{ Str::limit($event->description, $limit = 100, $end = '...') }}</p>
-    <p>Nombre de favoris : {{ $event->favoritedBy->count() }}</p>
+    @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
+        <p><i class="fa-solid fa-star" style="color: #FFD700;">{{ $event->favoritedBy->count() }}</i></p>
+    @else
+        <p><i class="fa-regular fa-star" style="color: #e7ca25;">{{ $event->favoritedBy->count() }}</i></p>
+    @endif
 </div>
