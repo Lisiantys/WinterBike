@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Models\Event;
 use App\Models\Region;
+use Jorenvh\Share\Share;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -169,10 +170,17 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event)
+    public function show(Event $event, Share $share)
     {
+        
         $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->paginate(10);
-        return view('events.show', compact('event', 'comments'));
+
+        $shareButtons = $share->page(url()->current(), $event->name)
+            ->facebook()
+            ->twitter()
+            ->getRawLinks();
+        
+        return view('events.show', compact('event', 'comments', 'shareButtons'));
     }
 
     /**
