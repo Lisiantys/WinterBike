@@ -4,10 +4,25 @@
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
    
     @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
-        <p><i class="fa-solid fa-star fa-xl" style="color: #FFD700;">{{ $event->favoritedBy->count() }}</i></p>
+    <p><i class="fa-solid fa-star fa-xl" style="color: #FFD700;">{{ $event->favoritedBy->count() }}</i></p>
     @else
         <p><i class="fa-regular fa-star fa-xl" style="color: #e7ca25;">{{ $event->favoritedBy->count() }}</i></p>
     @endif
+    <!-- AddToAny BEGIN -->
+    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_skype"></a>
+        <a href="#" id="copyLink"><i class="fa-solid fa-share-nodes fa-xl" style="color: #808080;"></i></a>
+    </div>
+    <script>
+    var a2a_config = a2a_config || {};
+    a2a_config.locale = "fr";
+    a2a_config.num_services = 4;
+    </script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+    <!-- AddToAny END -->
+  
 
     @auth
         @if(auth()->user()->email_verified_at !== null) 
@@ -67,7 +82,6 @@
         <div>
             <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
             <strong><a href="{{ route('profile.show', $comment->user->id) }}">{{ $comment->user->name }}</a></strong>
-
             <p>Le : {{ \Carbon\Carbon::parse($comment->created_at)->isoFormat('LLL') }}</p>
             <p>{{ $comment->description }}</p>
 
@@ -83,7 +97,25 @@
             @endauth
         </div>
     @empty
-    <p>Soyez le premier à commenter cet évènement !</p>
+        <p>Soyez le premier à commenter cet évènement !</p>
     @endforelse
     <div>{{ $comments->links() }}</div>
+  <script>
+        document.getElementById('copyLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            // Créer un élément temporaire pour contenir le lien de la page
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            // Ajouter l'élément temporaire à la page
+            document.body.appendChild(tempInput);
+            // Sélectionner le contenu de l'élément temporaire
+            tempInput.select();
+            // Copier le contenu sélectionné dans le presse-papiers
+            document.execCommand('copy');
+            // Supprimer l'élément temporaire
+            document.body.removeChild(tempInput);
+            // Afficher un message ou effectuer une autre action pour indiquer que le lien a été copié
+            alert('Le lien a été copié dans le presse-papiers !');
+        });
+    </script>
 </x-app-layout>

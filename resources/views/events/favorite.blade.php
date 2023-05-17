@@ -11,6 +11,5 @@
         <button type="submit">Retirer l'évènement des favoris</button>
     </form>
 @endforeach
-{{ $favorites->withQueryString()->links('pagination-links') }}
-
+<div>{{ $favorites->links() }}</div>
 </x-app-layout>

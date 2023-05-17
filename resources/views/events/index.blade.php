@@ -45,9 +45,9 @@
             <p>Il n'y a pas d'événement avec ces options de recherche.</p>
         @else
             @foreach ($events as $event)   
-            <x-events.event-list :event="$event" />
+                <x-events.event-list :event="$event" />
             @endforeach
-            <div>{{ $events->withQueryString()->links('pagination-links') }}</div>
+            <div>{{ $events->withQueryString()->links() }}</div>
         @endif
     </div>
 </x-app-layout>

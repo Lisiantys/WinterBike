@@ -21,7 +21,7 @@
     @empty
         <p>L'utilisateur n'a pas publié d'évènements</p>
     @endforelse
-    <div>{{ $events->withQueryString()->links('pagination-links') }}</div>
+    <div>{{ $events->links() }}</div>
 
 
     <h2>Commentaires de l'utilisateur</h2>
@@ -45,7 +45,7 @@
         @endauth
     </div>
     @empty
-        <p>L'utilisateur n'a pas publié de commentaire</p>
+        <p>L'utilisateur n'a pas publié de commentaires</p>
     @endforelse
-    <div>{{ $comments->withQueryString()->links('pagination-links') }}</div>
+    <div>{{ $comments->links() }}</div>
 </x-app-layout>

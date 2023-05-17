@@ -15,7 +15,6 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
-
     public function manage(Request $request)
     {
         $roles = Role::all();
@@ -54,8 +53,7 @@ class ProfileController extends Controller
         $user->update(['is_banned' => 0]);
         return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été débanni.");
     }
-    
- 
+
     public function show(User $user)
     {
         // Récupérer les commentaires de l'utilisateur
@@ -67,11 +65,10 @@ class ProfileController extends Controller
         // Retourner la vue de profil avec les données
         return view('profile.show', compact('user', 'comments', 'events'));
     }
-     
+    
     /**
      * Display the user's profile form.
      */
-
     public function edit(Request $request): View
     {
         return view('profile.edit', [

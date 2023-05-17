@@ -80,7 +80,7 @@ class EventController extends Controller
 
     public function pending()
     {
-        $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->paginate(15);
+        $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->paginate(10);
         return view('events.pending', compact('pendingEvents'));
     }
 

@@ -31,9 +31,9 @@
                 </div>
                 <p>------------------------------------------------</p>
             @empty
-             <p>Il n'y a pas de nouveaux évènements à accepter !</p>
+                <p>Il n'y a pas de nouveaux évènements à accepter !</p>
             @endforelse
-            <div>{{ $pendingEvents->withQueryString()->links('pagination-links') }}</div>
+            <div>{{ $pendingEvents->links() }}</div>
         </div>
     </div>
 </x-app-layout>
