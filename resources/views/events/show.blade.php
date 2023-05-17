@@ -9,11 +9,6 @@
         <p><i class="fa-regular fa-star fa-xl" style="color: #e7ca25;">{{ $event->favoritedBy->count() }}</i></p>
     @endif
 
-    <a href="{{ $shareButtons['facebook'] }}"><i class="fa-brands fa-facebook fa-xl" style="color: #005eff;"></i></a>
-    <a href="{{ $shareButtons['twitter'] }}"><i class="fa-brands fa-twitter fa-xl" style="color: #1DA1F2;"></i></a>
-
-    <a href="#" id="copyLink"><i class="fa-solid fa-share-nodes fa-xl" style="color: #808080;"></i></a>
-    
     @auth
         @if(auth()->user()->email_verified_at !== null) 
             @php
@@ -91,23 +86,4 @@
     <p>Soyez le premier à commenter cet évènement !</p>
     @endforelse
     <div>{{ $comments->links() }}</div>
-
-    <script>
-        document.getElementById('copyLink').addEventListener('click', function(event) {
-            event.preventDefault();
-            // Créer un élément temporaire pour contenir le lien de la page
-            var tempInput = document.createElement('input');
-            tempInput.value = window.location.href;
-            // Ajouter l'élément temporaire à la page
-            document.body.appendChild(tempInput);
-            // Sélectionner le contenu de l'élément temporaire
-            tempInput.select();
-            // Copier le contenu sélectionné dans le presse-papiers
-            document.execCommand('copy');
-            // Supprimer l'élément temporaire
-            document.body.removeChild(tempInput);
-            // Afficher un message ou effectuer une autre action pour indiquer que le lien a été copié
-            alert('Le lien a été copié dans le presse-papiers !');
-        });
-    </script>
 </x-app-layout>
