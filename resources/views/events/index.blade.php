@@ -1,5 +1,17 @@
 <x-app-layout>
     <div>
+
+        <div class="top-favorites">
+            <h2>Événements les plus populaires</h2>
+        
+            @foreach($topFavorites as $event)
+                <div>
+                    <x-events.event-list :event="$event" />
+
+                </div>
+            @endforeach
+        </div>
+        
         <h1>Affiche la liste des evenements</h1>
 
         <form action="{{ route('events.index') }}" method="get">

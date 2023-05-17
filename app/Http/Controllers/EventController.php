@@ -24,6 +24,8 @@ class EventController extends Controller
         $regions = Region::all();
         $types = Type::all();
 
+        $topFavorites = $this->getTopFavorites();
+
         $events = Event::with('user')->where('is_validated', 1)
             ->when($request->input('keyword'), function ($query, $keyword) {
                 return $query->where('name', 'like', '%' . $keyword . '%');
@@ -45,8 +47,20 @@ class EventController extends Controller
             })
             ->orderBy('beginningDate', 'asc')->paginate(10);
 
-        return view('events.index', compact('events', 'departments', 'regions', 'types', 'request'));
+        return view('events.index', compact('events', 'departments', 'regions', 'types', 'request', 'topFavorites'));
     }
+
+    public function getTopFavorites()
+    {
+        // Utiliser 'withCount' pour obtenir le nombre de favoris pour chaque événement
+        $topFavorites = Event::withCount('favoritedBy')
+        ->get()
+        ->sortByDesc('favorited_by_count')
+        ->take(3);
+
+        return $topFavorites;
+    }
+
 
     public function myEvents()
     {
