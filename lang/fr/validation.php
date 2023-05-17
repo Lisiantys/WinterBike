@@ -135,7 +135,7 @@ return [
     'string'               => 'Le champ :attribute doit être une chaîne de caractères.',
     'timezone'             => 'Le champ :attribute doit être un fuseau horaire valide.',
     'ulid'                 => 'Le champ :attribute doit être un ULID valide.',
-    'unique'               => 'Cet identifiant est déjà utilisée.',
+    'unique'               => 'Cet identifiant est déjà utilisé.',
     'uploaded'             => 'Le fichier du champ :attribute n\'a pu être téléversé.',
     'uppercase'            => 'Le champ :attribute doit être en majuscules.',
     'url'                  => 'Le format de l\'URL de :attribute n\'est pas valide.',

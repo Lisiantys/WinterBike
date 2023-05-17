@@ -81,5 +81,5 @@
         </tbody>
     </table>
     
-    <div class="pagination">{!! $users->appends(request()->query())->links() !!}</div>
+    <div>{{ $users->withQueryString()->links() }}</div>
 </x-app-layout>
