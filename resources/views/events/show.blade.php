@@ -1,6 +1,7 @@
 <x-app-layout>
     <h1>{{ $event->name }}</h1>
     <p>{{ $event->description }}</p>
+    <a href="{{ route('profile.show', $event->user->id) }}">{{ $event->user->name }}</a>
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
    
     @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))

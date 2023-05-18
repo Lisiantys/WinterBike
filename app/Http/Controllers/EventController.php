@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
 class EventController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Affiche les évènements validés
      */
     public function index(Request $request)
     {
@@ -50,10 +50,14 @@ class EventController extends Controller
         return view('events.index', compact('events', 'departments', 'regions', 'types', 'request', 'topFavorites'));
     }
 
+    /**
+     * Affiche les 3 évènements avec le plus de favoris
+     */
     public function getTopFavorites()
     {
         // Utiliser 'withCount' pour obtenir le nombre de favoris pour chaque événement
-        $topFavorites = Event::withCount('favoritedBy')
+        $topFavorites = Event::where('is_validated', 1)
+        ->withCount('favoritedBy')
         ->get()
         ->sortByDesc('favorited_by_count')
         ->take(3);
@@ -61,7 +65,9 @@ class EventController extends Controller
         return $topFavorites;
     }
 
-
+    /**
+     * Affiche les évènements de l'utilisateur
+     */
     public function myEvents()
     {
         $user = auth()->user();
@@ -69,6 +75,9 @@ class EventController extends Controller
         return view('events.my_events', compact('events'));
     }
 
+    /**
+    * Affiche les évènements que l'utilisateur à en favoris
+    */
     public function myFavorites()
     {
         $user = auth()->user();        
@@ -76,6 +85,9 @@ class EventController extends Controller
         return view('events.favorite', compact('favorites'));
     }
 
+    /**
+    * Ajouter un évènement en favoris
+    */
     public function addFavorite($eventId)
     {
         $user = auth()->user();
@@ -84,6 +96,9 @@ class EventController extends Controller
         return redirect()->back()->withSuccess('Évènement ajouté au favoris');
     }
 
+    /**
+    * Enlève un évènement en favoris
+    */
     public function removeFavorite($eventId)
     {
         $user = auth()->user();
@@ -92,12 +107,18 @@ class EventController extends Controller
     }
 
 
+    /**
+    * Affiche les évènements en attente d'approbation 
+    */
     public function pending()
     {
         $pendingEvents = Event::with('user')->where('is_validated', 0)->orderBy('updated_at', 'asc')->paginate(10);
         return view('events.pending', compact('pendingEvents'));
     }
 
+    /**
+    * Ajoute un message a un évènement destiné à l'utilisateur
+    */
     public function storeStaffMessage(Request $request, Event $event)
     {
         $request->validate([
@@ -111,7 +132,9 @@ class EventController extends Controller
         return redirect()->back()->withSuccess('Le message a été envoyé à l\'utilisateur.');
     }
     
-
+    /**
+    * Valide un évènement
+    */
     public function validateEvent(Request $request, Event $event)
     {
         $event->is_validated = 1;
@@ -120,8 +143,8 @@ class EventController extends Controller
     }
     
     /**
-     * Show the form for creating a new resource.
-     */
+    * Créer un évènement dans la BDD
+    */
     public function create()
     {
         $regions = Region::all();
@@ -131,6 +154,9 @@ class EventController extends Controller
         return view('events.create', compact('regions', 'departments', 'types'));
     }
 
+    /**
+    * Validation de la création
+    */
     private function validationRules($isUpdate = false)
     {
         $rules = [
@@ -152,7 +178,7 @@ class EventController extends Controller
     }
     
     /**
-     * Store a newly created resource in storage.
+     * Sauvegarde un évènement dans la BDD après validation
      */
     public function store(Request $request)
     {
@@ -181,7 +207,7 @@ class EventController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Affiche un évènement au travers de son id
      */
     public function show(Event $event)
     {
@@ -190,8 +216,8 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
+    * Récupère un évènement pour procéder à une mise à jour
+    */
     public function edit(Event $event)
     {
         $this->authorize('update', $event);
@@ -204,7 +230,7 @@ class EventController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Met à jour un évènement
      */
     public function update(Request $request, Event $event)
     {
@@ -233,7 +259,7 @@ class EventController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprime un évènement dans la BDD
      */
     public function destroy(Event $event)
     {

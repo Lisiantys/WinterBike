@@ -15,6 +15,9 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
+    /**
+    * Récupère les utilisateurs du site. "Pannel Admin"
+    */
     public function manage(Request $request)
     {
         $roles = Role::all();
@@ -31,6 +34,9 @@ class ProfileController extends Controller
         return view('profile.manage', compact('users', 'roles'));
     }
         
+    /**
+    * Met à jour un rêle
+    */
     public function updateRole(Request $request, User $user)
     {
         $validatedData = $request->validate([
@@ -42,18 +48,27 @@ class ProfileController extends Controller
         return redirect()->route('profile.manage')->withSuccess('Le rôle de l\'utilisateur a été mis à jour.');
     }
 
+    /**
+    * Bloque un utilisateur du site
+    */
     public function banUser(User $user)
     {
         $user->update(['is_banned' => 1]);
         return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été banni.");
     }
-    
+
+    /**
+    * Débloque un utilisateur du site
+    */
     public function unbanUser(User $user)
     {
         $user->update(['is_banned' => 0]);
         return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été débanni.");
     }
 
+    /**
+    * Affiche le profil d'un utilisateur
+    */
     public function show(User $user)
     {
         // Récupérer les commentaires de l'utilisateur
@@ -67,7 +82,7 @@ class ProfileController extends Controller
     }
     
     /**
-     * Display the user's profile form.
+     * Affiche la page de modification d'un profil utilisateur
      */
     public function edit(Request $request): View
     {
@@ -77,7 +92,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information.
+     * Met à jour le profil d'un utilisateur
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -114,7 +129,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Delete the user's account.
+     * Supprime le compte de l'utilisateur
      */
     public function destroy(Request $request): RedirectResponse
     {

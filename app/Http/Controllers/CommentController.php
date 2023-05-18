@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    /**
+     * Enregistre un commentaire
+     */
     public function store(Request $request, Event $event)
     {
         $request->validate([
@@ -23,6 +26,9 @@ class CommentController extends Controller
         return redirect()->route('events.show', $event->id)->withSuccess('Votre commentaire a été ajouté !');
     }
 
+    /**
+     * Supprime un commentaire
+     */
     public function destroy(Comment $comment)
     {
         $this->authorize('delete', $comment);
