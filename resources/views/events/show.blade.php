@@ -49,9 +49,7 @@
     @auth
         @if(auth()->user()->id === $event->user_id || auth()->user()->role_id === 4) {{-- ok --}}
             <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning">Modifier l'événement</a>
-        @endif
-    
-        @if(auth()->user()->id === $event->user_id || auth()->user()->role_id === 4) {{-- ok --}}
+
             <form action="{{ route('events.destroy', $event->id) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
@@ -59,7 +57,7 @@
             </form>
         @endif
     @endauth
-    
+
     @auth
         @if(auth()->user()->email_verified_at !== null)  {{-- ok --}}
             <form action="{{ route('comments.store', $event->id) }}" method="POST">

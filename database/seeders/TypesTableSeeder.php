@@ -15,10 +15,11 @@ class TypesTableSeeder extends Seeder
     {
         DB::table('types')->insert([
             ['id' => 1, 'name' => 'Hivernales'],
-            ['id' => 2, 'name' => 'Expositions'],
-            ['id' => 3, 'name' => 'Compétitions'],
-            ['id' => 4, 'name' => 'RoadTrip'],
-            ['id' => 5, 'name' => 'Autres']
+            ['id' => 2, 'name' => 'Balades Moto'],
+            ['id' => 3, 'name' => 'Expositions'],
+            ['id' => 4, 'name' => 'Compétitions'],
+            ['id' => 5, 'name' => 'RoadTrip'],
+            ['id' => 6, 'name' => 'Autres']
         ]);
     }
 }

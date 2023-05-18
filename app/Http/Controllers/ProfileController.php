@@ -114,7 +114,7 @@ class ProfileController extends Controller
             $newImagePath = $request->file('image_path')->store('users', 'public');
 
             // Vérifier si l'image actuelle n'est pas l'image par défaut
-            if ($user->image_path !== 'users/default_user_image.jpg') {
+            if ($user->image_path !== 'users/default_user_image.png') {
                 // Supprimer l'ancienne image du stockage
                 Storage::disk('public')->delete($user->image_path);               
             }

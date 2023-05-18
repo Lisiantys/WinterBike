@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}">
+    <img src="{{ Storage::url($user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
     <h1>{{ $user->name }}</h1>
     <p>{{ $user->role->name }}</p>
     <p>Inscription le : {{ \Carbon\Carbon::parse($user->created_at)->isoFormat('LL') }}</p>
@@ -10,7 +10,6 @@
             <a href="{{ route('profile.edit') }}">Modifier le profil</a>
         @endif
     @endauth
-
 
     <h2>Événements créés par l'utilisateur</h2>
     @forelse($events as $event)

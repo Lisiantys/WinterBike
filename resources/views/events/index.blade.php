@@ -1,17 +1,5 @@
 <x-app-layout>
-    <div>
-
-        <div class="top-favorites">
-            <h2>Événements les plus populaires</h2>
-        
-            @foreach($topFavorites as $event)
-                <div>
-                    <x-events.event-list :event="$event" />
-
-                </div>
-            @endforeach
-        </div>
-        
+    <div> 
         <h1>Affiche la liste des evenements</h1>
 
         <form action="{{ route('events.index') }}" method="get">
@@ -53,13 +41,27 @@
 
         <a href="{{ route('events.create') }}">Créer un évènement</a>
 
-        @if($events->isEmpty())
-            <p>Il n'y a pas d'événement avec ces options de recherche.</p>
-        @else
-            @foreach ($events as $event)   
-                <x-events.event-list :event="$event" />
-            @endforeach
-            <div>{{ $events->withQueryString()->links() }}</div>
-        @endif
+        <div style="display:flex;">
+            <div class="top-favorites">
+                <h2>Événements les plus populaires</h2>
+            
+                @foreach($topFavorites as $event)
+                    <div>
+                        <x-events.event-list :event="$event" />
+    
+                    </div>
+                @endforeach
+            </div>
+    
+            <div>
+                @forelse ($events as $event)   
+                    <x-events.event-list :event="$event" />
+                @empty
+                    <p>Il n'y a pas d'événement avec ces options de recherche.</p>
+                @endforelse
+                <div>{{ $events->withQueryString()->links() }}</div>
+            </div>
+        </div>
+        
     </div>
 </x-app-layout>

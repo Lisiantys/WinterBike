@@ -20,6 +20,8 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Envoyer le message</button>
                     </form>
+                    <p style="color:red">Message de l'administrateur : {{ $event->staffMessage }}</p>
+
                     @if(auth()->user()->role_id === 4) {{-- ok --}}
                         <form action="{{ route('events.destroy', $event->id) }}" method="POST" style="display:inline;">
                             @csrf
