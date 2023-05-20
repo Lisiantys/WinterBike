@@ -1,6 +1,8 @@
 <x-app-layout>
-    <div> 
-        <h1>Affiche la liste des evenements</h1>
+    <div class="container">
+        <x-h1-title>
+            Retrouvez les évènements en France
+        </x-h1-title>
 
         <form action="{{ route('events.index') }}" method="get">
             <label for="keyword">Mot-clé :</label>
@@ -55,13 +57,12 @@
     
             <div>
                 @forelse ($events as $event)   
-                    <x-events.event-list :event="$event" />
+                    <x-events.event-list :event="$event" class="bg-red-600" />
                 @empty
                     <p>Il n'y a pas d'événement avec ces options de recherche.</p>
                 @endforelse
                 <div>{{ $events->withQueryString()->links() }}</div>
             </div>
         </div>
-        
     </div>
 </x-app-layout>

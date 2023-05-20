@@ -17,19 +17,19 @@
                             {{ __('Évènements') }}
                         </x-nav-link>
                         <x-nav-link :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
-                            {{ __('Mes Évènements') }}
+                            {{ __('Mes évènements') }}
                         </x-nav-link>
                         <x-nav-link :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
-                            {{ __('Mes Favoris') }}
+                            {{ __('Mes favoris') }}
                         </x-nav-link>
                         @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
                             <x-nav-link :href="route('events.pending')" :active="request()->routeIs('events.pending')">
-                                {{ __('Évènements en attente') }}
+                                {{ __('Évènements en attentes') }}
                             </x-nav-link>
                         @endif
                         @if(auth()->user()->role_id === 4)
                             <x-nav-link :href="route('profile.manage')" :active="request()->routeIs('profile.manage')">
-                                {{ __('Gérer les Utilisateurs') }}
+                                {{ __('Gérer les utilisateurs') }}
                             </x-nav-link>
                         @endif
                     @endauth
@@ -108,14 +108,14 @@
                     {{ __('Évènements') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
-                    {{ __('Mes Évènements') }}
+                    {{ __('Mes évènements') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
-                    {{ __('Mes Favoris') }}
+                    {{ __('Mes favoris') }}
                 </x-responsive-nav-link>
                 @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
                     <x-responsive-nav-link  :href="route('events.pending')" :active="request()->routeIs('events.pending')">
-                        {{ __('Évènements en attente') }}
+                        {{ __('Évènements en attentes') }}
                     </x-responsive-nav-link>
                 @endif
                 @if(auth()->user()->role_id === 4)

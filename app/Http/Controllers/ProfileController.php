@@ -24,12 +24,20 @@ class ProfileController extends Controller
         
         $search = $request->input('search');
         $selectedRole = $request->input('role_id');
+        $bannedStatus = $request->input('is_banned');
         $users = User::with('role')->when($search, function ($query, $search) {
             return $query->where('name', 'like', '%' . $search . '%')
                          ->orWhere('email', 'like', '%' . $search . '%');
         })->when($selectedRole, function ($query, $selectedRole) {
             return $query->where('role_id', $selectedRole);
-        })->paginate(30);
+        })
+        ->when($bannedStatus == 'banned', function ($query) {
+            return $query->where('is_banned', 1);
+        })
+        ->when($bannedStatus == 'not_banned', function ($query) {
+            return $query->where('is_banned', 0);
+        })
+        ->paginate(30);
     
         return view('profile.manage', compact('users', 'roles'));
     }

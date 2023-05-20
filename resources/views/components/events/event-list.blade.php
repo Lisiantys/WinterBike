@@ -1,4 +1,4 @@
-<div class="w-3/4" style="background:red;">
+<div {{ $attributes->merge(['class' => 'w-3/4']) }}>
     <h1 class="text-2xl font-bold underline"><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h1>
 
     <p>Du {{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }} - {{ $event->type->name }} </p>

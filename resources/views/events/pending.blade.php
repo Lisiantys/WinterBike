@@ -1,6 +1,8 @@
 <x-app-layout>
     <div class="container">
-        <h1>Événements en attente</h1>
+        <x-h1-title>
+            Évènements en attentes
+        </x-h1-title>
 
         <div class="event-list">
             @forelse($pendingEvents as $event)
