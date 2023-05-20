@@ -1,5 +1,7 @@
 <x-app-layout>
-    <h1>Editer un Event</h1>
+    <x-h1-title>
+        Modifier votre évènement
+    </x-h1-title>
 
     @if ($errors->any())
         @foreach ($errors->all() as $error)

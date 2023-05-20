@@ -1,5 +1,7 @@
 <x-app-layout>
-    <h1>Create Event</h1>
+    <x-h1-title>
+        Publier votre évènement
+    </x-h1-title>
 
     @if ($errors->any())
         @foreach ($errors->all() as $error)
