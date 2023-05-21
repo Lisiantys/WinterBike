@@ -4,6 +4,6 @@
     }
 </style>
 
-<h1 {{ $attributes->merge(['class' => 'font-heebo font-bold text-2xl md:text-3xl lg:text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500 my-10 max-w-7xl w-11/12 mx-auto'])  }}>
+<h1 {{ $attributes->merge(['class' => 'font-heebo font-bold text-2xl md:text-3xl lg:text-4xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500 my-10'])  }}>
     {{ $slot }}
 </h1>

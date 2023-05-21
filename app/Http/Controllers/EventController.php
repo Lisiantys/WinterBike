@@ -239,6 +239,7 @@ class EventController extends Controller
         $request->validate($this->validationRules(true));
 
         $data = $request->all();
+       
 
         // Check if a new image is uploaded
         if ($request->hasFile('image_path')) {
@@ -252,9 +253,9 @@ class EventController extends Controller
             // Update the image_path in the data array
             $data['image_path'] = $imagePath;
         }
-    
+        $event->is_validated = 0;      
         $event->update($data);
-
+        
         return redirect()->route('events.show', $event->id)->withSuccess('Événement mis à jour avec succès !');
     }
 
