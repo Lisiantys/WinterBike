@@ -6,9 +6,6 @@
         <div class="flex items-center justify-between">
       
             <a href="https://winterbike.fr" class="flex ml-2 md:mr-24">
-                {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="FlowBite Logo" />
-                <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Winter Bike</span>
-                --}}
                 <x-application-logo class="w-10 h-10 fill-current text-gray-500" />
             </a> 
 
@@ -97,35 +94,40 @@
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
+
             @auth
-                <div class="flex flex-col justify-center max-w-xs rounded-xl sm:px-12">
-                    <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar">                
-                    <div class="text-center">
-                        <div class="my-2 space-y-1">
-                            <h2 class="px-5 text-xs sm:text-base dark:text-gray-400">{{ Auth::user()->name }}</h2>
-                            <p class="px-5 text-xs sm:text-base dark:text-gray-400">{{ Auth::user()->role->name }}</p>
-                        </div>
+                <div class="flex items-center p-2 mb-6">
+                    <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar" class="w-12 h-12 rounded-full dark:bg-gray-500">                
+                    <div>
+                        <h2 class="text-lg font-semibold">{{ Auth::user()->name }}</h2>
+                        <span class="flex items-center">
+                            <p class="text-xs dark:text-gray-400">{{ Auth::user()->role->name }}</p>
+                        </span>
                     </div>
                 </div>
-
+              
                 <li>
                     <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
+                        <i class="fa-solid fa-magnifying-glass pr-2"></i>
                         {{ __('Évènements') }}
                     </x-nav-link>
                 </li>
                 <li>
                     <x-nav-link :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
+                        <i class="fa-solid fa-pencil pr-2"></i>
                         {{ __('Mes évènements') }}
                     </x-nav-link>
                 </li>
                 <li>
                     <x-nav-link :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
+                        <i class="fa-solid fa-star pr-2"></i>
                         {{ __('Mes favoris') }}
                     </x-nav-link>
                 </li>
                 @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
                     <li>
                         <x-nav-link :href="route('events.pending')" :active="request()->routeIs('events.pending')">
+                            <i class="fa-solid fa-list-ul pr-2"></i>
                             {{ __('Évènements en attentes') }}
                         </x-nav-link>
                     </li>
@@ -133,27 +135,31 @@
                 @if(auth()->user()->role_id === 4)
                     <li>
                         <x-nav-link :href="route('profile.manage')" :active="request()->routeIs('profile.manage')">
+                            <i class="fa-solid fa-screwdriver-wrench pr-2"></i>
                             {{ __('Gérer les utilisateurs') }}
                         </x-nav-link>
                     </li>
                 @endif
+                <hr>
                 <li>
                     <x-nav-link :href="route('profile.show', Auth::id())">
+                        <i class="fa-solid fa-circle-user pr-2"></i>
                         {{ __('Mon profile') }}
                     </x-nav-link>
                 </li>
                 <li>
                     <x-nav-link :href="route('profile.edit')">
+                        <i class="fa-solid fa-gear pr-2"></i>
                         {{ __('Paramètres') }}
                     </x-nav-link>
                 </li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-
                         <x-nav-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
+                            <i class="fa-solid fa-door-open pr-2"></i>
                             {{ __('Déconnexion') }}
                         </x-nav-link>
                     </form>
@@ -176,6 +182,7 @@
                     </x-nav-link>
                 </li>
             @endguest
+
         </ul>
      </div>
   </aside>

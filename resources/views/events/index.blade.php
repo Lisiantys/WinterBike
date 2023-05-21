@@ -3,8 +3,19 @@
         Retrouvez les évènements en France
     </x-h1-title>
 
-    <a href="#" onclick="toggleSearchForm()">les filtres de recherche</a>
+        <a onclick="toggleSearchForm()" class=" h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded">
+            Filtres de recherche
+        </a>
+          
+        <div class="mx-auto flex">
+            <div class="h-10 my-2 rounded-md bg-gradient-to-r from-blue-500 to-green-500 p-1">
+                <div class="flex h-full w-full items-center justify-center bg-white">
+                    <a href="{{ route('events.create') }}" class="px-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Créer un évènement</a>
+                </div>
+            </div>
+        </div>
 
+    
     <form action="{{ route('events.index') }}" method="get" class="m-5 max-w-7xl w-11/12 mx-auto hidden" id="searchForm">
         <div class="flex items-center space-x-3">
             <label for="keyword" class="font-medium text-gray-700">Mot-clé :</label>
@@ -50,8 +61,6 @@
         </div>
     </form>
 
-    <a href="{{ route('events.create') }}">Créer un évènement</a>
-
     <div style="display:flex;">
         <div>
             @forelse ($events as $event)   
@@ -62,7 +71,6 @@
             <div>{{ $events->withQueryString()->links() }}</div>
         </div>
         <div>
-            <h2>Événements les plus populaires</h2>
             @foreach($topFavorites as $event)
                 <div>
                     <x-events.event-list :event="$event" />
