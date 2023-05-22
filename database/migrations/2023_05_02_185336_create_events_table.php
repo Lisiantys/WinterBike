@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image_path');
-            $table->timestamp('beginningDate')->useCurrent();
-            $table->timestamp('endDate')->nullable();
+            $table->date('beginningDate')->useCurrent();
+            $table->date('endDate')->nullable();
             $table->string('address');
             $table->string('email');
             $table->string('phone')->nullable()->default(null);

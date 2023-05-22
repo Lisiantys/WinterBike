@@ -3,14 +3,14 @@
         Retrouvez les évènements en France
     </x-h1-title>
 
-        <a onclick="toggleSearchForm()" class=" h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded">
-            Filtres de recherche
+        <a onclick="toggleSearchForm()" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+            + Filtres de recherche
         </a>
           
         <div class="mx-auto flex">
             <div class="h-10 my-2 rounded-md bg-gradient-to-r from-blue-500 to-green-500 p-1">
                 <div class="flex h-full w-full items-center justify-center bg-white">
-                    <a href="{{ route('events.create') }}" class="px-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Créer un évènement</a>
+                    <a href="{{ route('events.create') }}" class="text-base px-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Créer un évènement</a>
                 </div>
             </div>
         </div>
