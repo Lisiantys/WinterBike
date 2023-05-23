@@ -9,12 +9,15 @@ use Illuminate\View\Component;
 class EventList extends Component
 {
     public $event;
+    public $isFavoriteView;
+
     /**
      * Create a new component instance.
      */
-    public function __construct($event)
+    public function __construct($event, $isFavoriteView = false)
     {
         $this->event = $event;
+        $this->isFavoriteView = $isFavoriteView;
     }
 
     /**
@@ -22,6 +25,6 @@ class EventList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.events.event-list');
+        return view('components.events.event-list', ['isFavoriteView' => $this->isFavoriteView]);
     }
 }
