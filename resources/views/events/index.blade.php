@@ -61,10 +61,10 @@
         </div>
     </form>
         
-    <div style="display:flex;">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
             @forelse ($events as $event)   
-                <x-events.event-list :event="$event" class="bg-red-600" />
+                <x-events.event-list :event="$event"/>
             @empty
                 <p>Il n'y a pas d'événement avec ces options de recherche.</p>
             @endforelse
@@ -77,9 +77,8 @@
                 </div>
             @endforeach
         </div>
-
     </div>
-     
+    
     <script>
         function toggleSearchForm() {
             var form = document.getElementById('searchForm');
