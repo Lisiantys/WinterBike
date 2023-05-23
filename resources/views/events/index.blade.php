@@ -83,10 +83,11 @@
         function toggleSearchForm() {
             var form = document.getElementById('searchForm');
             if (form.style.display === "none") {
-                form.style.display = "block";
+                form.style.display = "grid";
             } else {
                 form.style.display = "none";
             }
         }
-    </script> 
+    </script>
+    
 </x-app-layout>
