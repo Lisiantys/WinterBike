@@ -25,6 +25,8 @@ class EventList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.events.event-list', ['isFavoriteView' => $this->isFavoriteView]);
+        return view('components.events.event-list', [
+            'isFavoriteView' => $this->isFavoriteView,
+        ]);
     }
 }

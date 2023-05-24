@@ -60,14 +60,22 @@
 
     @auth
         @if(auth()->user()->email_verified_at !== null)  {{-- ok --}}
-            <form action="{{ route('comments.store', $event->id) }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="description">Commentaire:</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Envoyer le commentaire</button>
-            </form>
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({{ $comments->count() }})</h2>
+        </div>
+        <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6">
+            @csrf
+              <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                  <label for="comment" class="sr-only">Your comment</label>
+                  <textarea id="description" name="description" rows="6"  
+                      class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                      placeholder="Write a comment..." required></textarea>
+              </div>
+              <button type="submit"
+              class="h-10 mt-2 mb-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+                  Commenter
+              </button>
+          </form>
         @else
             <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
         @endif
