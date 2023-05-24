@@ -1,15 +1,9 @@
 <nav x-data="{ open: false }" class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
-
-          {{-- OK --}}
-
         <div class="flex items-center justify-between">
-      
             <a href="https://winterbike.fr" class="flex ml-2 md:mr-24">
                 <x-application-logo class="w-10 h-10 fill-current text-gray-500" />
-            </a> 
-
-            <!-- Hamburger -->
+            </a>
             <div class="-mr-2 flex items-center lg:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -18,9 +12,12 @@
                     </svg>
                 </button>
             </div>
+        </div>
+    </div>
+
 
             <!-- Responsive Navigation Menu -->
-            <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden">
+            <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-14 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                 <div class="pt-2 pb-3 space-y-1">
                     @auth
                         <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
@@ -87,8 +84,8 @@
                 @endauth
             </div>
             {{-- ok --}}
-        </div>
-    </div>
+        
+    
 </nav>
   
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
