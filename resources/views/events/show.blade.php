@@ -66,12 +66,11 @@
     @auth
         @if(auth()->user()->email_verified_at !== null)  {{-- ok --}}
         <div class="flex justify-between items-center mb-6">
-            <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Discussion ({{ $comments->count() }})</h2>
+            <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Commentaires ({{ $comments->count() }})</h2>
         </div>
         <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6">
             @csrf
               <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                  <label for="comment" class="sr-only">Your comment</label>
                   <textarea id="description" name="description" rows="6"  
                       class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
                       placeholder="Écrire un commentaire..." required></textarea>
@@ -90,44 +89,48 @@
         <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
     @endguest
 
-    @forelse($comments as $comment)
-        <div class="container flex flex-col w-full xl:w-6/12 p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
-            <div class="flex justify-between p-4">
-                <div class="flex space-x-4">
-                    <div>
-                        <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image" class="object-cover w-12 h-12 rounded-full dark:bg-gray-500">
+    <div class="flex flex-col lg:flex-row">
+        <div class="lg:w-1/2">
+            @forelse($comments as $comment)
+                <div class=" flex flex-col w-full lg:pr-4 py-4 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+                    <div class="flex justify-between">
+                        <div class="flex space-x-4">
+                            <div>
+                                <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image" class="object-cover w-12 h-12 rounded-full dark:bg-gray-500">
+                            </div>
+                            <div>
+                                <h4 class="font-bold"><a  href="{{ route('profile.show', $comment->user->id) }}">{{ $comment->user->name }}</a></h4>
+                                <span class="text-xs dark:text-gray-400">{{ \Carbon\Carbon::parse($comment->created_at)->isoFormat('LLL') }}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 dark:text-yellow-500">
+                            @auth
+                                @if(auth()->user()->id === $comment->user_id || auth()->user()->role_id === 4 || auth()->user()->role_id === 3)
+                                    <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="text-red-600">Supprimer</button>
+                                    </form>
+                                @endif
+                            @endauth
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="font-bold"><a  href="{{ route('profile.show', $comment->user->id) }}">{{ $comment->user->name }}</a></h4>
-                        <span class="text-xs dark:text-gray-400">{{ \Carbon\Carbon::parse($comment->created_at)->isoFormat('LLL') }}</span>
+                    <div class="p-4 space-y-2 text-sm dark:text-gray-400">
+                        <p>{{ $comment->description }}</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-2 dark:text-yellow-500">
-                    @auth
-                        @if(auth()->user()->id === $comment->user_id || auth()->user()->role_id === 4 || auth()->user()->role_id === 3)
-                            <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="text-red-600">Supprimer</button>
-                            </form>
-                        @endif
-                    @endauth
-                </div>
-            </div>
-            <div class="p-4 space-y-2 text-sm dark:text-gray-400">
-                <p>{{ $comment->description }}</p>
-            </div>
+            @empty
+            <p>Soyez le premier à commenter cet évènement !</p>
+            @endforelse
         </div>
-    @empty
-    <p>Soyez le premier à commenter cet évènement !</p>
-    @endforelse
 
-
-   
-     @foreach ($recommendedEvents as $event)
-        <x-events.event-list :event="$event"/>
-    @endforeach 
-
+        <div class="mt-6 lg:mt-0 lg:w-1/2 lg:pl-6">
+            @foreach ($topFavorites as $favorite)
+                <x-events.event-list :event="$favorite"/>
+            @endforeach 
+        </div>
+    </div>
+    
     <div>{{ $comments->links() }}</div>
     <script>
         document.getElementById('copyLink').addEventListener('click', function(event) {

@@ -147,6 +147,29 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
+        // Récupérer les événements de l'utilisateur
+        $events = $user->events;
+
+        foreach ($events as $event) {
+            // Supprimer la photo associée à l'événement
+            if($event->image_path) {
+                $filePath = $event->image_path;
+                if(Storage::disk('public')->exists($filePath)) {
+                    Storage::disk('public')->delete($filePath);
+                } 
+            }
+            // Supprimer l'événement
+            $event->delete();
+        }
+
+        // Supprimer la photo associée à l'utilisateur
+        if($user->image_path) {
+            $filePath = $user->image_path;
+            if(Storage::disk('public')->exists($filePath)) {
+                Storage::disk('public')->delete($filePath);
+            } 
+        }
+
         Auth::logout();
 
         $user->delete();
