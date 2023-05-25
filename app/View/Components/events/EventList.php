@@ -10,14 +10,16 @@ class EventList extends Component
 {
     public $event;
     public $isFavoriteView;
+    public $isTopFavorite;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($event, $isFavoriteView = false)
+    public function __construct($event, $isFavoriteView = false, $isTopFavorite = false)
     {
         $this->event = $event;
         $this->isFavoriteView = $isFavoriteView;
+        $this->isTopFavorite = $isTopFavorite;
     }
 
     /**
@@ -27,6 +29,7 @@ class EventList extends Component
     {
         return view('components.events.event-list', [
             'isFavoriteView' => $this->isFavoriteView,
+            'isTopFavorite' => $this->isTopFavorite,
         ]);
     }
 }

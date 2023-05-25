@@ -1,13 +1,15 @@
 <div class="p-4 mb-5 border-4 border-s-blue-900 border-y-blue-700 border-r-blue-500">
     <div class="md:flex justify-between items-start">
         <a href="{{ route('events.show', $event->id) }}" class="flex-grow">
-            @if (!is_null($event->staffMessage) && $event->is_validated === 0 && $event->user->id === auth()->user()->id)
+            @if (!is_null($event->staffMessage) && $event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
                 <p class="text-red-600"><strong>Message de l'équipe :</strong> {{ $event->staffMessage}}</p>
             @endif
-            <h1 class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $event->name }}</h1>
+            <h1 class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ Str::limit($event->name , $limit = 55, $end = '...') }}</h1>
             <p class="mt-2 text-gray-500">Du {{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }} - {{ $event->type->name }}</p>
             <p class="mt-2 text-gray-500">{{ $event->region->name }} - {{ $event->department->name }}</p>
-            <p class="mt-2 text-gray-500">{{ Str::limit($event->description, $limit = 85, $end = '...') }}</p>
+            @if (!$isTopFavorite == true)
+                <p class="mt-2 text-gray-500">{{ Str::limit($event->description, $limit = 85, $end = '...') }}</p>
+            @endif
         </a>
 
         @if (isset($isFavoriteView) && $isFavoriteView)

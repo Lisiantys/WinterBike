@@ -214,8 +214,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $topFavorites = $this->getTopFavorites();
         $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->paginate(10);
-        return view('events.show', compact('event', 'comments'));
+        return view('events.show', compact('event', 'comments', 'topFavorites'));
     }
 
     /**
