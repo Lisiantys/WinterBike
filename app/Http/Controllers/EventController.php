@@ -214,10 +214,63 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $topFavorites = $this->getTopFavorites();
+        $recommendedEvents = $this->getRecommendedEvents();
         $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->paginate(10);
-        return view('events.show', compact('event', 'comments', 'topFavorites'));
+
+        return view('events.show', compact('event', 'comments', 'recommendedEvents'));
     }
+
+    public function getRecommendedEvents()
+    {
+        // Récupérer l'utilisateur actuellement connecté
+        $user = Auth::user();
+
+        // Récupérer les régions des événements favoris de l'utilisateur
+        $favoriteRegions = $user->favoritedEvents()->pluck('region_id');
+
+        // Si l'utilisateur n'a pas d'événements favoris, retourner les 3 derniers événements créés
+        if ($favoriteRegions->isEmpty()) {
+            return Event::orderBy('created_at', 'desc')->take(3)->get();
+        }
+
+        // Calculer la fréquence de chaque région
+        $regionFrequencies = array_count_values($favoriteRegions->toArray());
+
+        // Trier les régions par fréquence en ordre décroissant
+        arsort($regionFrequencies);
+
+        // Récupérer les événements favoris de l'utilisateur
+        $favoriteEventIds = $user->favoritedEvents()->pluck('events.id');
+
+        // Récupérer un événement de chaque région, en commençant par la plus fréquente
+        $events = [];
+        foreach ($regionFrequencies as $regionId => $frequency) {
+            if (count($events) == 3) {
+                break; // Stop the loop after finding 3 events
+            }
+            $eventForRegion = Event::where('region_id', $regionId)
+                                ->where('user_id', '!=', $user->id)
+                                ->whereNotIn('id', $favoriteEventIds)
+                                ->first();
+            if ($eventForRegion) {
+                $events[] = $eventForRegion;
+            }
+        }
+
+        // Si moins de 3 événements ont été trouvés, compléter avec des événements récents
+        if (count($events) < 3) {
+            $recentEvents = Event::where('user_id', '!=', $user->id)
+                                ->whereNotIn('id', $favoriteEventIds)
+                                ->orderBy('created_at', 'desc')
+                                ->take(3 - count($events))
+                                ->get();
+            $events = collect($events)->concat($recentEvents);
+        }
+
+        // Retourner les événements
+        return $events;
+    }
+
 
     /**
     * Récupère un évènement pour procéder à une mise à jour

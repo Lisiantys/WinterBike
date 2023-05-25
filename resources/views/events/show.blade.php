@@ -90,7 +90,6 @@
         <h3>Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
     @endguest
 
-
     @forelse($comments as $comment)
         <div class="container flex flex-col w-full xl:w-6/12 p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
             <div class="flex justify-between p-4">
@@ -122,6 +121,12 @@
     @empty
     <p>Soyez le premier à commenter cet évènement !</p>
     @endforelse
+
+
+   
+     @foreach ($recommendedEvents as $event)
+        <x-events.event-list :event="$event"/>
+    @endforeach 
 
     <div>{{ $comments->links() }}</div>
     <script>
