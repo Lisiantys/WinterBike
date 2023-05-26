@@ -163,7 +163,7 @@ class ProfileController extends Controller
         }
 
         // Supprimer la photo associée à l'utilisateur
-        if($user->image_path) {
+        if($user->image_path && $user->image_path != 'users/default_user_image.png') {
             $filePath = $user->image_path;
             if(Storage::disk('public')->exists($filePath)) {
                 Storage::disk('public')->delete($filePath);
