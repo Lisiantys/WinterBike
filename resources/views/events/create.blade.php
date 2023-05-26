@@ -62,8 +62,8 @@
             </div>
     
             <div>
-                <label for="email" class="block text-lg font-bold">Adresse Email (Obligatoire) :</label>
-                <input type="email" id="email" value="{{ old('email') }}" name="email" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <label for="email" class="block text-lg font-bold">Adresse Email :</label>
+                <input type="email" id="email" value="{{ old('email') }}" name="email" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
     
             <div>

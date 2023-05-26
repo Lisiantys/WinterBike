@@ -173,7 +173,7 @@ class EventController extends Controller
             'beginningDate' => 'required|date',
             'endDate' => 'required|date|after_or_equal:beginningDate',
             'address' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|min:10|max:10',
             'website' => 'nullable|url|max:255',
             'facebook' => 'nullable|url|max:255',
@@ -220,7 +220,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $topFavorites = $this->getTopFavorites();
-        $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->paginate(10);
+        $comments = $event->comments()->with('user')->orderBy('created_at', 'asc')->paginate(5);
 
         return view('events.show', compact('event', 'comments', 'topFavorites'));
     }

@@ -1,8 +1,12 @@
 <x-app-layout>
     <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;">
+    @if ($event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
+        <h2 class="text-red-600 md:text-xl lg:text-2xl underline font-bold">Événement en cours de validation par l'équipe de Winter Bike...</h2>
+    @endif
     <x-h1-title>
         {{ $event->name }}
     </x-h1-title>
+     
     <div class="flex justify-between items-center">
         <p class="text-gray-500">Du <strong>{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</strong> - {{ $event->type->name }}</p>
         @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
@@ -13,17 +17,12 @@
     </div>
     <p class="mt-2 text-gray-500">{{ $event->region->name }} - {{ $event->department->name }}</p>
     <p>{{ $event->description }}</p>
+
+    <x-events.event-link :event="$event" />
+
     <div class="flex items-center">
         <img class="h-10 w-10 rounded-full" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
         <a href="{{ route('profile.show', $event->user->id) }}" class="ml-2">{{ $event->user->name }}</a>
-    </div>
-    <div class="flex items-center">
-        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-            <a class="a2a_button_facebook"></a>
-            <a class="a2a_button_twitter"></a>
-            <a class="a2a_button_skype"></a>
-        </div>
-        <a href="#" id="copyLink"><i class="fa-solid fa-share-nodes fa-xl" style="color: #808080;"></i></a>
     </div>
     <div class="flex items-center justify-end">
         @auth
@@ -62,11 +61,18 @@
             @endif
         @endauth
     </div>
-
     @auth
         @if(auth()->user()->email_verified_at !== null)  {{-- ok --}}
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center mb-4">
             <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Commentaires ({{ $comments->count() }})</h2>
+            <div class="ml-2 flex items-center">
+                <div class="flex w-32 justify-between a2a_kit a2a_kit_size_32 a2a_default_style">
+                    <a class="a2a_button_facebook"></a>
+                    <a class="a2a_button_twitter"></a>
+                    <a class="a2a_button_skype"></a>
+                </div>
+                <a href="#" id="copyLink"><i class="ml-1 fa-solid fa-share-nodes fa-xl" style="color: #808080;"></i></a>
+            </div>
         </div>
         <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6">
             @csrf
@@ -92,9 +98,9 @@
     <div class="flex flex-col lg:flex-row">
         <div class="lg:w-1/2">
             @forelse($comments as $comment)
-                <div class=" flex flex-col w-full lg:pr-4 py-4 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+                <div class=" flex flex-col w-full lg:pr-4 py-1 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
                     <div class="flex justify-between">
-                        <div class="flex space-x-4">
+                        <div class="flex space-x-4 py-2">
                             <div>
                                 <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image" class="object-cover w-12 h-12 rounded-full dark:bg-gray-500">
                             </div>
@@ -116,12 +122,13 @@
                         </div>
                     </div>
                     <div class="p-4 space-y-2 text-sm dark:text-gray-400">
-                        <p>{{ $comment->description }}</p>
+                        <p class="text-base">{{ $comment->description }}</p>
                     </div>
                 </div>
             @empty
             <p>Soyez le premier à commenter cet évènement !</p>
             @endforelse
+            <div>{{ $comments->links() }}</div>
         </div>
 
         <div class="mt-6 lg:mt-0 lg:w-1/2 lg:pl-6">
@@ -131,7 +138,6 @@
         </div>
     </div>
     
-    <div>{{ $comments->links() }}</div>
     <script>
         document.getElementById('copyLink').addEventListener('click', function(event) {
             event.preventDefault();

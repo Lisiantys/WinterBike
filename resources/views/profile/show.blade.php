@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <img src="{{ Storage::url($user->image_path) }}" alt="Image de l'utilisateur" width="50" height="50">
-    <h1>{{ $user->name }}</h1>
+    <h1 class=" font-bold">{{ $user->name }}</h1>
     <p>{{ $user->role->name }}</p>
     <p>Inscription le : {{ \Carbon\Carbon::parse($user->created_at)->isoFormat('LL') }}</p>
 

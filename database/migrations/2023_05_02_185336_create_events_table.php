@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('beginningDate')->useCurrent();
             $table->date('endDate')->nullable();
             $table->string('address');
-            $table->string('email');
+            $table->string('email')->nullable()->default(null);
             $table->string('phone')->nullable()->default(null);
             $table->string('website')->nullable()->default(null);
             $table->string('facebook')->nullable()->default(null);
