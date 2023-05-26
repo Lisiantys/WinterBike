@@ -15,77 +15,73 @@
         </div>
     </div>
 
-
-            <!-- Responsive Navigation Menu -->
-            <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-14 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-                <div class="pt-2 pb-3 space-y-1">
-                    @auth
-                        <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
-                            {{ __('Évènements') }}
-                        </x-responsive-nav-link>
-                        <x-responsive-nav-link  :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
-                            {{ __('Mes évènements') }}
-                        </x-responsive-nav-link>
-                        <x-responsive-nav-link  :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
-                            {{ __('Mes favoris') }}
-                        </x-responsive-nav-link>
-                        @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
-                            <x-responsive-nav-link  :href="route('events.pending')" :active="request()->routeIs('events.pending')">
-                                {{ __('Évènements en attentes') }}
-                            </x-responsive-nav-link>
-                        @endif
-                        @if(auth()->user()->role_id === 4)
-                            <x-responsive-nav-link  :href="route('profile.manage')" :active="request()->routeIs('profile.manage')">
-                                {{ __('Gérer les Utilisateurs') }}
-                            </x-responsive-nav-link>
-                        @endif
-                    @endauth
-                    @guest
-                        <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
-                            {{ __('Évènements') }}
-                        </x-responsive-nav-link>
-                        <x-responsive-nav-link  :href="route('login')" :active="request()->routeIs('login')">
-                            {{ __('Connexion') }}
-                        </x-responsive-nav-link>
-                        <x-responsive-nav-link  :href="route('register')" :active="request()->routeIs('register')">
-                            {{ __('Inscription') }}
-                        </x-responsive-nav-link>
-                    @endguest
+    <!-- Responsive Navigation Menu -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-14 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <div class="pt-2 pb-3 space-y-1">
+            @auth
+                <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
+                    {{ __('Évènements') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
+                    {{ __('Mes évènements') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
+                    {{ __('Mes favoris') }}
+                </x-responsive-nav-link>
+                @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
+                    <x-responsive-nav-link  :href="route('events.pending')" :active="request()->routeIs('events.pending')">
+                        {{ __('Évènements en attentes') }}
+                    </x-responsive-nav-link>
+                @endif
+                @if(auth()->user()->role_id === 4)
+                    <x-responsive-nav-link  :href="route('profile.manage')" :active="request()->routeIs('profile.manage')">
+                        {{ __('Gérer les Utilisateurs') }}
+                    </x-responsive-nav-link>
+                @endif
+            @endauth
+            @guest
+                <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
+                    {{ __('Évènements') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Connexion') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link  :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Inscription') }}
+                </x-responsive-nav-link>
+            @endguest
+        </div>
+        @auth
+            <!-- Responsive Settings Options -->
+            <div class="pt-4 pb-1 border-t border-gray-200">
+                <div class="px-4">
+                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
-                @auth
-                    <!-- Responsive Settings Options -->
-                    <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="px-4">
-                            <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                            <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                        </div>
 
-                        <div class="mt-3 space-y-1">
-                            <x-responsive-nav-link :href="route('profile.show', Auth::id())">
-                                {{ __('Mon profile') }}
-                            </x-responsive-nav-link>
+                <div class="mt-3 space-y-1">
+                    <x-responsive-nav-link :href="route('profile.show', Auth::id())">
+                        {{ __('Mon profile') }}
+                    </x-responsive-nav-link>
 
-                            <x-responsive-nav-link :href="route('profile.edit')">
-                                {{ __('Paramètres') }}
-                            </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('Paramètres') }}
+                    </x-responsive-nav-link>
 
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                                <x-responsive-nav-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Déconnexion') }}
-                                </x-responsive-nav-link>
-                            </form>
-                        </div>
-                    </div>
-                @endauth
+                        <x-responsive-nav-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Déconnexion') }}
+                        </x-responsive-nav-link>
+                    </form>
+                </div>
             </div>
-            {{-- ok --}}
-        
-    
+        @endauth
+    </div>
 </nav>
   
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
@@ -95,7 +91,7 @@
             @auth
                 <div class="flex items-center p-2 mb-6">
                     <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar" class="w-12 h-12 rounded-full dark:bg-gray-500">                
-                    <div>
+                    <div class="ml-3">
                         <h2 class="text-lg font-semibold">{{ Auth::user()->name }}</h2>
                         <span class="flex items-center">
                             <p class="text-xs dark:text-gray-400">{{ Auth::user()->role->name }}</p>

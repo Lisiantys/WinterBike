@@ -41,7 +41,7 @@ class ProfileController extends Controller
     
         return view('profile.manage', compact('users', 'roles'));
     }
-        
+    
     /**
     * Met à jour un rêle
     */
