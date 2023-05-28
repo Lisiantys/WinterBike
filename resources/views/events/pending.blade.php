@@ -25,7 +25,6 @@
                 @endif
             </div>
             
-        
             <form action="{{ route('events.storeStaffMessage', $event) }}" method="POST" class="mt-4">
                 @csrf
                 <div class="form-group">

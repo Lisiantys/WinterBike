@@ -142,13 +142,13 @@ class EventController extends Controller
     */
     public function validateEvent(Request $request, Event $event)
     {
-        $event->update([
-            'is_validated' => 1,
-            'staffMessage' => null,
-        ]);
-        $event->save();        
+        $event->is_validated = 1;
+        $event->staffMessage = null;
+        $event->save();
+        
         return redirect()->route('events.pending')->withSuccess('Événement validé avec succès.');
     }
+
     
     /**
     * Créer un évènement dans la BDD
