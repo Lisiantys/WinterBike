@@ -43,7 +43,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-                @foreach($users as $user)
+                @forelse($users as $user)
                     <tr class="hover:bg-gray-50">
                         <td class="px-4 py-4 text-sm flex items-center">
                             <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil" class="rounded-full w-14">
@@ -92,7 +92,11 @@
                             @endif
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <x-events.empty-message>
+                        Aucun utilisateur a été trouvé.
+                    </x-events.empty-message>
+                @endforelse
             </tbody>
         </table>
     </div>

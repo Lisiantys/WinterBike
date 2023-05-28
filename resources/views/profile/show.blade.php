@@ -18,7 +18,9 @@
             <!-- Afficher plus d'informations sur l'événement si vous le souhaitez -->
         </div>
     @empty
-        <p>L'utilisateur n'a pas publié d'évènements</p>
+        <x-events.empty-message>
+            Aucun événement crée par l'utilisateur.
+        </x-events.empty-message>
     @endforelse
     <div>{{ $events->links() }}</div>
 
@@ -44,7 +46,9 @@
         @endauth
     </div>
     @empty
-        <p>L'utilisateur n'a pas publié de commentaires</p>
+        <x-events.empty-message>
+            Aucun commentaire publié l'utilisateur.
+        </x-events.empty-message>
     @endforelse
     <div>{{ $comments->links() }}</div>
 </x-app-layout>

@@ -61,7 +61,7 @@
 
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('profile.show', Auth::id())">
-                        {{ __('Mon profile') }}
+                        {{ __('Mon profil') }}
                     </x-responsive-nav-link>
 
                     <x-responsive-nav-link :href="route('profile.edit')">
@@ -137,7 +137,7 @@
                 <li>
                     <x-nav-link :href="route('profile.show', Auth::id())">
                         <i class="fa-solid fa-circle-user pr-2"></i>
-                        {{ __('Mon profile') }}
+                        {{ __('Mon profil') }}
                     </x-nav-link>
                 </li>
                 <li>

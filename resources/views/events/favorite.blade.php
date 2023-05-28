@@ -1,13 +1,15 @@
 <x-app-layout>
-    <div class="container">
-        <x-h1-title>
-            Mes favoris
-        </x-h1-title>
+    <x-h1-title>
+        Mes favoris
+    </x-h1-title>
+    <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
         @forelse ($favorites as $favorite)
             <x-events.event-list :event="$favorite" :isFavoriteView="true" />
         @empty
-            <p>Vous n'avez pas d'événements en favoris.</p>
+            <x-events.empty-message>
+                Vous n'avez aucun événement en favoris.
+            </x-events.empty-message>
         @endforelse
-        <div>{{ $favorites->links() }}</div>
     </div>
+    <div>{{ $favorites->links() }}</div>
 </x-app-layout>

@@ -11,29 +11,25 @@
         @endforeach
     </div>
 
-    <div class="flex flex-col lg:flex-row-reverse">
+    <div class="flex flex-col lg:flex-row">
         <div class="lg:w-3/4 lg:pr-4">
-            <div class="flex justify-center md:justify-end space-x-4 my-4">
-                <div class="h-10 rounded-md bg-gradient-to-r from-blue-500 to-green-500 p-1">
-                    <div class="flex h-full w-full items-center justify-center bg-white">
-                        <a href="{{ route('events.create') }}" class="text-base px-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Créer un évènement</a>
-                    </div>
-                </div>
-                <a onclick="toggleSearchForm()" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
-                    + Filtres de recherche
-                </a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+                Créer un événement
+            </a>
+
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 @forelse ($events as $event)
                     <x-events.event-list :event="$event"/>
                 @empty
-                    <p>Il n'y a pas d'événement avec ces options de recherche.</p>
+                    <x-events.empty-message>
+                        Aucun événement trouvé avec ces options de recherche.
+                    </x-events.empty-message>
                 @endforelse
             </div>
             <div>{{ $events->withQueryString()->links() }}</div>
         </div>
 
-        <form action="{{ route('events.index') }}" method="get" class="m-5 w-full lg:w-1/4 mt-16" id="searchForm">
+        <form action="{{ route('events.index') }}" method="get" class="w-full lg:w-1/4 mt-8" id="searchForm">
             <div>
                 <label for="keyword" class="font-medium text-gray-700">Mot-clé :</label>
                 <input type="text" name="keyword" id="keyword" value="{{ $request->input('keyword') }}" class="border border-gray-200 rounded px-3 py-2 focus:outline-none focus:border-blue-300 w-full">
@@ -89,5 +85,4 @@
             }
         }
     </script>
-    
 </x-app-layout>

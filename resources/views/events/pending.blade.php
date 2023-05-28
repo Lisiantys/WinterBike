@@ -36,7 +36,9 @@
         </div>
         
         @empty
-            <p>Il n'y a pas de nouveaux évènements à accepter !</p>
+            <x-events.empty-message>
+                Aucun événement en attente d'approbation.
+            </x-events.empty-message>
         @endforelse
         <div>{{ $pendingEvents->links() }}</div>
     </div>
