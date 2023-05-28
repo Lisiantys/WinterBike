@@ -11,7 +11,7 @@
         @endforeach
     </div>
 
-    <div class="flex flex-col lg:flex-row">
+    <div class="flex flex-col-reverse lg:flex-row">
         <div class="lg:w-3/4 lg:pr-4">
             <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
                 Créer un événement
@@ -29,7 +29,7 @@
             <div>{{ $events->withQueryString()->links() }}</div>
         </div>
 
-        <form action="{{ route('events.index') }}" method="get" class="w-full lg:w-1/4 mt-8" id="searchForm">
+        <form action="{{ route('events.index') }}" method="get" class="w-full lg:w-1/4 mt-8 lg:mt-0" id="searchForm">
             <div>
                 <label for="keyword" class="font-medium text-gray-700">Mot-clé :</label>
                 <input type="text" name="keyword" id="keyword" value="{{ $request->input('keyword') }}" class="border border-gray-200 rounded px-3 py-2 focus:outline-none focus:border-blue-300 w-full">
@@ -74,15 +74,4 @@
             </div>
         </form>
     </div>
-    
-    <script>
-        function toggleSearchForm() {
-            var form = document.getElementById('searchForm');
-            if (form.style.display === "none") {
-                form.style.display = "grid";
-            } else {
-                form.style.display = "none";
-            }
-        }
-    </script>
 </x-app-layout>

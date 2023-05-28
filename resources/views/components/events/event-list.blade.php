@@ -1,14 +1,14 @@
-<div class="p-4 mb-5 border-4 border-s-blue-900 border-y-blue-700 border-r-blue-500">
+<div class="p-6 mb-5 bg-white shadow-lg rounded-lg border border-gray-200">
     <div class="md:flex justify-between items-start">
         <a href="{{ route('events.show', $event->id) }}" class="flex-grow">
             @if (!is_null($event->staffMessage) && $event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
                 <p class="text-red-600"><strong>Message de l'équipe :</strong> {{ $event->staffMessage}}</p>
             @endif
-            <h1 class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ Str::limit($event->name , $limit = 55, $end = '...') }}</h1>
-            <p class="mt-2 text-gray-500">Du {{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }} au {{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }} - {{ $event->type->name }}</p>
-            <p class="mt-2 text-gray-500">{{ $event->region->name }} - {{ $event->department->name }}</p>
+            <h2 class="block mt-1 text-lg md:text-xl leading-tight font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 hover:underline">{{ Str::limit($event->name , $limit = 55, $end = '...') }}</h2>
+            <p class="mt-2 text-gray-600">Du <span class="font-semibold">{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</span> au <span class="font-semibold">{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</span> - <span class="font-semibold">{{ $event->type->name }}</span></p>
+            <p class="mt-2 text-gray-600 font-semibold">{{ $event->region->name }} - {{ $event->department->name }}</p>
             @if (!$isTopFavorite == true)
-                <p class="mt-2 text-gray-500">{{ Str::limit($event->description, $limit = 85, $end = '...') }}</p>
+                <p class="mt-2 text-gray-600">{{ Str::limit($event->description, $limit = 85, $end = '...') }}</p>
             @endif
         </a>
 
@@ -24,7 +24,7 @@
     <div class="mt-4 flex justify-between items-center">
         <div class="flex items-center">
             <img class="h-10 w-10 rounded-full" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
-            <a href="{{ route('profile.show', $event->user->id ) }}" class="ml-2">{{ $event->user->name }}</a>
+            <a href="{{ route('profile.show', $event->user->id ) }}" class="ml-2 text-gray-800 hover:text-blue-600">{{ $event->user->name }}</a>
         </div>
         <div class="text-sm text-gray-500">
             @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
