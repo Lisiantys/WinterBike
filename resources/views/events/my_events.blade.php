@@ -2,6 +2,9 @@
     <x-h1-title>
         Mes évènements
     </x-h1-title>
+    <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+        Créer un événement
+    </a>
     <h2 class="text-2xl md:text-3xl my-8">Événements non validés</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @forelse ($events->where('is_validated', 0) as $event)

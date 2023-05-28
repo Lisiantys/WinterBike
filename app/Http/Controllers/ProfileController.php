@@ -80,7 +80,7 @@ class ProfileController extends Controller
     public function show(User $user)
     {
         // Récupérer les commentaires de l'utilisateur
-        $comments = $user->comments()->orderBy('created_at', 'desc')->paginate(10);
+        $comments = $user->comments()->orderBy('created_at', 'desc')->paginate(5);
      
         // Récupérer les événements créés par l'utilisateur qui sont validés
         $events = $user->events()->where('is_validated', 1)->orderBy('created_at', 'desc')->paginate(5);
