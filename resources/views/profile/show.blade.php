@@ -18,7 +18,7 @@
     <div class="mt-8">
         <h2 class="font-bold text-2xl mb-4">Événements créés par l'utilisateur</h2>
         @forelse($events as $event)
-            <div class="mb-4 bg-white shadow rounded-lg p-4">
+            <div class="mb-4  rounded-lg ">
                 <x-events.event-list :event="$event"/>
             </div>
         @empty

@@ -14,10 +14,18 @@
                 <p class="mt-2 text-gray-500">Du <strong>{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</strong> - {{ $event->type->name }}</p>
                 <p class="mt-2 text-gray-500">{{ $event->region->name }} - {{ $event->department->name }}</p>
                 <p class="text-black-500">{{ $event->description }}</p>
-                <div class="flex items-center mt-4">
-                    <img class="h-10 w-10 rounded-full" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
-                    <a href="{{ route('profile.show', $event->user->id) }}" class="ml-2">{{ $event->user->name }}</a>
-                </div>
+                <div class="flex items-center justify-between mt-4">
+                    <div class="flex items-center">
+                        <img class="h-10 w-10 rounded-full" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
+                        <a href="{{ route('profile.show', $event->user->id) }}" class="ml-2">{{ $event->user->name }}</a>
+                    </div>
+                
+                    @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
+                        <p><i class="fa-solid fa-star fa-xl" style="color: #FFD700;">{{ $event->favoritedBy->count() }}</i></p>
+                    @else
+                        <p><i class="fa-regular fa-star fa-xl" style="color: #e7ca25;">{{ $event->favoritedBy->count() }}</i></p>
+                    @endif
+                </div>                
             </div>
         </div>
         <x-events.event-link :event="$event"/>
