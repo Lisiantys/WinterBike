@@ -39,6 +39,7 @@
                 Aucun événement en attente d'approbation.
             </x-events.empty-message>
         @endforelse
-        <div>{{ $pendingEvents->links() }}</div>
     </div>
+    <div>{{ $pendingEvents->links('vendor.pagination.custom') }}</div>
+
 </x-app-layout>

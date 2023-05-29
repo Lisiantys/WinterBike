@@ -71,7 +71,7 @@ class EventController extends Controller
     public function myEvents()
     {
         $user = auth()->user();
-        $events = Event::with('user')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->paginate(10);
+        $events = Event::with('user')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->paginate(12);
         return view('events.my_events', compact('events'));
     }
 
@@ -220,7 +220,8 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $topFavorites = $this->getTopFavorites();
-        $comments = $event->comments()->with('user')->orderBy('created_at', 'asc')->paginate(5);
+        
+        $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->paginate(5);
 
         return view('events.show', compact('event', 'comments', 'topFavorites'));
     }

@@ -99,6 +99,7 @@
                 @endforelse
             </tbody>
         </table>
+        <div class="px-4">{{ $users->withQueryString()->links('vendor.pagination.custom') }}</div>
+
     </div>
-    <div>{{ $users->withQueryString()->links() }}</div>
 </x-app-layout>

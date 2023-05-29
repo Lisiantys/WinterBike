@@ -11,5 +11,5 @@
             </x-events.empty-message>
         @endforelse
     </div>
-    <div>{{ $favorites->links() }}</div>
+    <div>{{ $favorites->links('vendor.pagination.custom') }}</div>
 </x-app-layout>

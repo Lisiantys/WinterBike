@@ -32,6 +32,8 @@
             </x-events.empty-message>
         @endforelse
     </div>
+    <div>{{ $events->links('vendor.pagination.custom') }}</div>
+
 
     <h2 class="text-2xl md:text-3xl my-8">Événements validés</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -60,5 +62,5 @@
             </x-events.empty-message>
         @endforelse
     </div>
-    <div>{{ $events->links() }}</div>
+    <div>{{ $events->links('vendor.pagination.custom') }}</div>
 </x-app-layout>

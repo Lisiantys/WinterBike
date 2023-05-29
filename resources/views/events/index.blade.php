@@ -26,7 +26,7 @@
                     </x-events.empty-message>
                 @endforelse
             </div>
-            <div>{{ $events->withQueryString()->links() }}</div>
+            <div>{{ $events->withQueryString()->links('vendor.pagination.custom') }}</div>
         </div>
 
         <form action="{{ route('events.index') }}" method="get" class="w-full lg:w-1/4 mt-8 lg:mt-0" id="searchForm">

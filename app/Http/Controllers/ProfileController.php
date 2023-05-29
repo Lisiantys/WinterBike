@@ -37,7 +37,7 @@ class ProfileController extends Controller
         ->when($bannedStatus == 'not_banned', function ($query) {
             return $query->where('is_banned', 0);
         })
-        ->paginate(30);
+        ->paginate(15);
     
         return view('profile.manage', compact('users', 'roles'));
     }

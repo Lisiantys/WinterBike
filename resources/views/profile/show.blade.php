@@ -28,7 +28,7 @@
                 </x-events.empty-message>
             </div>
         @endforelse
-        <div>{{ $events->links() }}</div>
+        <div>{{ $events->links('vendor.pagination.custom') }}</div>
     </div>
 
     <div class="mt-8">
@@ -60,6 +60,6 @@
                 </x-events.empty-message>
             </div>
         @endforelse
-        <div>{{ $comments->links() }}</div>
+        <div>{{ $comments->links('vendor.pagination.custom') }}</div>
     </div>
 </x-app-layout>

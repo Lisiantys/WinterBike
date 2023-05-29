@@ -123,7 +123,7 @@
                             @endauth
                         </div>
                         <div class="pt-2">
-                            <p class="text-sm text-gray-600 dark:text-gray-300">{{ $comment->description }}</p>
+                            <p class="text-base text-black-800 dark:text-gray-300">{{ $comment->description }}</p>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                     <p class="text-gray-500 dark:text-gray-400">Soyez le premier à commenter cet évènement !</p>
                 @endauth
             @endforelse
-            <div>{{ $comments->links() }}</div>
+            <div>{{ $comments->links('vendor.pagination.custom') }}</div>
         </div>
     
         <div class="mt-8 lg:mt-0 lg:w-1/2">
