@@ -80,8 +80,13 @@
     <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6 space-y-4">
         @csrf
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-            <textarea id="description" name="description" rows="4" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800 rounded-lg resize-none" placeholder="Écrire un commentaire..." required></textarea>
+            <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800 rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="999">{{ old('description') }}</textarea>
         </div>
+        @error('description')
+            <div class="text-red-500 mt-2 text-sm">
+                {{ $message }}
+            </div>
+        @enderror
         <button type="submit" class="h-10 w-full md:w-auto py-2 px-6 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-lg transition duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-white">
             Commenter
         </button>
