@@ -10,8 +10,8 @@
                 <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
             </div>
             
-            <div id="myModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100vh] max-h-full flex items-center justify-center lg:ml-36">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full max-w-4xl max-h-full mx-auto overflow-y-auto">
+            <div id="myModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-[100vh] max-h-full flex items-center justify-center lg:ml-36">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full max-w-4xl 2xl:max-w-5xl max-h-full mx-auto overflow-y-auto">
                     <!-- Modal content -->
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
@@ -23,7 +23,7 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div class="p-6 space-y-6">
+                    <div class="p-2 space-y-6">
                         <img id="modal-image" src="{{ Storage::url($event->image_path) }}" class="object-contain w-full h-auto max-h-50vh">
                     </div>
                 </div>
