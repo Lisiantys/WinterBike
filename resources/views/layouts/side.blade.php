@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+<nav x-data="{ open: false }" class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <a href="https://winterbike.fr" class="flex ml-2 md:mr-24">
@@ -19,6 +19,9 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-14 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="pt-2 pb-3 space-y-1">
             @auth
+                <x-responsive-nav-link :href="route('events.create')" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+                    Créer un événement
+                </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
                     {{ __('Évènements') }}
                 </x-responsive-nav-link>
@@ -84,7 +87,7 @@
     </div>
 </nav>
   
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-30 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
 
@@ -98,6 +101,12 @@
                         </span>
                     </div>
                 </div>
+
+                <li>
+                    <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+                        Créer un événement
+                    </a>
+                </li>
               
                 <li>
                     <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">

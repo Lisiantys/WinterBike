@@ -3,12 +3,6 @@
         Modifier votre évènement
     </x-h1-title>
 
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <p style="color:red;">{{ $error }}</p>
-        @endforeach
-    @endif
-
     <form action="{{ route('events.update', $event) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
         @method('PUT')
@@ -16,14 +10,20 @@
         <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;" class="mx-auto">
     
         <div class="flex flex-col items-center space-y-4">
-            <label for="image_path" class="text-lg font-bold">Image (Obligatoire) :</label>
-            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg" max-size="2048" class="px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <label for="image_path" class="text-lg font-bold">Image :</label>
+            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048" class="px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            @error('image_path')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
         </div>
     
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
             <div>
                 <label for="name" class="block text-lg font-bold">Nom de l'évènement (Obligatoire) :</label>
-                <input type="text" id="name" value="{{ $event->name }}" name="name" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="text" id="name" value="{{ $event->name }}" name="name" required maxlength="255" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                @error('name')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
             </div>
     
             <div>
@@ -35,15 +35,20 @@
                 </select>
             </div>
     
-            <!-- Continue the pattern -->
             <div>
                 <label for="beginningDate" class="block text-lg font-bold">Date de début (Obligatoire) :</label>
                 <input type="date" id="beginningDate" value="{{ $event->beginningDate }}" name="beginningDate" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                @error('beginningDate')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
             </div>
     
             <div>
                 <label for="endDate" class="block text-lg font-bold">Date de fin (Obligatoire) :</label>
                 <input type="date" id="endDate" value="{{ $event->endDate }}" name="endDate" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                @error('endDate')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
             </div>
     
             <div>
@@ -71,7 +76,7 @@
     
             <div>
                 <label for="phone" class="block text-lg font-bold">Téléphone :</label>
-                <input type="text" id="phone" value="{{ $event->phone }}" maxlength="10" name="phone" placeholder="ex:0612345678" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="text" id="phone" value="{{ $event->phone }}" minlength="10" maxlength="10" name="phone" placeholder="ex:0612345678" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             </div>
     
             <div>
@@ -87,12 +92,18 @@
     
         <div>
             <label for="address" class="block text-lg font-bold">Adresse (Obligatoire) :</label>
-            <input type="text" id="address" value="{{ $event->address }}" name="address" required placeholder="123 Rue Fictive, Dordogne 24170" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <input type="text" id="address" value="{{ $event->address }}" name="address" required maxlength="255" placeholder="123 Rue Fictive, Dordogne 24170" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            @error('address')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
         </div>
     
         <div>
             <label for="description" class="block text-lg font-bold">Description (Obligatoire) :</label>
-            <textarea id="description" name="description" maxlength="5000" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ $event->description }}</textarea>
+            <textarea id="description" name="description" required maxlength="2000" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ $event->description }}</textarea>
+            @error('description')
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
         </div>
     
         <div class="flex justify-end">

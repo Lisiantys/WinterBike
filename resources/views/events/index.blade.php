@@ -13,10 +13,6 @@
 
     <div class="flex flex-col-reverse lg:flex-row">
         <div class="lg:w-3/4 lg:pr-4">
-            <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
-                Créer un événement
-            </a>
-
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 @forelse ($events as $event)
                     <x-events.event-list :event="$event"/>

@@ -1,12 +1,34 @@
 <x-app-layout>
+    <div id="overlay" class="fixed top-0 left-0 w-full h-full z-50 bg-black bg-opacity-50 hidden"></div>
+
     <div class="relative bg-white overflow-hidden shadow-xl sm:rounded-lg grid md:grid-cols-2 mb-6">
         @if ($event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
             <div class="absolute top-0 text-center font-semibold inset-x-0 md:inset-auto md:right-0 bg-red-500 text-white px-3 py-2 md:rounded-bl-lg">Événement en cours de validation par l'équipe de Winter Bike...</div>
         @endif
         <div class="md:col-span-2 grid md:grid-cols-2 w-full md:px-6 md:pt-14 md:pb-8 md:gap-6">
-            <div class="w-full h-full md:h-96 flex items-center justify-center">
+            <div class="w-full h-full md:h-96 flex items-center justify-center cursor-pointer" onclick="openModal()">
                 <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
             </div>
+            
+            <div id="myModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[100vh] max-h-full flex items-center justify-center lg:ml-36">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full max-w-4xl max-h-full mx-auto overflow-y-auto">
+                    <!-- Modal content -->
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
+                        <h3 class="font-heebo font-bold text-lg md:text-xl lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500">
+                            {{ $event->name }}
+                        </h3>
+                        <button id="closeModal" type="button" class=" p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <i class="fa-solid fa-xmark fa-2xl" style="color: #e45e5e;"></i>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <img id="modal-image" src="{{ Storage::url($event->image_path) }}" class="object-contain w-full h-auto max-h-50vh">
+                    </div>
+                </div>
+            </div>
+            
             <div class="px-4 md:px-0 space-y-4 py-6 md:py-0">
                 <h2 class="font-heebo font-bold text-xl md:text-2xl lg:text-3xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500">
                     {{ $event->name }}
@@ -171,5 +193,45 @@
         a2a_config.locale = "fr";
         a2a_config.num_services = 4;
     </script>
+
+<script>
+    function openModal() {
+        document.getElementById("myModal").style.display = "flex";
+        document.body.style.overflow = 'hidden'; // Disable scroll
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+        document.body.style.overflow = 'auto'; // Enable scroll
+    }
+
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+</script>
+
+<script>
+    var modal = document.getElementById("myModal");
+    var overlay = document.getElementById("overlay");
+
+    function openModal() {
+        modal.style.display = "block";
+        overlay.style.display = "block";
+        document.body.style.overflow = 'hidden';
+    }
+
+    var closeModalButton = document.getElementById("closeModal");
+    closeModalButton.onclick = function() {
+        modal.style.display = "none";
+        overlay.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == overlay) {
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        }
+    }
+
+</script>
+
     <script async src="https://static.addtoany.com/menu/page.js"></script>
 </x-app-layout>

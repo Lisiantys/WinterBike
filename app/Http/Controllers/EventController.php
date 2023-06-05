@@ -169,12 +169,12 @@ class EventController extends Controller
     {
         $rules = [
             'name' => 'required|string|max:255',
-            'image_path' => $isUpdate ? 'nullable' : 'required' . '|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'image_path' => ($isUpdate ? ['nullable'] : ['required']) + ['image', 'mimes:jpeg,png,jpg,svg,webp', 'max:2048'],
             'beginningDate' => 'required|date',
             'endDate' => 'required|date|after_or_equal:beginningDate',
             'address' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|number|min:10|max:10',
+            'phone' => 'nullable|numeric|digits:10',
             'website' => 'nullable|url|max:255',
             'facebook' => 'nullable|url|max:255',
             'description' => 'required|string|min:20|max:2000',

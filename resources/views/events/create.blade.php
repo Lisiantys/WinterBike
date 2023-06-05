@@ -10,10 +10,10 @@
 
         <div class="flex flex-col items-center space-y-4">
             <label for="image_path" class="text-lg font-bold">Image (Obligatoire) :</label>
-            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg" max-size="2048" required class="px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048" required class="px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
             @error('image_path')
-            <p class="text-red-500">{{ $message }}</p>
-        @enderror
+                <p class="text-red-500">{{ $message }}</p>
+            @enderror
         </div>
     
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
