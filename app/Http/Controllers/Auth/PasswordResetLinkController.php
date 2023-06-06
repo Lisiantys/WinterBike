@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use Illuminate\View\View;
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\DNSCheckValidation;
 
 class PasswordResetLinkController extends Controller
 {
@@ -28,6 +30,15 @@ class PasswordResetLinkController extends Controller
         $request->validate([
             'email' => ['required', 'email'],
         ]);
+
+        $email = $request->input('email');
+        $validator = new EmailValidator();
+
+        if (!$validator->isValid($email, new DNSCheckValidation())) {
+            // si le domaine n'est pas valide ou n'existe pas
+            return back()->withInput($request->only('email'))
+                        ->withErrors(['email' => 'L\'adresse email saisie ne possède pas un nom de domaine valide.']);
+        }
 
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we

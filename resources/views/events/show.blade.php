@@ -24,7 +24,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-2 space-y-6">
-                        <img id="modal-image" src="{{ Storage::url($event->image_path) }}" class="object-contain w-full h-auto max-h-50vh">
+                        <img id="modal-image" src="{{ Storage::url($event->image_path) }}" class="object-contain w-full h-auto max-h-50vh rounded-lg">
                     </div>
                 </div>
             </div>
@@ -184,7 +184,7 @@
             // Supprimer l'élément temporaire
             document.body.removeChild(tempInput);
             // Afficher un message ou effectuer une autre action pour indiquer que le lien a été copié
-            alert('Le lien a été copié dans le presse-papiers !');
+            alert('Le lien de l\'événement a été copié dans le presse-papiers !');
         });
     </script>
 
