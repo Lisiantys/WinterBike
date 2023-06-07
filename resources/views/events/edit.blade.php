@@ -7,7 +7,7 @@
         @csrf
         @method('PUT')
     
-        <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" style="max-width: 100%;" class="mx-auto">
+        <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="mx-auto h-auto sm:h-96 rounded-lg">
     
         <div class="flex flex-col items-center space-y-4">
             <label for="image_path" class="text-lg font-bold">Image :</label>

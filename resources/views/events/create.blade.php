@@ -6,7 +6,7 @@
     <form action="{{ route('events.store') }}" method="post" enctype="multipart/form-data" class="space-y-6">
         @csrf
     
-        <img id="image-preview" src="" alt="Aperçu de l'image" style="display: none; max-width: 100%;" class="mx-auto">
+        <img id="image-preview" alt="Aperçu de l'image" style="display: none;" class="mx-auto h-96 rounded-lg">
 
         <div class="flex flex-col items-center space-y-4">
             <label for="image_path" class="text-lg font-bold">Image (Obligatoire) :</label>
