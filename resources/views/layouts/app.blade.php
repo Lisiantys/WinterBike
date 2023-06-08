@@ -22,7 +22,7 @@
 
             <!-- Page Content -->
             <div class="p-4 lg:ml-64">
-                <div class="p-2 rounded-lg dark:border-gray-700 mt-14">
+                <div class="p-2 rounded-lg dark:border-gray-700 mt-16 lg:mt-0">
                     <main>
                         {{ $slot }}
                     </main>

@@ -1,12 +1,12 @@
 <nav x-data="{ open: false }" class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="px-3 py-2 lg:px-5 lg:hidden">
         <div class="flex items-center justify-between">
             <a href="https://winterbike.fr" class="flex ml-2 md:mr-24">
-                <x-application-logo class="w-10 h-10 fill-current text-gray-500" />
+                <x-application-logo class="w-16 h-16" />
             </a>
             <div class="-mr-2 flex items-center lg:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                    <svg class="h-8 w-8" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -16,7 +16,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-14 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-18 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="pt-2 pb-3 space-y-1">
             @auth
                 <x-responsive-nav-link :href="route('events.create')" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
@@ -87,8 +87,8 @@
     </div>
 </nav>
   
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-30 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
-    <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-30 w-64 h-screen pt-9 transition-transform -translate-x-full bg-white border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
+    <div class="flex flex-col justify-between h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
 
             @auth
@@ -184,8 +184,16 @@
                     </x-nav-link>
                 </li>
             @endguest
-
         </ul>
-     </div>
-  </aside>
+            
+        <div class="space-y-4">
+            <div>
+                <x-application-logo class="w-32 h-32 mx-auto"/>
+            </div>
+            <div class="text-center">
+                <a href="mailto:example@example.com" class="font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200">Contactez-nous</a>
+            </div>
+        </div>
+    </div>
+</aside>
   

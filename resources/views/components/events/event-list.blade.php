@@ -8,7 +8,7 @@
             <p class="mt-2 text-gray-600">Du <span class="font-semibold">{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</span> au <span class="font-semibold">{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</span> - <span class="font-semibold">{{ $event->type->name }}</span></p>
             <p class="mt-2 text-gray-600 font-semibold">{{ $event->region->name }} - {{ $event->department->name }}</p>
             @if (!$isTopFavorite == true)
-                <p class="mt-2 text-gray-600">{{ Str::limit($event->description, $limit = 85, $end = '...') }}</p>
+                <p class="mt-2 text-gray-600 overflow-auto break-words">{{ Str::limit($event->description, $limit = 85, $end = '...') }}</p>
             @endif
         </a>
 
