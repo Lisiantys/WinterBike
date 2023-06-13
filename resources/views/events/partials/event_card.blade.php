@@ -3,7 +3,10 @@
 </a>
 
 <div class="flex mb-4">
-    <a href="{{ route('events.edit', $event->id) }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">Modifier</a>
+    <a  href="{{ route('events.edit', $event->id) }}"
+        class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+        Modifier
+    </a>
     <form action="{{ route('events.destroy', $event->id) }}" method="POST">
         @csrf
         @method('DELETE')

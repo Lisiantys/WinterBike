@@ -3,29 +3,8 @@
         Retrouvez les évènements en France
     </x-h1-title>
 
-    <div class="md:grid md:grid-cols-3 gap-4 overflow-x-auto">
-        @foreach($topFavorites as $event)
-            <div>
-                <x-events.event-list :event="$event" :isTopFavorite="true" />
-            </div>
-        @endforeach
-    </div>
-
-    <div class="flex flex-col-reverse lg:flex-row">
-        <div class="lg:w-3/4 lg:pr-4">
-            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                @forelse ($events as $event)
-                    <x-events.event-list :event="$event"/>
-                @empty
-                    <x-events.empty-message>
-                        Aucun événement trouvé avec ces options de recherche.
-                    </x-events.empty-message>
-                @endforelse
-            </div>
-            <div>{{ $events->withQueryString()->links('vendor.pagination.custom') }}</div>
-        </div>
-
-        <form action="{{ route('events.index') }}" method="get" class="w-full lg:w-1/4 mt-8 lg:mt-0" id="searchForm">
+    <div class="w-full flex flex-col sm:flex-row">
+        <form action="{{ route('events.index') }}" method="get" class="w-full sm:w-1/2 sm:pr-2 lg:mt-0" id="searchForm">
             <div>
                 <label for="keyword" class="font-medium text-gray-700">Mot-clé :</label>
                 <input type="text" name="keyword" id="keyword" value="{{ $request->input('keyword') }}" class="border border-gray-200 rounded px-3 py-2 focus:outline-none focus:border-blue-300 w-full">
@@ -69,5 +48,26 @@
                 <button type="submit" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">Rechercher</button>
             </div>
         </form>
+        <div class="w-full sm:w-1/2 sm:pl-2">
+            @foreach($topFavorites as $event)
+                <div>
+                    <x-events.event-list :event="$event" :isTopFavorite="true" />
+                </div>
+            @endforeach
+        </div>
     </div>
+
+    <div class="w-full">
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            @forelse ($events as $event)
+                <x-events.event-list :event="$event"/>
+            @empty
+                <x-events.empty-message>
+                    Aucun événement trouvé avec ces options de recherche.
+                </x-events.empty-message>
+            @endforelse
+        </div>
+        <div>{{ $events->withQueryString()->links('vendor.pagination.custom') }}</div>
+    </div>
+
 </x-app-layout>

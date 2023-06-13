@@ -190,6 +190,8 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $user = auth()->user();
         $request->validate($this->validationRules());
 
