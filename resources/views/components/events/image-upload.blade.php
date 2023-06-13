@@ -2,7 +2,7 @@
     <div class="text-center" id="placeholder">
         <i class="fas fa-camera text-xl text-gray-500"></i>
         <p class="mt-1 text-sm text-gray-500">Glissez une image ici ou cliquez pour sélectionner une image</p>
-        <input type="file" class="hidden" name="image_path" id="image" accept="image/*" required>
+        <input type="file" class="hidden" name="image_path" id="image" accept="image/*">
         <p id="error" class="hidden text-red-500"></p>
     </div>
     <img id="preview" src="#" alt="Aperçu de l'image" class="hidden w-full h-full object-cover rounded-lg" />

@@ -6,105 +6,48 @@
     <form action="{{ route('events.update', $event) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
         @method('PUT')
+
+        <x-events.image-preview id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image"></x-events.image-preview>
     
-        <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="mx-auto h-auto sm:h-96 rounded-lg">
-    
-        <div class="flex flex-col items-center space-y-4">
-            <label for="image_path" class="text-lg font-bold">Image :</label>
-            <input type="file" id="image_path" name="image_path" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048" class="px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            @error('image_path')
-                <p class="text-red-500">{{ $message }}</p>
-            @enderror
-        </div>
-    
+        <x-events.image-upload name="image_path" label="Image" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048"></x-events.image-upload>
+        
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-            <div>
-                <label for="name" class="block text-lg font-bold">Nom de l'évènement (Obligatoire) :</label>
-                <input type="text" id="name" value="{{ $event->name }}" name="name" required maxlength="255" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                @error('name')
-                    <p class="text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-    
-            <div>
-                <label for="type_id" class="block text-lg font-bold">Type (Obligatoire) :</label>
-                <select id="type_id" name="type_id" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ $event->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-    
-            <div>
-                <label for="beginningDate" class="block text-lg font-bold">Date de début (Obligatoire) :</label>
-                <input type="date" id="beginningDate" value="{{ $event->beginningDate }}" name="beginningDate" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                @error('beginningDate')
-                    <p class="text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-    
-            <div>
-                <label for="endDate" class="block text-lg font-bold">Date de fin (Obligatoire) :</label>
-                <input type="date" id="endDate" value="{{ $event->endDate }}" name="endDate" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                @error('endDate')
-                    <p class="text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-    
-            <div>
-                <label for="department_id" class="block text-lg font-bold">Département (Obligatoire) :</label>
-                <select id="department_id" name="department_id" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    @foreach ($departments as $department)
-                        <option value="{{ $department->id }}" {{ $event->department_id == $department->id ? 'selected' : '' }}>{{ $department->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-    
-            <div>
-                <label for="region_id" class="block text-lg font-bold">Région (Obligatoire) :</label>
-                <select id="region_id" name="region_id" required class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    @foreach ($regions as $region)
-                        <option value="{{ $region->id }}" {{ $event->region_id == $region->id ? 'selected' : '' }}>{{ $region->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-    
-            <div>
-                <label for="email" class="block text-lg font-bold">Adresse Email :</label>
-                <input type="email" id="email" value="{{ $event->email }}" name="email" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            </div>
-    
-            <div>
-                <label for="phone" class="block text-lg font-bold">Téléphone :</label>
-                <input type="text" id="phone" value="{{ $event->phone }}" minlength="10" maxlength="10" name="phone" placeholder="ex:0612345678" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            </div>
-    
-            <div>
-                <label for="website" class="block text-lg font-bold">Website :</label>
-                <input type="url" id="website" value="{{ $event->website }}" name="website" placeholder="www.nomDuSite.com" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            </div>
-    
-            <div>
-                <label for="facebook" class="block text-lg font-bold">Facebook :</label>
-                <input type="url" id="facebook" value="{{ $event->facebook }}" name="facebook" placeholder="www.facebook.com" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            </div>
+            <x-events.input-field name="name" label="Nom de l'évènement (Obligatoire)" value="{{ $event->name }}" required maxlength="255"></x-events.input-field>
+
+            <x-events.select-field name="type_id" label="Type (Obligatoire)">
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" {{ $event->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                @endforeach
+            </x-events.select-field>
+
+            <x-events.input-field type="date" name="beginningDate" label="Date de début (Obligatoire)" value="{{ $event->beginningDate }}" required></x-events.input-field>
+
+            <x-events.input-field type="date" name="endDate" label="Date de fin (Obligatoire)" value="{{ $event->endDate }}" required></x-events.input-field>
+
+            <x-events.select-field name="department_id" label="Département (Obligatoire)">
+                @foreach ($departments as $department)
+                    <option value="{{ $department->id }}" {{ $event->department_id == $department->id ? 'selected' : '' }}>{{ $department->name }}</option>
+                @endforeach
+            </x-events.select-field>
+
+            <x-events.select-field name="region_id" label="Région (Obligatoire)">
+                @foreach ($regions as $region)
+                    <option value="{{ $region->id }}" {{ $event->region_id == $region->id ? 'selected' : '' }}>{{ $region->name }}</option>
+                @endforeach
+            </x-events.select-field>
+
+            <x-events.input-field type="email" name="email" label="Adresse Email" value="{{ $event->email }}"></x-events.input-field>
+
+            <x-events.input-field type="text" name="phone" label="Téléphone" value="{{ $event->phone }}" minlength="10" maxlength="10" placeholder="ex:0612345678"></x-events.input-field>
+
+            <x-events.input-field type="url" name="website" label="Website" value="{{ $event->website }}" placeholder="www.nomDuSite.com"></x-events.input-field>
+
+            <x-events.input-field type="url" name="facebook" label="Facebook" value="{{ $event->facebook }}" placeholder="www.facebook.com"></x-events.input-field>
         </div>
     
-        <div>
-            <label for="address" class="block text-lg font-bold">Adresse (Obligatoire) :</label>
-            <input type="text" id="address" value="{{ $event->address }}" name="address" required maxlength="255" placeholder="123 Rue Fictive, Dordogne 24170" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-            @error('address')
-                <p class="text-red-500">{{ $message }}</p>
-            @enderror
-        </div>
-    
-        <div>
-            <label for="description" class="block text-lg font-bold">Description (Obligatoire) :</label>
-            <textarea id="description" name="description" required maxlength="2000" class="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ $event->description }}</textarea>
-            @error('description')
-                <p class="text-red-500">{{ $message }}</p>
-            @enderror
-        </div>
+        <x-events.input-field name="address" label="Adresse (Obligatoire)" value="{{ $event->address }}" required maxlength="255" placeholder="123 Rue Fictive, Dordogne 24170"></x-events.input-field>
+
+        <x-events.textarea-field name="description" label="Description (Obligatoire)" rows="10" maxlength="2000" :value="$event->description" required />
     
         <div class="flex justify-end">
             <button type="submit" class="px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-green-500 rounded-lg">Mettre à jour l'évènement</button>

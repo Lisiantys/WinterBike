@@ -111,7 +111,6 @@ class EventController extends Controller
         return redirect()->back()->withSuccess('Évènement supprimé des favoris');
     }
 
-
     /**
     * Affiche les évènements en attente d'approbation 
     */
@@ -149,7 +148,6 @@ class EventController extends Controller
         return redirect()->route('events.pending')->withSuccess('Événement validé avec succès.');
     }
 
-    
     /**
     * Créer un évènement dans la BDD
     */

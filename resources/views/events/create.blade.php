@@ -128,7 +128,7 @@
     <form action="{{ route('events.store') }}" method="post" enctype="multipart/form-data" class="space-y-6">
         @csrf
 
-        <x-events.image-upload name="image_path" label="Image (Obligatoire)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048" />
+        <x-events.image-upload name="image_path" label="Image (Obligatoire)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048" required />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
             <x-events.input-field name="name" type="text" label="Nom de l'évènement (Obligatoire)" required maxlength="255" />
