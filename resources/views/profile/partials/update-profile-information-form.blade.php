@@ -1,5 +1,5 @@
 <section>
-    <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil de {{ $user->name }}" style="max-width: 200px;">
+    <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil de {{ $user->name }}" class="rounded-full w-36 h-36 object-cover">
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf

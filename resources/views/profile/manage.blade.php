@@ -46,7 +46,7 @@
                     <tr class="hover:bg-gray-50">
                         <td class="px-4 py-4 text-sm">
                             <div class="flex items-center mb-2 sm:mb-0">
-                                <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil" class="rounded-full w-14">
+                                <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil" class="rounded-full w-12 h-12 object-cover">
                                 <div class="pl-2">
                                     <div class="font-medium text-gray-700">{{ $user->name }}</div>
                                     <div class="text-gray-400"> {{ $user->email }}</div> 

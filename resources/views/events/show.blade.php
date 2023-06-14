@@ -125,35 +125,7 @@
     <div class="flex flex-col lg:flex-row lg:space-x-6">
         <div class="lg:w-1/2">
             @forelse($comments as $comment)
-                <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg mb-4">
-                    <div class="p-4 divide-y divide-gray-200 dark:divide-gray-700">
-                        <div class="flex justify-between items-start mb-2">
-                            <div class="flex items-center space-x-4">
-                                <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image" class="w-12 h-12 rounded-full object-cover">
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">
-                                        <a href="{{ route('profile.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
-                                    </h4>
-                                    <span class="text-xs text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($comment->created_at)->isoFormat('LLL') }}</span>
-                                </div>
-                            </div>
-                            @auth
-                                @if(auth()->user()->id === $comment->user_id || auth()->user()->role_id === 4 || auth()->user()->role_id === 3)
-                                    <div>
-                                        <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?');" class="text-red-600 hover:text-red-500 transition duration-150">Supprimer</button>
-                                        </form>
-                                    </div>
-                                @endif
-                            @endauth
-                        </div>
-                        <div class="pt-2">
-                            <p class="text-base text-black-800 dark:text-gray-300">{{ $comment->description }}</p>
-                        </div>
-                    </div>
-                </div>
+                <x-events.event-comment :comment="$comment" />
             @empty
                 @auth
                     <p class="text-gray-500 dark:text-gray-400">Soyez le premier à commenter cet évènement !</p>

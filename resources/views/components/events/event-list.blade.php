@@ -19,13 +19,20 @@
                 <button type="submit" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">Supprimer</button>
             </form>
         @endif
+        
     </div>
 
-    <div class="text-sm text-gray-500 flex justify-end">
-        @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
-            <p class="text-yellow-400"><i class="fa-solid fa-star fa-xl">{{ $event->favoritedBy->count() }}</i></p>
-        @else
-            <p class="text-gray-400"><i class="fa-regular fa-star fa-xl">{{ $event->favoritedBy->count() }}</i></p>
-        @endif
-    </div>
+    <div class="mt-2 flex items-center justify-between">
+        <div class="flex items-center">
+            <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
+            <a href="{{ route('profile.show', $event->user->id ) }}" class="ml-2 text-gray-800 hover:text-blue-600">{{ $event->user->name }}</a>
+        </div>
+        <div class="text-sm text-gray-500 flex justify-end">
+            @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
+                <p class="text-yellow-400"><i class="fa-solid fa-star fa-xl">{{ $event->favoritedBy->count() }}</i></p>
+            @else
+                <p class="text-gray-400"><i class="fa-regular fa-star fa-xl">{{ $event->favoritedBy->count() }}</i></p>
+            @endif
+        </div>
+    </div> 
 </div>

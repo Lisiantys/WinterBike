@@ -3,9 +3,9 @@
         Retrouvez les évènements en France
     </x-h1-title>
 
-    <div class="w-full flex flex-col sm:flex-row">
+    <div class="w-full flex flex-col md:flex-row">
         @include('events.partials.form-filter')
-        <div class="w-full sm:w-1/2 sm:pl-2">
+        <div class="w-full md:w-1/2 sm:pl-2">
             @foreach($topFavorites as $event)
                 <div>
                     <x-events.event-list :event="$event" :isTopFavorite="true" />

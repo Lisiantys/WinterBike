@@ -92,22 +92,21 @@
         <ul class="space-y-2 font-medium">
 
             @auth
-                <div class="flex items-center p-2 mb-6">
-                    <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar" class="w-12 h-12 rounded-full dark:bg-gray-500">                
-                    <div class="ml-3">
+                <div class="flex flex-col items-center p-2 mb-4">
+                    <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar" class="w-24 h-24 rounded-full dark:bg-gray-500 object-cover">                
+                    <div class="flex flex-col items-center ">
                         <h2 class="text-lg font-semibold">{{ Auth::user()->name }}</h2>
                         <span class="flex items-center">
                             <p class="text-xs dark:text-gray-400">{{ Auth::user()->role->name }}</p>
                         </span>
                     </div>
+                    <li  class="mt-6">
+                        <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+                            Créer un événement
+                        </a>
+                    </li>
                 </div>
 
-                <li>
-                    <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
-                        Créer un événement
-                    </a>
-                </li>
-              
                 <li>
                     <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
                         <i class="fa-solid fa-magnifying-glass pr-2"></i>
