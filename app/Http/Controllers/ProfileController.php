@@ -79,6 +79,16 @@ class ProfileController extends Controller
     */
     public function show(User $user)
     {
+
+        // Récupérer les commentaires de l'utilisateur
+        $commentsCount = $user->comments()->count();
+
+        // Récupérer les événements créés par l'utilisateur qui sont validés
+        $eventsCount = $user->events()->where('is_validated', 1)->count();
+
+        // Supposons que vous avez une relation 'favorites' dans votre modèle User
+        $favoritesCount = $user->favoritedEvents()->count();
+
         // Récupérer les commentaires de l'utilisateur
         $comments = $user->comments()->orderBy('created_at', 'desc')->paginate(5);
      
@@ -86,7 +96,7 @@ class ProfileController extends Controller
         $events = $user->events()->where('is_validated', 1)->orderBy('created_at', 'desc')->paginate(5);
      
         // Retourner la vue de profil avec les données
-        return view('profile.show', compact('user', 'comments', 'events'));
+        return view('profile.show', compact('user', 'comments', 'events','favoritesCount', 'eventsCount', 'commentsCount'));
     }
     
     /**

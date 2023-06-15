@@ -53,7 +53,7 @@ class EventController extends Controller
     /**
      * Affiche les 3 évènements avec le plus de favoris
      */
-    public function getTopFavorites()
+    private function getTopFavorites()
     {
         // Utiliser 'withCount' pour obtenir le nombre de favoris pour chaque événement
         $topFavorites = Event::where('is_validated', 1)
@@ -192,6 +192,10 @@ class EventController extends Controller
 
         $user = auth()->user();
         $request->validate($this->validationRules());
+
+
+        // Revoir les Storages pour affichage img dans les vues -> asset
+
 
         $imageName = $request->file('image_path')->store('events', 'public');        
         $event = Event::create([

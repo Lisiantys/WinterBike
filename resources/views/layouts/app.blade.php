@@ -16,8 +16,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
-        <div>
+    <body class="flex flex-col min-h-screen">
+        <div class="flex-grow">
             @include('layouts.side')
 
             <!-- Page Content -->
@@ -26,9 +26,11 @@
                     <main>
                         {{ $slot }}
                     </main>
-                    @include('layouts.footer')
                 </div>
             </div>
+        </div>
+        <div class="lg:ml-64">
+            @include('layouts.footer')
         </div>
     </body>
 </html>

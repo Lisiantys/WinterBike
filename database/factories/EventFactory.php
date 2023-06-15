@@ -20,7 +20,7 @@ class EventFactory extends Factory
         $faker = \Faker\Factory::create('fr_FR'); // Utiliser le générateur de données Faker en français
         return [
             'name' => $faker->sentence,
-            'image_path' => 'events/fake-image-events.jpg',
+            'image_path' => 'events/fake-image-events.jpg', // A retirer pour le developpement
             'beginningDate' => $faker->dateTimeBetween('now', '+1 month'),
             'endDate' => $faker->dateTimeBetween('+1 month', '+2 months'),
             'address' => $faker->address,
@@ -30,7 +30,7 @@ class EventFactory extends Factory
             'facebook' => $faker->url,
             'description' => $faker->paragraph,
             'staffMessage' => $faker->sentence,
-            'is_promoted' => $faker->boolean,
+            'is_promoted' => $faker->boolean, // V2
             'is_validated' => $faker->boolean,
             'department_id' => rand(1, 96), //96 Départements générés au préalable
             'region_id' => rand(1, 13), //13 Régions générés au préalable
