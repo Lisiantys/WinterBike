@@ -1,6 +1,6 @@
 <x-app-layout>
-    
-   <div class="w-full grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3  gap-4 ">
+
+   <div class="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 ">
         @foreach($topFavorites as $eventFavorite)
             <div>
                 <x-events.event-favorites :event="$eventFavorite" :rank="$loop->iteration" />
