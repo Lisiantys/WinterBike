@@ -3,7 +3,7 @@
         <div class="rounded-lg bg-white shadow-lg my-8 dark:bg-neutral-800 w-11/12 mx-auto lg:my-auto flex items-center justify-center">
             <div class="flex flex-col lg:flex-row lg:flex-wrap">
                 <!-- Colonne de gauche-->
-                <div class="px-4 md:px-0 lg:w-6/12">
+                <div class="px-2 md:px-0 lg:w-6/12">
                     <div class="mx-4 p-2 md:mx-6 md:p-12">
                         <div class="pb-6 pt-6 md:pt-0">
                             <i class="fa-solid fa-arrow-left"></i>
@@ -14,7 +14,7 @@
                         <!--Logo-->
                         <div class="text-center">
                             <x-application-logo class="mx-auto w-24 fill-current text-gray-500" />
-                            <h2 class="mt-6 text-center text-3xl font-extrabold text-blue-900">
+                            <h2 class="text-center text-3xl font-extrabold text-blue-900">
                                 {{ __('Se connecter') }}
                             </h2>
                         </div>

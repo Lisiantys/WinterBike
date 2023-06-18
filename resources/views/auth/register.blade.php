@@ -14,12 +14,12 @@
                         <!--Logo-->
                         <div class="text-center">
                             <x-application-logo class="mx-auto w-24 fill-current text-gray-500" />
-                            <h2 class="mt-6 text-center text-3xl font-extrabold text-blue-900">
+                            <h2 class="text-center text-3xl font-extrabold text-blue-900">
                                 {{ __('Créer un compte') }}
                             </h2>
                         </div>
 
-                        <form class="mt-8 space-y-6" method="POST" action="{{ route('register') }}">
+                        <form class="mt-8 space-y-2" method="POST" action="{{ route('register') }}">
                             @csrf
                             <input type="hidden" name="remember" value="true">
 
