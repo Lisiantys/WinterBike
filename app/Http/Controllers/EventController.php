@@ -71,7 +71,7 @@ class EventController extends Controller
     public function myEvents()
     {
         $user = auth()->user();
-        $events = Event::with('user')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->paginate(12);
+        $events = Event::with('user')->where('user_id', $user->id)->orderBy('updated_at', 'desc')->paginate(4);
         return view('events.my_events', compact('events'));
     }
 

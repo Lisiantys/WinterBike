@@ -169,7 +169,7 @@
         <x-events.textarea-field name="description" label="Description (Obligatoire)" rows="10" required maxlength="2000" />
 
         <div class="flex justify-end">
-            <button type="submit" class="px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-green-500 rounded-lg">Créer l'évènement</button>
+            <x-events.button-gradient type="submit">Créer l'événement</x-events.button-gradient>
         </div>
     </form>
     

@@ -12,7 +12,7 @@
                 <form action="{{ route('events.validate', $event) }}" method="POST" class="w-1/2">
                     @csrf
                     @method('PATCH')
-                    <button type="submit" class="flex items-center justify-center bg-green-500 w-full h-8 lg:h-11 text-white"><i class="fa-solid fa-check fa-xl"></i></button>
+                    <button type="submit" class="flex items-center justify-center bg-green-500 w-full rounded-l h-8 lg:h-11 text-white"><i class="fa-solid fa-check fa-xl"></i></button>
                 </form>
             
                 @if(auth()->user()->role_id === 4)
@@ -20,7 +20,7 @@
                         @csrf
                         @method('DELETE')
                         <input type="hidden" name="fromEventPending" value="pending">
-                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement?');" class="flex items-center justify-center bg-red-500 w-full h-8 lg:h-11 text-white"><i class="fa-solid fa-trash-can fa-xl"></i></button>
+                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement?');" class="flex items-center justify-center bg-red-500 w-full rounded-r h-8 lg:h-11 text-white"><i class="fa-solid fa-trash-can fa-xl"></i></button>
                     </form>
                 @endif
             </div>
@@ -28,12 +28,12 @@
             <form action="{{ route('events.storeStaffMessage', $event) }}" method="POST" class="mt-4">
                 @csrf
                 <div class="form-group">
-                    <textarea name="staffMessage" id="staffMessage" class="w-full" required maxlength="255" minlength="10"></textarea>
+                    <textarea name="staffMessage" id="staffMessage" class="w-full rounded" required maxlength="255" minlength="10"></textarea>
                     @error('staffMessage')
                         <p class="text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
-                <button type="submit" class="h-10 mt-2 mb-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">Envoyer le message</button>
+                <x-events.button-gradient type="submit">Envoyer le message</x-events.button-gradient>
             </form>
         </div>
         

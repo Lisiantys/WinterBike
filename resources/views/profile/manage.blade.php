@@ -27,7 +27,7 @@
     
         <div class="flex flex-col sm:flex-row sm:items-center">
             <input type="text" name="search" placeholder="Rechercher un utilisateur" value="{{ request('search') }}" class="border border-gray-300 w-full rounded-lg py-2 px-3 mb-4 sm:mb-0 sm:mr-4 flex-grow focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button type="submit"class="h-10 w-full sm:w-1/5 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">Rechercher</button>
+            <x-events.button-gradient type="submit">Rechercher</x-events.button-gradient>
         </div>
     </form>
     

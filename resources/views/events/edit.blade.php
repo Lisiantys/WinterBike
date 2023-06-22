@@ -50,7 +50,7 @@
         <x-events.textarea-field name="description" label="Description (Obligatoire)" rows="10" maxlength="2000" :value="$event->description" required />
     
         <div class="flex justify-end">
-            <button type="submit" class="px-4 py-2 text-white bg-gradient-to-r from-blue-500 to-green-500 rounded-lg">Mettre à jour l'évènement</button>
+            <x-events.button-gradient type="submit">Mettre à jour l'évènement</x-events.button-gradient>
         </div>
     </form>
 

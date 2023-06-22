@@ -101,9 +101,7 @@
                         </span>
                     </div>
                     <li  class="mt-6">
-                        <a href="{{ route('events.create') }}" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
-                            Créer un événement
-                        </a>
+                        <x-events.button-gradient href="{{ route('events.create') }}">Créer un évènement</x-events.button-gradient>
                     </li>
                 </div>
 

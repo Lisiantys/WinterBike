@@ -39,7 +39,7 @@
         <input type="date" name="end" id="end" value="{{ $request->input('end') }}" class="border border-gray-200 rounded py-2 focus:outline-none focus:border-blue-300 w-full">
     </div>
     <div class="flex flex-col justify-center col-span-full">
-        <button type="submit" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded text-base">Filtrer les événements</button>
+        <x-events.button-gradient type="submit">Filtrer les événements</x-events.button-gradient>
         <button type="button" onclick="resetForm();" class="h-10 mt-2 font-semibold bg-red-500 text-white px-4 py-2 rounded text-base">Supprimer les filtres</button>
     </div>
 </form>

@@ -84,46 +84,45 @@
         </div>
     </div>
 
-    @auth
-    @if(auth()->user()->email_verified_at !== null)
-    <div class="flex md:flex-row items-center md:space-x-4 mb-6">
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-0">Commentaires ({{ $comments->count() }})</h2>
-        <div class="flex items-center">
-            <div class="flex items-center ml-4 space-x-2 a2a_kit a2a_kit_size_32 a2a_default_style">
-                <a class="a2a_button_facebook"></a>
-                <a class="a2a_button_twitter"></a>
-                <a class="a2a_button_skype"></a>
-            </div>
-            <a href="#" id="copyLink" class="text-gray-600 hover:text-gray-800 transition duration-200">
-                <i class="fa-solid fa-share-nodes fa-lg"></i>
-            </a>
-        </div>
-    </div>
-    <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6 space-y-4">
-        @csrf
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-            <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800 rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="999">{{ old('description') }}</textarea>
-        </div>
-        @error('description')
-            <div class="text-red-500 mt-2 text-sm">
-                {{ $message }}
-            </div>
-        @enderror
-        <button type="submit" class="h-10 w-full md:w-auto py-2 px-6 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-lg transition duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-white">
-            Commenter
-        </button>
-    </form>
-    @else
-    <h3 class="text-gray-800 dark:text-white">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
-    @endif
-    @endauth
+    <div class="flex justify-center">
+        <div class="w-full lg:w-2/3 mx-auto my-10">
+            @auth
+                @if(auth()->user()->email_verified_at !== null)
+                    <div class="flex md:flex-row items-center md:space-x-4 mb-6">
+                        <h2 class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-0">Commentaires ({{ $comments->count() }})</h2>
+                        <div class="flex items-center">
+                            <div class="flex items-center ml-4 space-x-2 a2a_kit a2a_kit_size_32 a2a_default_style">
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_twitter"></a>
+                                <a class="a2a_button_skype"></a>
+                            </div>
+                            <a href="#" id="copyLink" class="text-gray-600 hover:text-gray-800 transition duration-200">
+                                <i class="fa-solid fa-share-nodes fa-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6 space-y-4">
+                        @csrf
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+                            <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800 rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="999">{{ old('description') }}</textarea>
+                        </div>
+                        @error('description')
+                            <div class="text-red-500 mt-2 text-sm">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <x-events.button-gradient type="submit">Commenter</x-events.button-gradient>
+                    </form>
+                @else
+                    <h3 class="text-gray-800 dark:text-white">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+                @endif
+            @endauth
 
-    @guest
-    <h3 class="text-gray-800 dark:text-white">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
-    @endguest
+            @guest
+            <h3 class="text-gray-800 dark:text-white">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+            @endguest
 
-    <div class="flex flex-col lg:flex-row lg:space-x-6">
-        <div class="lg:w-1/2">
+            
             @forelse($comments as $comment)
                 <x-events.event-comment :comment="$comment" />
             @empty
@@ -132,13 +131,14 @@
                 @endauth
             @endforelse
             <div>{{ $comments->links('vendor.pagination.custom') }}</div>
+        
         </div>
-    
-        <div class="mt-8 lg:mt-0 lg:w-1/2">
-            @foreach ($topFavorites as $favorite)
-                <x-events.event-list :event="$favorite"/>
-            @endforeach 
-        </div>
+    </div>
+
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 ">
+        @foreach($topFavorites as $eventFavorite)
+            <x-events.event-favorites :event="$eventFavorite" :rank="$loop->iteration" />
+        @endforeach
     </div>
     
     <script>
@@ -205,5 +205,5 @@
 
 </script>
 
-    <script async src="https://static.addtoany.com/menu/page.js"></script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 </x-app-layout>
