@@ -1,4 +1,4 @@
-<form action="{{ route('events.index') }}" method="get" class="w-full lg:mt-0 mb-6" id="searchForm">
+<form action="{{ route('events.index') }}" method="get" class="w-full bg-greyed rounded-lg p-5" id="searchForm">
     <div class="mb-6">
         <label for="keyword" class="font-medium text-gray-700">Mot-clé :</label>
         <input type="text" name="keyword" id="keyword" value="{{ $request->input('keyword') }}" class="border border-gray-200 rounded py-2 focus:outline-none focus:border-blue-300 w-full">

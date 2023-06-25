@@ -1,13 +1,12 @@
 @props(['href' => '#', 'type' => ''])
 
 @if($type === 'submit')
-    <button type="submit" 
-        class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+    <button {{ $attributes->merge(['class' => 'h-10 font-semibold bg-gradient-to-r from-mint to-dark-green text-white py-2 px-4 rounded text-base']) }} type="submit">
         {{ $slot }}
     </button>
 @else
     <a href="{{ $href }}" 
-        class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+       {{ $attributes->merge(['class' => 'h-10 font-semibold bg-gradient-to-r from-mint to-dark-green text-white py-2 px-4 rounded text-base']) }}>
         {{ $slot }}
     </a>
 @endif

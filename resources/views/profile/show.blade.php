@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="w-full h-full">
         <div class="flex flex-col">
-            <div class="w-full flex items-center justify-start bg-gradient-to-r from-blue-500 to-green-500 text-white p-6 rounded-t-lg shadow-md">
+            <div class="w-full flex items-center justify-start bg-mint text-white p-6 rounded-t-lg shadow-md">
                 <img src="{{ Storage::url($user->image_path) }}"
                     alt="Image de l'utilisateur" class="rounded-full w-24 h-24 sm:w-32 sm:h-32 object-cover border-2 border-blue-300"
                 >  
@@ -12,7 +12,7 @@
                 </div>
             </div>
             
-            <div class="text-black flex flex-col sm:flex-row items-center justify-between sm:px-6 space-y-3 py-2 rounded-b-lg bg-slate-50 border-t-2 border-blue-300">
+            <div class="text-black flex flex-col sm:flex-row items-center justify-between sm:px-6 space-y-3 py-2 rounded-b-lg bg-greyed border-t-2 border-blue-300">
                 <div class="mt-2 sm:mt-0 sm:w-60">
                     @auth
                         @if(auth()->user()->id === $user->id)
@@ -41,10 +41,10 @@
         </div>
     </section>
      
-    <div class="mt-8">
+    <div class="mt-8 p-2">
         <h2 class="font-bold text-2xl mb-4">Événements créés par l'utilisateur</h2>
         @forelse($events as $event)
-            <div class="mb-4  rounded-lg ">
+            <div class="mb-4 rounded-lg">
                 <x-events.event-list :event="$event"/>
             </div>
         @empty
@@ -57,7 +57,7 @@
         <div>{{ $events->links('vendor.pagination.custom') }}</div>
     </div>
 
-    <div class="mt-8">
+    <div class="mt-8 p-2">
         <h2 class="font-bold text-2xl mb-4">Commentaires de l'utilisateur</h2>
 
 

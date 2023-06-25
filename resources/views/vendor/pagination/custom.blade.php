@@ -20,7 +20,7 @@
             @endif
 
             {{-- Pagination Elements --}}
-            <div class="sm:flex hidden space-x-4">
+            <div class="md:flex hidden space-x-4">
                 @foreach ($elements as $element)
                     {{-- "Three Dots" Separator --}}
                     @if (is_string($element))

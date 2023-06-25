@@ -1,6 +1,6 @@
 <div class="bg-white shadow-lg rounded-lg border h-full border-gray-200">
     <div class="flex flex-row justify-between items-center h-full">
-        <div class="w-14 mr-4 flex flex-col items-center justify-center space-y-4 rounded-l-lg h-full bg-gradient-to-t from-blue-500 to-green-500">
+        <div class="w-14 mr-4 flex flex-col items-center justify-center space-y-4 rounded-l-lg h-full bg-gradient-to-t from-dark-green to-mint">
             <p class="text-xl font-bold
                 @if($rank == 1) text-yellow-400 
                 @elseif($rank == 2) text-slate-400 
