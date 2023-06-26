@@ -1,20 +1,33 @@
-<footer class="bg-white w-full rounded-lg shadow dark:bg-gray-900">
-    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="https://winterbike.fr/" class="flex items-center mb-4 sm:mb-0">
-             <x-application-logo class="w-10 h-10 fill-current text-gray-500" />
-            </a>
-            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6">Mentions Légales</a>
-                </li>
-                <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6 ">Politique de Confidentialité</a>
-                </li>
-            </ul>
+<div class="w-full h-16" style="background: linear-gradient(178deg, white 50%, #10564f 50%);"></div>
+<footer class="bg-gradient-to-b from-dark-green to-mint w-full p-4 md:py-8">
+    <div class="grid grid-flow-row gap-4 space-y-5 md:space-y-0 items-center justify-items-center text-center md:grid-flow-col md:text-left">
+        <x-application-logo class="w-32 h-32"/>
+        <div class="text-white max-w-md space-y-4 md:space-y-2">
+            <h3 class="font-extrabold text-xl tracking-wider">Winter Bike</h3>
+            <p> 
+                Participez aux rassemblements de moto pour une série d'événements
+                à travers la France. Que ce soit pour une balade apaisante, une exposition 
+                innovante, une hivernale revigorante ou un roadtrip captivant, chaque événement 
+                est une nouvelle aventure à savourer.
+            </p>
         </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://winterbike.fr/" class="hover:underline">Winter Bike</a>. Tous droits réservés.</span>
+        
+        <ul class="text-base font-medium text-white space-y-4  md:space-y-5 ">
+            <li class="space-x-3">
+                <i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i>
+                <a href="{{ route('index') }}" class="hover:underline">Accueil </a>
+            </li>
+            <li class="space-x-3">
+                <i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i>
+                <a href="{{ route('mentions-legales') }}" class="hover:underline">Mentions Légales</a>
+            </li>
+            <li class="space-x-3">
+                <i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i>
+                <a href="{{ route('politique-de-confidentialite') }}" class="hover:underline">Politique de Confidentialité</a>
+            </li>
+        </ul>
     </div>
+    <hr class="my-6 w-full sm:w-1/2 border-white mx-auto lg:my-8" />
+    <span class="block text-sm text-white text-center">© 2023 <a href="https://winterbike.fr/" class="hover:underline">Winter Bike</a>. Tous droits réservés.</span>
 </footer>
 

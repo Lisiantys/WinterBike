@@ -66,4 +66,7 @@ Route::middleware('auth')->group(function () {
 // Route show en dessous de create, sinon Erreur 404 sur la route create
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 
+Route::view('/mentions-legales', 'pages/mentions-legales')->name('mentions-legales');
+Route::view('/politique-de-confidentialite', 'pages/politique-de-confidentialite')->name('politique-de-confidentialite');
+
 require __DIR__.'/auth.php';
