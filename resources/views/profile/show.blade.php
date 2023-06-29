@@ -41,35 +41,35 @@
         </div>
     </section>
      
-    <div class="mt-8 p-2">
-        <h2 class="font-bold text-2xl mb-4">Événements créés par l'utilisateur</h2>
-        @forelse($events as $event)
-            <div class="mb-4 rounded-lg">
-                <x-events.event-list :event="$event"/>
-            </div>
-        @empty
-            <div class="bg-white shadow rounded-lg p-4">
-                <x-events.empty-message>
-                    Aucun événement crée par l'utilisateur.
-                </x-events.empty-message>
-            </div>
-        @endforelse
-        <div>{{ $events->links('vendor.pagination.custom') }}</div>
-    </div>
+    <div class="mt-8 p-4">
+        <div>
+            <h2 class="font-bold text-2xl mb-4">Événements créés par l'utilisateur</h2>
+            @forelse($events as $event)
+                <div class="mb-4 rounded-lg">
+                    <x-events.event-list :event="$event"/>
+                </div>
+            @empty
+                <div class="bg-white shadow rounded-lg p-4">
+                    <x-events.empty-message>
+                        Aucun événement crée par l'utilisateur.
+                    </x-events.empty-message>
+                </div>
+            @endforelse
+            <div>{{ $events->links('vendor.pagination.custom') }}</div>
+        </div>
 
-    <div class="mt-8 p-2">
-        <h2 class="font-bold text-2xl mb-4">Commentaires de l'utilisateur</h2>
-
-
-        @forelse($comments as $comment)
-            <x-events.event-comment :comment="$comment" :isProfilComment="true" />
-        @empty
-            <div class="bg-white shadow rounded-lg p-4">
-                <x-events.empty-message>
-                    Aucun commentaire publié l'utilisateur.
-                </x-events.empty-message>
-            </div>
-        @endforelse
-        <div>{{ $comments->links('vendor.pagination.custom') }}</div>
+        <div>
+            <h2 class="font-bold text-2xl mb-4">Commentaires de l'utilisateur</h2>
+            @forelse($comments as $comment)
+                <x-events.event-comment :comment="$comment" :isProfilComment="true" />
+            @empty
+                <div class="bg-white shadow rounded-lg p-4">
+                    <x-events.empty-message>
+                        Aucun commentaire publié l'utilisateur.
+                    </x-events.empty-message>
+                </div>
+            @endforelse
+            <div>{{ $comments->links('vendor.pagination.custom') }}</div>
+        </div>
     </div>
 </x-app-layout>

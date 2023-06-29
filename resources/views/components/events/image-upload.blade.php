@@ -1,4 +1,4 @@
-<div class="flex items-center justify-center w-full h-96 border-2 border-dashed rounded-lg cursor-pointer" id="drop_zone">
+<div class="flex flex-grow  items-center justify-center h-96 border-2 border-dashed rounded-lg cursor-pointer" id="drop_zone">
     <div class="text-center" id="placeholder">
         <i class="fas fa-camera text-xl text-gray-500"></i>
         <p class="mt-1 text-sm text-gray-500">Glissez une image ici ou cliquez pour sélectionner une image</p>

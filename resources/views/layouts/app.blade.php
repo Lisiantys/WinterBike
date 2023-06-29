@@ -30,7 +30,7 @@
                     <x-h1-title>{{ $title }}</x-h1-title>
                 @endisset
                 
-                <div class="p-4 rounded-lg dark:border-gray-700 mt-16 lg:mt-0">
+                <div class="p-4 rounded-lg dark:border-gray-700">
                     <main>
                         {{ $slot }}
                     </main>

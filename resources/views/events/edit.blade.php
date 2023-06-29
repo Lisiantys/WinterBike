@@ -4,10 +4,11 @@
         @csrf
         @method('PUT')
 
-        <x-events.image-preview id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image"></x-events.image-preview>
+        <div class="flex w-full bg-red-500">
+            <x-events.image-preview id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image"></x-events.image-preview>
     
-        <x-events.image-upload name="image_path" label="Image" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048"></x-events.image-upload>
-        
+            <x-events.image-upload name="image_path" label="Image" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048"></x-events.image-upload>
+         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
             <x-events.input-field name="name" label="Nom de l'évènement (Obligatoire)" value="{{ $event->name }}" required maxlength="255"></x-events.input-field>
 
