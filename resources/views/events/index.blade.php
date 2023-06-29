@@ -1,8 +1,4 @@
-<x-app-layout>
-    <x-h1-title>
-        Retrouvez les évènements en France
-    </x-h1-title>
- 
+<x-app-layout title="Événements moto en France">
     <div class="flex flex-col md:flex-row-reverse">
         <div class="w-full md:w-5/12 lg:w-4/12 md:h-screen sm:top-24 md:sticky">
             @include('events.partials.form-filter')

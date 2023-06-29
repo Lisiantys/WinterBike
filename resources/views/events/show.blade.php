@@ -97,7 +97,7 @@
                                 <a class="a2a_button_skype"></a>
                             </div>
                             <a href="#" id="copyLink" class="text-gray-600 hover:text-gray-800 transition duration-200">
-                                <i class="fa-solid fa-share-nodes fa-lg"></i>
+                                <i class="fa-solid fa-share-nodes fa-xl"></i>
                             </a>
                         </div>
                     </div>

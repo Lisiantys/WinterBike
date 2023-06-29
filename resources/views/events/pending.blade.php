@@ -1,8 +1,4 @@
-<x-app-layout>
-    <x-h1-title>
-        Évènements en attentes
-    </x-h1-title>
-
+<x-app-layout title="Événements en attentes">
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
         @forelse($pendingEvents as $event)
         <div class="event">

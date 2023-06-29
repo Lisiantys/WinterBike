@@ -1,9 +1,9 @@
-<form action="{{ route('events.index') }}" method="get" class="w-full bg-greyed rounded-lg p-5" id="searchForm">
-    <div class="mb-6">
+<form action="{{ route('events.index') }}" method="get" class="w-full bg-greyed rounded-lg p-5 space-y-4" id="searchForm">
+    <div>
         <label for="keyword" class="font-medium text-gray-700">Mot-clé :</label>
         <input type="text" name="keyword" id="keyword" value="{{ $request->input('keyword') }}" class="border border-gray-200 rounded py-2 focus:outline-none focus:border-blue-300 w-full">
     </div>
-    <div class="mb-6">
+    <div>
         <label for="department_id" class="font-medium text-gray-700">Département :</label>
         <select name="departement" id="departement" class="block appearance-none w-full bg-white border border-gray-200 py-2 rounded focus:outline-none focus:border-blue-300">
             <option value="">Sélectionnez un département</option>
@@ -12,7 +12,7 @@
             @endforeach
         </select>
     </div>
-    <div class="mb-6">
+    <div>
         <label for="region_id" class="font-medium text-gray-700">Région :</label>
         <select name="region" id="region" class="block appearance-none w-full bg-white border border-gray-200 py-2 rounded focus:outline-none focus:border-blue-300">
             <option value="">Sélectionnez une région</option>
@@ -21,7 +21,7 @@
             @endforeach
         </select>
     </div>
-    <div class="mb-6">
+    <div>
         <label for="type_id" class="font-medium text-gray-700">Type d'événement :</label>
         <select name="type" id="type" class="block appearance-none w-full bg-white border border-gray-200 py-2 rounded focus:outline-none focus:border-blue-300">
             <option value="">Sélectionnez un type d'événement</option>
@@ -30,11 +30,11 @@
             @endforeach
         </select>
     </div>
-    <div class="mb-6">
+    <div>
         <label for="beginning" class="font-medium text-gray-700">Date de début :</label>
         <input type="date" name="beginning" id="beginning" value="{{ $request->input('beginning') }}" class="border border-gray-200 rounded py-2 focus:outline-none focus:border-blue-300 w-full">
     </div>
-    <div class="mb-6">
+    <div>
         <label for="end" class="font-medium text-gray-700">Date de fin :</label>
         <input type="date" name="end" id="end" value="{{ $request->input('end') }}" class="border border-gray-200 rounded py-2 focus:outline-none focus:border-blue-300 w-full">
     </div>

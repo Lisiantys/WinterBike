@@ -1,7 +1,4 @@
-<x-app-layout>
-    <x-h1-title>
-        Modifier votre évènement
-    </x-h1-title>
+<x-app-layout title="Modifier votre événement">
 
     <form action="{{ route('events.update', $event) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf

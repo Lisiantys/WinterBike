@@ -1,7 +1,4 @@
-<x-app-layout>
-    <x-h1-title>
-        Mes favoris
-    </x-h1-title>
+<x-app-layout title="Mes Favoris">
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
         @forelse ($favorites as $favorite)
             <x-events.event-list :event="$favorite" :isFavoriteView="true" />

@@ -1,8 +1,5 @@
-<x-app-layout>
-    <x-h1-title>
-        Gérer les utilisateurs
-    </x-h1-title>
-    
+<x-app-layout title="Gestion des utilisateurs">
+
     <form action="{{ route('profile.manage') }}" method="GET" class="mb-6 space-y-4 mx-auto flex sm:flex-col-reverse flex-col">
         <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
             <div class="relative inline-block w-full">
