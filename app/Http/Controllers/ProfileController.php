@@ -62,7 +62,7 @@ class ProfileController extends Controller
     public function banUser(User $user)
     {
         $user->update(['is_banned' => 1]);
-        return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été banni.");
+        return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été bloqué.");
     }
 
     /**
@@ -71,7 +71,7 @@ class ProfileController extends Controller
     public function unbanUser(User $user)
     {
         $user->update(['is_banned' => 0]);
-        return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été débanni.");
+        return redirect()->route('profile.manage')->withSuccess("L'utilisateur a été débloqué.");
     }
 
     /**

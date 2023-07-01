@@ -25,7 +25,7 @@
     <div class="mt-2 flex items-center justify-between">
         <div class="flex items-center">
             <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
-            <a href="{{ route('profile.show', $event->user->id ) }}" class="ml-2 text-gray-800 hover:text-blue-600">{{ $event->user->name }}</a>
+            <a href="{{ route('profile.show', $event->user->id ) }}" class="ml-2 text-gray-800 hover:text-mint">{{ $event->user->name }}</a>
         </div>
         <div class="text-sm text-gray-500 flex justify-end">
             @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
