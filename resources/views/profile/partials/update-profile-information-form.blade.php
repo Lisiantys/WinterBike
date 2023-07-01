@@ -1,11 +1,12 @@
-<section>
-    <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil de {{ $user->name }}" class="rounded-full w-36 h-36 object-cover">
+<section class="flex flex-col md:flex-row">
+
+    <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil de {{ $user->name }}" class="rounded-full w-36 h-36 mt-4 md:mr-4 mx-auto object-cover">
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+    <form method="post" action="{{ route('profile.update') }}" class="space-y-6 w-full" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -39,23 +40,22 @@
             @endif
         </div>
 
-        <div>
-            <label for="image_path">Image :</label>
+        <div class="flex flex-col sm:flex-row  sm:items-center sm:justify-between space-y-6 sm:space-y-0">
             <input type="file" id="image_path" name="image_path" accept="image/jpeg,image/png,image/jpg,image/svg" max-size="600">
-        </div>
-        
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Enregistrer') }}</x-primary-button>
+            
+            <div class="flex flex-row-reverse items-center gap-4">
+                <x-events.button-gradient type="submit">Enregistrer</x-events.button-gradient>
 
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
-            @endif
+                @if (session('status') === 'profile-updated')
+                    <p
+                        x-data="{ show: true }"
+                        x-show="show"
+                        x-transition
+                        x-init="setTimeout(() => show = false, 3000)"
+                        class="text-lg text-dark-green font-bold"
+                    >{{ __('Saved.') }}</p>
+                @endif
+            </div>
         </div>
     </form>
 </section>

@@ -6,7 +6,7 @@
                     <div class="flex items-center ">
                         <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" class="rounded-full w-12 h-12 object-cover">                    
                         <div class="flex flex-col mb-2 ml-2">
-                            <p><strong>{{ $comment->user->name }}</strong> a posté un commentaire sur <strong><a href="{{ route('events.show', $comment->event->id) }}" class="text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">{{ $comment->event->name }}</a></strong></p>
+                            <p><strong>{{ $comment->user->name }}</strong> a posté un commentaire sur <strong><a href="{{ route('events.show', $comment->event->id) }}" class="text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-dark-green to-mint">{{ $comment->event->name }}</a></strong></p>
                             <span class="text-xs text-gray-500 dark:text-gray-400">{{ \Carbon\Carbon::parse($comment->created_at)->isoFormat('LLL') }}</span>
                         </div>
                     </div>

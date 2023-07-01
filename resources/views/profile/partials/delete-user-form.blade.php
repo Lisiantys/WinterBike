@@ -1,10 +1,6 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Supprimer le compte') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-base text-gray-600 font-semibold">
             {{ __('Une fois votre compte supprimé, toutes ses ressources, et données "Évènements et commentaires" seront définitivement effacées. ') }}
         </p>
     </header>

@@ -1,7 +1,7 @@
 <style>
     .font-heebo {
         font-family: 'Open Sans', sans-serif;
-        text-shadow: 1px 2px #000;
+        text-shadow: 2px 2px #000;
     }
     .xl-size{
         font-size: clamp(30px, 2.8vw, 65px);

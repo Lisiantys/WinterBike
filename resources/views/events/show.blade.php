@@ -10,12 +10,12 @@
                 <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
             </div>
             
-            <div id="myModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-[100vh] max-h-full flex items-center justify-center xl:mx-auto">
+            <div id="myModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-[100vh] max-h-full items-center justify-center xl:mx-auto">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full max-w-4xl 2xl:max-w-5xl max-h-full mx-auto overflow-y-auto">
                     <!-- Modal content -->
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
-                        <h3 class="font-heebo font-bold text-lg md:text-xl lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500">
+                        <h3 class="font-heebo font-bold text-lg md:text-xl lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
                             {{ $event->name }}
                         </h3>
                         <button id="closeModal" type="button" class=" p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
@@ -30,7 +30,7 @@
             </div>
             
             <div class="px-4 md:px-0 space-y-4 py-6 md:py-0">
-                <h2 class="font-heebo font-bold text-xl md:text-2xl lg:text-3xl text-transparent bg-gradient-to-r bg-clip-text from-blue-500 to-green-500">
+                <h2 class="font-heebo font-bold text-xl md:text-2xl lg:text-3xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
                     {{ $event->name }}
                 </h2>
                 <p class="mt-2 text-gray-500">Du <strong>{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</strong> - {{ $event->type->name }}</p>
@@ -67,11 +67,11 @@
                         @else
                             <form action="{{ route('favorites.add', $event->id) }}" method="POST" class="col-span-1">
                                 @csrf
-                                <button type="submit" class="w-full h-10 font-semibold bg-green-500 text-white py-2 px-4 rounded text-base">Ajouter aux favoris</button>
+                                <button type="submit" class="w-full h-10 font-semibold bg-dark-green text-white py-2 px-4 rounded text-base">Ajouter aux favoris</button>
                             </form>
                         @endif
                         @if(auth()->user()->role->id === 3 || auth()->user()->role->id === 4)
-                            <a href="{{ route('events.edit', $event->id) }}" class="col-span-1 h-10 font-semibold bg-green-500 text-white py-2 px-4 rounded text-base flex items-center justify-center">Modifier l'événement</a>
+                            <a href="{{ route('events.edit', $event->id) }}" class="col-span-1 h-10 font-semibold bg-mint text-white py-2 px-4 rounded text-base flex items-center justify-center">Modifier l'événement</a>
                             <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="col-span-1">
                                 @csrf
                                 @method('DELETE')

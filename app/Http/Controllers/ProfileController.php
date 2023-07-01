@@ -43,7 +43,7 @@ class ProfileController extends Controller
     }
     
     /**
-    * Met à jour un rêle
+    * Met à jour un rôle
     */
     public function updateRole(Request $request, User $user)
     {
