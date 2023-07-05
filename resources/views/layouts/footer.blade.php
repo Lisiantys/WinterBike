@@ -1,7 +1,7 @@
 <div class="w-full h-16" style="background: linear-gradient(178deg, white 50%, #10564f 50%);"></div>
 <footer class="bg-gradient-to-b from-dark-green to-mint w-full p-4 md:py-8">
     <div class="grid grid-flow-row gap-4 space-y-5 md:space-y-0 items-center justify-items-center text-center md:grid-flow-col md:text-left">
-        <x-application-logo class="w-32 h-32"/>
+        <x-application-logo-white class="w-32 h-32"/>
         <div class="text-white max-w-md space-y-4 md:space-y-2">
             <h3 class="font-extrabold text-xl tracking-wider">Winter Bike</h3>
             <p> 

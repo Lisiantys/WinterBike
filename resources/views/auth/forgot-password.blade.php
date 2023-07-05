@@ -5,13 +5,13 @@
             <div class="pb-6 pt-6 md:pt-0">
                 <i class="fa-solid fa-arrow-left"></i>
                 <a href="{{ route('index') }}" class="font-medium text-blue-600 hover:text-blue-500">
-                    {{ __('< Voir les événements') }}
+                    {{ __('Voir les événements') }}
                 </a>
             </div>
             <!-- Logo -->
             <div class="text-center">
                 <x-application-logo class="mx-auto w-24 fill-current text-gray-500" />
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-blue-900">
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-black">
                     {{ __('Mot de passe oublié ?') }}
                 </h2>
                 <div class="my-4 text-sm text-gray-600">

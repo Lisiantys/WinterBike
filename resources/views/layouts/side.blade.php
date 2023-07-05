@@ -185,6 +185,15 @@
                 </li>
             @endguest
         </ul>
+            
+        <div class="flex items-center ">
+            <div>
+                <x-application-logo class="w-12 h-12 mx-auto"/>
+            </div>
+            <h2 class="text-xl">
+                WinterBike
+            </h2>
+        </div>
     </div>
 </aside>
   

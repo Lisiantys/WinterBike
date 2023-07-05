@@ -5,12 +5,12 @@
             <div class="pb-6 pt-0">
                 <i class="fa-solid fa-arrow-left"></i>
                 <a href="{{ route('index') }}" class="font-medium text-blue-600 hover:text-blue-500">
-                    {{ __('< Retour à l\'accueil') }}
+                    {{ __('Retour à l\'accueil') }}
                 </a>
             </div>
             <div class="text-center">
                 <x-application-logo class="mx-auto w-24 fill-current text-gray-500" />
-                <h2 class="mt-6 text-center text-2xl font-extrabold text-blue-900">
+                <h2 class="mt-6 text-center text-2xl font-extrabold text-black">
                     {{ __('Réinitialiser le mot de passe') }}
                 </h2>
             </div>

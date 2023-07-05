@@ -3,7 +3,7 @@
 <td class="header">
 <a href="{{ $url }}" style="display: inline-block;">
 @if (trim($slot) === 'WinterBike')
-<img src="{{ asset('images/logo.webp') }}" class="logo" style="width: 100px; height:100px;" alt="WinterBike Logo">
+<img src="{{ asset('images/logoBlack.png') }}" class="logo" style="width: 100px; height:100px;"  alt="WinterBike Logo">
 <h1 
     style="font-weight: bold; font-size: 2rem; color: black;">
     WinterBike
