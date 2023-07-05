@@ -10,7 +10,7 @@
             <button 
                 type="submit"
                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');"
-                class="flex h-10 items-center justify-center text-base px-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 rounded-md">
+                class="flex h-10 items-center justify-center text-base px-4 font-bold text-red-500 rounded-md">
                 Supprimer
             </button>
         </form>

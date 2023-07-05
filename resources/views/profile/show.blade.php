@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="w-full h-full">
         <div class="flex flex-col">
-            <div class="w-full flex items-center justify-start bg-mint text-white p-6 rounded-t-lg shadow-md">
+            <div class="w-full flex items-center justify-start bg-gradient-to-bl from-dark-green to-mint text-white p-6 rounded-t-lg shadow-md">
                 <img src="{{ Storage::url($user->image_path) }}"
                     alt="Image de l'utilisateur" class="rounded-full w-24 h-24 sm:w-32 sm:h-32 object-cover border-2 border-blue-300"
                 >  
@@ -43,7 +43,7 @@
      
     <div class="mt-8 p-4">
         <div>
-            <h2 class="font-bold text-2xl mb-4">Événements créés par l'utilisateur</h2>
+            <h2 class="text-2xl mb-4 py-4 px-6 bg-mint rounded-lg font-semibold text-white">Événements créés par l'utilisateur</h2>
             @forelse($events as $event)
                 <div class="mb-4 rounded-lg">
                     <x-events.event-list :event="$event"/>
@@ -59,7 +59,7 @@
         </div>
 
         <div>
-            <h2 class="font-bold text-2xl mb-4">Commentaires de l'utilisateur</h2>
+            <h2 class="text-2xl mb-4 py-4 px-6 bg-mint rounded-lg font-semibold text-white">Commentaires de l'utilisateur</h2>
             @forelse($comments as $comment)
                 <x-events.event-comment :comment="$comment" :isProfilComment="true" />
             @empty

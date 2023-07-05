@@ -5,7 +5,7 @@
         @if ($event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
             <div class="absolute top-0 text-center font-semibold inset-x-0 md:inset-auto md:right-0 bg-red-500 text-white px-3 py-2 md:rounded-bl-lg">Événement en cours de validation par l'équipe de Winter Bike...</div>
         @endif
-        <div class="md:col-span-2 grid md:grid-cols-2 w-full md:px-6 md:pt-14 md:pb-8 md:gap-6">
+        <div class="md:col-span-2 grid md:grid-cols-2 w-full md:px-6 md:py-10 md:gap-6 rounded-lg bg-greyed">
             <div class="w-full h-full md:h-96 flex items-center justify-center cursor-pointer" onclick="openModal()">
                 <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
             </div>
@@ -19,7 +19,7 @@
                             {{ $event->name }}
                         </h3>
                         <button id="closeModal" type="button" class=" p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
-                            <i class="fa-solid fa-xmark fa-2xl" style="color: #e45e5e;"></i>
+                            <i class="fa-solid fa-xmark fa-2xl text-red-500 hover:text-red-700" ></i>
                         </button>
                     </div>
                     <!-- Modal body -->
@@ -33,9 +33,9 @@
                 <h2 class="font-heebo font-bold text-xl md:text-2xl lg:text-3xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
                     {{ $event->name }}
                 </h2>
-                <p class="mt-2 text-gray-500">Du <strong>{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</strong> - {{ $event->type->name }}</p>
-                <p class="mt-2 text-gray-500">{{ $event->region->name }} - {{ $event->department->name }}</p>
-                <p class="text-black-500">{{ $event->description }}</p>
+                <p class="mt-2 text-gray-800">Du <strong>{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</strong> - {{ $event->type->name }}</p>
+                <p class="mt-2 text-gray-800">{{ $event->region->name }} - {{ $event->department->name }}</p>
+                <p class="text-black">{{ $event->description }}</p>
                 <div class="flex items-center justify-between mt-4">
                     <div class="flex items-center">
                         <img class="h-10 w-10 rounded-full" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
@@ -43,9 +43,9 @@
                     </div>
                 
                     @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
-                        <p><i class="fa-solid fa-star fa-xl" style="color: #FFD700;">{{ $event->favoritedBy->count() }}</i></p>
+                        <p><i class="fa-solid fa-star fa-xl" style="color: #10564f;">{{ $event->favoritedBy->count() }}</i></p>
                     @else
-                        <p><i class="fa-regular fa-star fa-xl" style="color: #e7ca25;">{{ $event->favoritedBy->count() }}</i></p>
+                        <p><i class="fa-regular fa-star fa-xl" style="color: #047076;">{{ $event->favoritedBy->count() }}</i></p>
                     @endif
                 </div>                
             </div>
@@ -54,7 +54,7 @@
         <div class="px-4 md:px-6 pb-6 space-y-4 col-span-full">
             @auth
                 @if(auth()->user()->email_verified_at !== null) 
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         @php
                         $isFavorite = auth()->user()->favoritedEvents->contains($event->id);
                         @endphp
@@ -103,7 +103,7 @@
                     </div>
                     <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6 space-y-4">
                         @csrf
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-mint">
                             <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800 rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="999">{{ old('description') }}</textarea>
                         </div>
                         @error('description')

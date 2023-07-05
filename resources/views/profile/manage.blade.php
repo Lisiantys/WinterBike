@@ -1,5 +1,4 @@
 <x-app-layout title="Gestion des utilisateurs">
-
     <form action="{{ route('profile.manage') }}" method="GET" class="mb-6 space-y-4 mx-auto flex sm:flex-col-reverse flex-col">
         <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
             <div class="relative inline-block w-full">
@@ -26,15 +25,11 @@
             </div>
             <x-events.button-gradient type="submit">Rechercher</x-events.button-gradient>
         </div>
-        
-        
     </form>
 
-
-    
     <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5 mx-auto">    
         <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
-            <thead class="bg-gray-50">
+            <thead class="bg-gray-100">
                 <tr>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">Noms utilisateurs</th>
                     <th scope="col" class="hidden sm:table-cell px-6 py-4 font-medium text-gray-900">Vérifier</th>
@@ -130,6 +125,5 @@
             </tbody>
         </table>
         <div class="px-4">{{ $users->withQueryString()->links('vendor.pagination.custom') }}</div>
-
     </div>
 </x-app-layout>

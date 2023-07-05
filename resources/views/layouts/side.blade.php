@@ -191,7 +191,7 @@
                 <x-application-logo class="w-12 h-12 mx-auto"/>
             </div>
             <h2 class="text-xl">
-                WinterBike
+                Winter Bike
             </h2>
         </div>
     </div>

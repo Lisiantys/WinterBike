@@ -1,4 +1,4 @@
-<div class="flex col-span-full md:px-6 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center items-center md:items-start">
+<div class="flex col-span-full p-6 md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center items-center md:items-start">
     @isset($event->phone)
         <a class="flex items-center" href="tel:{{ $event->phone }}">
             <div class="flex items-center justify-center w-12 h-12 flex-shrink-0 flex-grow-0 rounded-full bg-gradient-to-r from-mint to-dark-green">

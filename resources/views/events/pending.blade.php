@@ -8,7 +8,7 @@
                 <form action="{{ route('events.validate', $event) }}" method="POST" class="w-1/2">
                     @csrf
                     @method('PATCH')
-                    <button type="submit" class="flex items-center justify-center bg-green-500 w-full rounded-l h-8 lg:h-11 text-white"><i class="fa-solid fa-check fa-xl"></i></button>
+                    <button type="submit" class="flex items-center justify-center bg-mint w-full rounded-l h-8 lg:h-11 text-white"><i class="fa-solid fa-check fa-xl"></i></button>
                 </form>
             
                 @if(auth()->user()->role_id === 4)
@@ -21,10 +21,10 @@
                 @endif
             </div>
             
-            <form action="{{ route('events.storeStaffMessage', $event) }}" method="POST" class="mt-4">
+            <form action="{{ route('events.storeStaffMessage', $event) }}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <textarea name="staffMessage" id="staffMessage" class="w-full rounded" required maxlength="255" minlength="10"></textarea>
+                <div class="mt-4">
+                    <textarea name="staffMessage" id="staffMessage" class="w-full rounded border focus:outline-none focus:ring-2 focus:ring-dark-green focus:border-transparent" required maxlength="255" minlength="10"></textarea>
                     @error('staffMessage')
                         <p class="text-red-500">{{ $message }}</p>
                     @enderror
