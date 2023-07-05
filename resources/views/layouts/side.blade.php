@@ -1,11 +1,14 @@
-<nav x-data="{ open: false }" class="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-    <div class="px-3 py-2 lg:px-5 lg:hidden">
+{{-- Nav mobile < 1024px --}}
+<nav x-data="{ open: false }" class="fixed top-0 z-40 w-full bg-white border-b border-dark-green dark:border-gray-700">
+    <div x-show="open" class="fixed inset-0 -z-30 bg-black opacity-50 lg:hidden"></div>
+
+    <div class="z-50 bg-white border-b-2 border-dark-green px-3 py-2 lg:px-5 lg:hidden">
         <div class="flex items-center justify-between">
             <a href="https://winterbike.fr" class="flex ml-2 md:mr-24">
                 <x-application-logo class="w-16 h-16" />
             </a>
             <div class="-mr-2 flex items-center lg:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-dark-green hover:text-mint hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-dark-green transition duration-150 ease-in-out">
                     <svg class="h-8 w-8" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -19,21 +22,21 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-18 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="pt-2 pb-3 space-y-1">
             @auth
-                <x-responsive-nav-link :href="route('events.create')" class="h-10 font-semibold bg-gradient-to-r from-blue-500 to-green-500 text-white py-2 px-4 rounded text-base">
+                <x-responsive-nav-link :href="route('events.create')" class="h-10 font-semibold bg-gradient-to-r from-dark-green to-mint text-white py-2 px-4 rounded text-base">
                     Créer un événement
                 </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
-                    {{ __('Évènements') }}
+                    {{ __('Événements') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
-                    {{ __('Mes évènements') }}
+                    {{ __('Mes événements') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('events.favorite')" :active="request()->routeIs('events.favorite')">
                     {{ __('Mes favoris') }}
                 </x-responsive-nav-link>
                 @if(auth()->user()->role_id === 3 || auth()->user()->role_id === 4)
                     <x-responsive-nav-link  :href="route('events.pending')" :active="request()->routeIs('events.pending')">
-                        {{ __('Évènements en attentes') }}
+                        {{ __('Événements en attentes') }}
                     </x-responsive-nav-link>
                 @endif
                 @if(auth()->user()->role_id === 4)
@@ -44,7 +47,7 @@
             @endauth
             @guest
                 <x-responsive-nav-link  :href="route('events.index')" :active="request()->routeIs('events.index')">
-                    {{ __('Évènements') }}
+                    {{ __('Événements') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link  :href="route('login')" :active="request()->routeIs('login')">
                     {{ __('Connexion') }}
@@ -87,34 +90,34 @@
     </div>
 </nav>
   
+{{-- Nav ordinateur > 1024px --}}
 <aside id="logo-sidebar" class="fixed top-0 left-0 z-30 w-64 h-screen transition-transform -translate-x-full  border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
     <div class="flex flex-col justify-between h-full p-3 overflow-y-auto">
-        <ul class="space-y-2">
-
+        <ul class="space-y-1">
             @auth
                 <div class="flex flex-col items-center p-2 mb-4">
                     <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar" class="w-24 h-24 rounded-full dark:bg-gray-500 object-cover">                
                     <div class="flex flex-col items-center ">
                         <h2 class="text-lg font-semibold">{{ Auth::user()->name }}</h2>
                         <span class="flex items-center">
-                            <p class="text-xs dark:text-gray-400">{{ Auth::user()->role->name }}</p>
+                            <p class="text-xs font-semibold uppercase dark:text-gray-400">{{ Auth::user()->role->name }}</p>
                         </span>
                     </div>
-                    <li  class="mt-6">
-                        <x-events.button-gradient href="{{ route('events.create') }}">Créer un évènement</x-events.button-gradient>
+                    <li class="mt-6">
+                        <x-events.button-gradient href="{{ route('events.create') }}">Créer un événement</x-events.button-gradient>
                     </li>
                 </div>
 
                 <li>
                     <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
                         <i class="fa-solid fa-magnifying-glass pr-2"></i>
-                        {{ __('Évènements') }}
+                        {{ __('Événements') }}
                     </x-nav-link>
                 </li>
                 <li>
                     <x-nav-link :href="route('events.myEvents')" :active="request()->routeIs('events.myEvents')">
                         <i class="fa-solid fa-pencil pr-2"></i>
-                        {{ __('Mes évènements') }}
+                        {{ __('Mes événements') }}
                     </x-nav-link>
                 </li>
                 <li>
@@ -127,7 +130,7 @@
                     <li>
                         <x-nav-link :href="route('events.pending')" :active="request()->routeIs('events.pending')">
                             <i class="fa-solid fa-list-ul pr-2"></i>
-                            {{ __('Évènements en attentes') }}
+                            {{ __('En attentes') }}
                         </x-nav-link>
                     </li>
                 @endif
@@ -167,7 +170,7 @@
             @guest
                 <li>
                     <x-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
-                        {{ __('Évènements') }}
+                        {{ __('Événements') }}
                     </x-nav-link>
                 </li>
                 <li>
@@ -182,15 +185,6 @@
                 </li>
             @endguest
         </ul>
-            
-        <div>
-            <div>
-                <x-application-logo class="w-24 h-24 mx-auto"/>
-            </div>
-            <div class="text-center">
-                <a href="mailto:example@example.com" class="font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200">Contactez-nous</a>
-            </div>
-        </div>
     </div>
 </aside>
   

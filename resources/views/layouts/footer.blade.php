@@ -19,6 +19,10 @@
             </li>
             <li class="space-x-3">
                 <i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i>
+                <a href="mailto:example@example.com" class="hover:underline">Contactez-nous</a>
+            </li>
+            <li class="space-x-3">
+                <i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i>
                 <a href="{{ route('mentions-legales') }}" class="hover:underline">Mentions Légales</a>
             </li>
             <li class="space-x-3">

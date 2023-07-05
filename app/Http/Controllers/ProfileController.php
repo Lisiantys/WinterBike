@@ -86,8 +86,8 @@ class ProfileController extends Controller
         // Récupérer les événements créés par l'utilisateur qui sont validés
         $eventsCount = $user->events()->where('is_validated', 1)->count();
 
-        // Supposons que vous avez une relation 'favorites' dans votre modèle User
-        $favoritesCount = $user->favoritedEvents()->count();
+        // Récupérer les événements en favoris de l'utilisateur
+        $favoritesCount = $user->favoritedEvents()->where('is_validated', 1)->count();
 
         // Récupérer les commentaires de l'utilisateur
         $comments = $user->comments()->orderBy('created_at', 'desc')->paginate(5);

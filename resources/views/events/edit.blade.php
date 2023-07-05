@@ -10,7 +10,7 @@
             <x-events.image-upload name="image_path" label="Image" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048"></x-events.image-upload>
          </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-            <x-events.input-field name="name" label="Nom de l'évènement (Obligatoire)" value="{{ $event->name }}" required maxlength="255"></x-events.input-field>
+            <x-events.input-field name="name" label="Nom de l'événement (Obligatoire)" value="{{ $event->name }}" required maxlength="255"></x-events.input-field>
 
             <x-events.select-field name="type_id" label="Type (Obligatoire)">
                 @foreach ($types as $type)
@@ -48,7 +48,7 @@
         <x-events.textarea-field name="description" label="Description (Obligatoire)" rows="10" maxlength="2000" :value="$event->description" required />
     
         <div class="flex justify-end">
-            <x-events.button-gradient type="submit">Mettre à jour l'évènement</x-events.button-gradient>
+            <x-events.button-gradient type="submit">Mettre à jour l'événement</x-events.button-gradient>
         </div>
     </form>
 

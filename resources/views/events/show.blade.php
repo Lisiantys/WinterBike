@@ -127,7 +127,7 @@
                 <x-events.event-comment :comment="$comment" />
             @empty
                 @auth
-                    <p class="text-gray-500 dark:text-gray-400">Soyez le premier à commenter cet évènement !</p>
+                    <p class="text-gray-500 dark:text-gray-400">Soyez le premier à commenter cet événement !</p>
                 @endauth
             @endforelse
             <div>{{ $comments->links('vendor.pagination.custom') }}</div>
