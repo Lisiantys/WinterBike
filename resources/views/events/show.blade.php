@@ -35,10 +35,10 @@
                 </h2>
                 <p class="mt-2 text-gray-800">Du <strong>{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</strong> - {{ $event->type->name }}</p>
                 <p class="mt-2 text-gray-800">{{ $event->region->name }} - {{ $event->department->name }}</p>
-                <p class="text-black">{{ $event->description }}</p>
+                <p class="text-black font-semibold">{{ $event->description }}</p>
                 <div class="flex items-center justify-between mt-4">
                     <div class="flex items-center">
-                        <img class="h-10 w-10 rounded-full" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
+                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
                         <a href="{{ route('profile.show', $event->user->id) }}" class="ml-2">{{ $event->user->name }}</a>
                     </div>
                 
