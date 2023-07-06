@@ -19,8 +19,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <section class="min-h-screen flex bg-neutral-200 dark:bg-neutral-700">
-            <div class="rounded-lg bg-white shadow-lg my-8 dark:bg-neutral-800 w-11/12 mx-auto lg:my-auto flex items-center justify-center">
+        <section class="min-h-screen flex bg-neutral-200">
+            <div class="rounded-lg bg-white shadow-lg my-8 w-11/12 mx-auto lg:my-auto flex items-center justify-center">
                 <div class="flex flex-col-reverse lg:flex-row-reverse lg:flex-wrap">
                     {{ $slot }}
                 </div>

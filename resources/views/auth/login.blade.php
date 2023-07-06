@@ -31,14 +31,14 @@
             <form class="mt-8 space-y-6" method="POST" action="{{ route('login') }}">
                 @csrf
                 <input type="hidden" name="remember" value="true">
-                <!--Username input-->
+                <!--Nom utilisateur-->
                 <div class="relative mb-4" data-te-input-wrapper-init>
                     <x-input-label for="email" :value="__('Adresse e-mail')" />
                     <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')"/>
                 </div>
 
-                <!--Password input-->
+                <!--Password utilisateur-->
                 <div class="relative mb-4" data-te-input-wrapper-init>
                     <x-input-label for="password" :value="__('Mot de passe')" />
                     <x-text-input id="password" type="password" name="password" required autocomplete="current-password" />
@@ -53,13 +53,13 @@
                     </label>
                 </div>
 
-                <!--Submit button-->
+                <!--Bouton d'envoie-->
                 <div class="mb-12 pb-1 pt-1 text-center">
                     <x-events.button-gradient type="submit" class="w-full md:w-1/2">
                         Connexion
                     </x-events.button-gradient>
 
-                    <!--Forgot password link-->
+                    <!--Mot de passe oublié-->
                     <div class="text-sm mt-4">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="font-medium text-dark-green hover:text-mint">

@@ -1,5 +1,5 @@
 {{-- Nav mobile < 1024px --}}
-<nav x-data="{ open: false }" class="fixed top-0 z-40 w-full bg-white border-b border-dark-green dark:border-gray-700">
+<nav x-data="{ open: false }" class="fixed top-0 z-40 w-full bg-white border-b border-dark-green">
     <div x-show="open" class="fixed inset-0 -z-30 bg-black opacity-50 lg:hidden"></div>
 
     <div class="z-50 bg-white border-b-2 border-dark-green px-3 py-2 lg:px-5 lg:hidden">
@@ -19,7 +19,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-18 bg-white z-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden absolute w-full top-18 bg-white z-50 border-b border-gray-200">
         <div class="pt-2 pb-3 space-y-1">
             @auth
                 <x-responsive-nav-link :href="route('events.create')" class="h-10 font-semibold bg-gradient-to-r from-dark-green to-mint text-white py-2 px-4 rounded text-base">
@@ -91,16 +91,16 @@
 </nav>
   
 {{-- Nav ordinateur > 1024px --}}
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-30 w-64 h-screen transition-transform -translate-x-full  border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">     
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-30 w-64 h-screen transition-transform -translate-x-full  border-r border-gray-200 lg:translate-x-0" aria-label="Sidebar">     
     <div class="flex flex-col justify-between h-full p-3 overflow-y-auto">
         <ul class="space-y-1">
             @auth
                 <div class="flex flex-col items-center p-2 mb-4">
-                    <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar" class="w-24 h-24 rounded-full dark:bg-gray-500 object-cover">                
+                    <img src="{{ asset('storage/'.Auth::user()->image_path) }}" alt="User Avatar" class="w-24 h-24 rounded-full object-cover">                
                     <div class="flex flex-col items-center ">
                         <h2 class="text-lg font-semibold">{{ Auth::user()->name }}</h2>
                         <span class="flex items-center">
-                            <p class="text-xs font-semibold uppercase dark:text-gray-400">{{ Auth::user()->role->name }}</p>
+                            <p class="text-xs font-semibold uppercase">{{ Auth::user()->role->name }}</p>
                         </span>
                     </div>
                     <li class="mt-6">

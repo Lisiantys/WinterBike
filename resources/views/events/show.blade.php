@@ -1,7 +1,7 @@
 <x-app-layout>
     <div id="overlay" class="fixed top-0 left-0 w-full h-full z-50 bg-black bg-opacity-50 hidden"></div>
 
-    <div class="relative bg-white overflow-hidden shadow-xl sm:rounded-lg grid md:grid-cols-2 mb-6">
+    <div class="relative bg-white overflow-hidden shadow-xl sm:rounded-lg grid md:grid-cols-2 mb-6 mt-20 lg:mt-0">
         @if ($event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
             <div class="absolute top-0 text-center font-semibold inset-x-0 md:inset-auto md:right-0 bg-red-500 text-white px-3 py-2 md:rounded-bl-lg">Événement en cours de validation par l'équipe de Winter Bike...</div>
         @endif
@@ -12,14 +12,13 @@
             
             {{-- Le modal --}}
             <div id="myModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-[100vh] max-h-full items-center justify-center xl:mx-auto">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full max-w-4xl 2xl:max-w-5xl max-h-full mx-auto overflow-y-auto">
-                    <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow w-full max-w-4xl 2xl:max-w-5xl max-h-full mx-auto overflow-y-auto">
                     <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600">
+                    <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="font-heebo font-bold text-lg md:text-xl lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
                             {{ $event->name }}
                         </h3>
-                        <button id="closeModal" type="button" class=" p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
+                        <button id="closeModal" type="button" class="p-1.5">
                             <i class="fa-solid fa-xmark fa-2xl text-red-500 hover:text-red-700" ></i>
                         </button>
                     </div>
@@ -90,7 +89,7 @@
             @auth
                 @if(auth()->user()->email_verified_at !== null)
                     <div class="flex md:flex-row items-center md:space-x-4 mb-6">
-                        <h2 class="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-2 md:mb-0">Commentaires ({{ $comments->count() }})</h2>
+                        <h2 class="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-0">Commentaires ({{ $comments->count() }})</h2>
                         <div class="flex items-center">
                             <div class="flex items-center ml-4 space-x-2 a2a_kit a2a_kit_size_32 a2a_default_style">
                                 <a class="a2a_button_facebook"></a>
@@ -104,8 +103,8 @@
                     </div>
                     <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6 space-y-4">
                         @csrf
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-mint">
-                            <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800 rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="999">{{ old('description') }}</textarea>
+                        <div class="bg-white rounded-lg shadow-lg border border-mint">
+                            <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="999">{{ old('description') }}</textarea>
                         </div>
                         @error('description')
                             <div class="text-red-500 mt-2 text-sm">
@@ -115,12 +114,12 @@
                         <x-events.button-gradient type="submit">Commenter</x-events.button-gradient>
                     </form>
                 @else
-                    <h3 class="text-gray-800 dark:text-white">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+                    <h3 class="text-gray-800">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
                 @endif
             @endauth
 
             @guest
-            <h3 class="text-gray-800 dark:text-white">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+            <h3 class="text-gray-800">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
             @endguest
 
             
@@ -128,7 +127,7 @@
                 <x-events.event-comment :comment="$comment" />
             @empty
                 @auth
-                    <p class="text-gray-500 dark:text-gray-400">Soyez le premier à commenter cet événement !</p>
+                    <p class="text-gray-500">Soyez le premier à commenter cet événement !</p>
                 @endauth
             @endforelse
             <div>{{ $comments->links('vendor.pagination.custom') }}</div>

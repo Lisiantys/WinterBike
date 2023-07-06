@@ -14,21 +14,21 @@
                     <!-- Password Reset Token -->
                     <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-                    <!-- Email Address -->
+                    <!--Adresse e-mail input-->
                     <div>
                         <x-input-label for="email" :value="__('Adresse e-mail')" />
                         <x-text-input id="email" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
                         <x-input-error :messages="$errors->get('email')"/>
                     </div>
 
-                    <!-- Password -->
+                     <!--Mot de passe input-->
                     <div class="mt-4">
                         <x-input-label for="password" :value="__('Mot de passe')" />
                         <x-text-input id="password" type="password" name="password" required autocomplete="new-password" />
                         <x-input-error :messages="$errors->get('password')"/>
                     </div>
 
-                    <!-- Confirm Password -->
+                    <!--Confirmer le mot de passe input-->
                     <div class="mt-4">
                         <x-input-label for="password_confirmation" :value="__('Confirmer le mot de passe')" />
 
