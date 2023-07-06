@@ -42,6 +42,7 @@ class RegisteredUserController extends Controller
         $email = $request->input('email');
         $validator = new EmailValidator();
     
+        //Vérification d'un email valide
         if (!$validator->isValid($email, new DNSCheckValidation())) {
             // si le domaine n'est pas valide ou n'existe pas
             return back()->withInput($request->only('email', 'name'))

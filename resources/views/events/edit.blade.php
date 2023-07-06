@@ -4,7 +4,7 @@
         @csrf
         @method('PUT')
 
-        <div class="flex w-full bg-red-500">
+        <div class="flex w-full flex-col md:flex-row">
             <x-events.image-preview id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image"></x-events.image-preview>
     
             <x-events.image-upload name="image_path" label="Image" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048"></x-events.image-upload>
@@ -52,6 +52,6 @@
         </div>
     </form>
 
-    <p>Tout événement modifié devra être validée par l'équipe de Winter Bike, pour être rendu public.</p>
+    <p class="text-center underline">Tout événement modifié devra être validée par l'équipe de Winter Bike, pour être rendu public.</p>
 
 </x-app-layout>

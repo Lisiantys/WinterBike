@@ -48,5 +48,5 @@
         </div>
     </form>
     
-    <p>Tout événement crée devra être validée par l'équipe de Winter Bike, pour être rendu public.</p>
+    <p class="text-center underline">Tout événement crée devra être validée par l'équipe de Winter Bike, pour être rendu public</p>
 </x-app-layout>

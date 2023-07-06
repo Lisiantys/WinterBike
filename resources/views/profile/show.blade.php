@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="w-full h-full">
+    <section class="w-full h-full mt-20 lg:mt-0">
         <div class="flex flex-col">
             <div class="w-full flex items-center justify-start bg-gradient-to-bl from-dark-green to-mint text-white p-6 rounded-t-lg shadow-md">
                 <img src="{{ Storage::url($user->image_path) }}"

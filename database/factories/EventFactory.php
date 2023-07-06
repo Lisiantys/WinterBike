@@ -35,7 +35,7 @@ class EventFactory extends Factory
             'region_id' => rand(1, 13), //13 Régions générés au préalable
             'type_id' => rand(1, 5), //5 Types générés au préalable
             'user_id' => function () {
-                return User::inRandomOrder()->first()->id;
+                return User::inRandomOrder()->first()->id; //le user->id est selectionné aléatoirement dans une liste des utilisateurs générés. First prends le premier de la liste aléatoire.
             },        
         ];
     }

@@ -12,11 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 //Request permet de récuperer les informations passées par le protocole http (get / post)
 
-
 class EventController extends Controller
 {
     /**
-     * Affiche les évènements validés
+     * Affiche les événements validés
      */
     public function index(Request $request)
     {
@@ -51,7 +50,7 @@ class EventController extends Controller
     }
 
     /**
-     * Affiche les 3 évènements avec le plus de favoris
+     * Affiche les 3 événements avec le plus de favoris
      */
     private function getTopFavorites()
     {
@@ -76,7 +75,7 @@ class EventController extends Controller
     }
 
     /**
-    * Affiche les évènements que l'utilisateur à en favoris
+    * Affiche les événements que l'utilisateur à en favoris
     */
     public function myFavorites()
     {
@@ -91,7 +90,7 @@ class EventController extends Controller
     }
 
     /**
-    * Ajouter un évènement en favoris
+    * Ajouter un événement en favoris
     */
     public function addFavorite($eventId)
     {
@@ -121,7 +120,7 @@ class EventController extends Controller
     }
 
     /**
-    * Ajoute un message a un évènement destiné à l'utilisateur
+    * Ajoute un message à un événement destiné à l'utilisateur
     */
     public function storeStaffMessage(Request $request, Event $event)
     {
@@ -137,7 +136,7 @@ class EventController extends Controller
     }
     
     /**
-    * Valide un évènement
+    * Valide un événement
     */
     public function validateEvent(Request $request, Event $event)
     {
@@ -149,7 +148,7 @@ class EventController extends Controller
     }
 
     /**
-    * Créer un évènement dans la BDD
+    * Créer un événement dans la BDD
     */
     public function create()
     {
@@ -184,18 +183,12 @@ class EventController extends Controller
     }
     
     /**
-     * Sauvegarde un évènement dans la BDD après validation
+     * Sauvegarde un événement dans la BDD après validation
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-
         $user = auth()->user();
         $request->validate($this->validationRules());
-
-
-        // Revoir les Storages pour affichage img dans les vues -> asset
-
 
         $imageName = $request->file('image_path')->store('events', 'public');        
         $event = Event::create([
@@ -212,14 +205,14 @@ class EventController extends Controller
             'department_id' => $request->department_id,
             'region_id' => $request->region_id,
             'type_id' => $request->type_id,
-            'user_id' => $user->id // Set the user_id to the currently authenticated user
+            'user_id' => $user->id
         ]);
 
         return redirect()->route('events.show', $event->id)->withSuccess('Évènement crée avec succès !');
     }
 
     /**
-     * Affiche un évènement au travers de son id
+     * Affiche un événement au travers de son id
      */
     public function show(Event $event)
     {
@@ -231,10 +224,11 @@ class EventController extends Controller
     }
 
     /**
-    * Récupère un évènement pour procéder à une mise à jour
+    * Récupère un événement pour procéder à une mise à jour
     */
     public function edit(Event $event)
     {
+        //Voir "Http/Policies"
         $this->authorize('update', $event);
 
         $regions = Region::all();
@@ -245,10 +239,11 @@ class EventController extends Controller
     }
 
     /**
-     * Met à jour un évènement
+     * Met à jour un événement
      */
     public function update(Request $request, Event $event)
     {
+         //Voir "Http/Policies"
         $this->authorize('update', $event);
 
         $request->validate($this->validationRules(true));
@@ -256,16 +251,15 @@ class EventController extends Controller
         $data = $request->all();
        
 
-        // Check if a new image is uploaded
+        // Regarde si il y un fichier dans la requete
         if ($request->hasFile('image_path')) {
-            // Delete the old image
-            //Storage::delete($event->image_path);
+            // On supprime alors l'ancienne image
             Storage::disk('public')->delete($event->image_path);
     
-            // Store the new image
+            // On sauvegarde la nouvelle image de la requete
             $imagePath = $request->file('image_path')->store('events', 'public');
     
-            // Update the image_path in the data array
+            //Met a jour la chaine de caractère de l'image stockée.
             $data['image_path'] = $imagePath;
         }
         $event->is_validated = 0;      
@@ -275,12 +269,14 @@ class EventController extends Controller
     }
 
     /**
-     * Supprime un évènement dans la BDD
+     * Supprime un événement dans la BDD
      */
     public function destroy(Event $event)
     {
+        //Voir "Http/Policies"
         $this->authorize('delete', $event);
 
+        //Suppression de l'image de l'événement
         if($event->image_path) {
             $filePath = $event->image_path;
             if(Storage::disk('public')->exists($filePath)) {

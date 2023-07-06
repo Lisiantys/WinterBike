@@ -22,9 +22,12 @@ class ProfileController extends Controller
     {
         $roles = Role::all();
         
+        //Récupération des données saisies dans le formulaire.
         $search = $request->input('search');
         $selectedRole = $request->input('role_id');
         $bannedStatus = $request->input('is_banned');
+
+        //Filtrage des utilisateurs avec le formulaire
         $users = User::with('role')->when($search, function ($query, $search) {
             return $query->where('name', 'like', '%' . $search . '%')
                          ->orWhere('email', 'like', '%' . $search . '%');
@@ -114,7 +117,8 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $user = $request->user(); //
+        $user = $request->user();
+        //Cette ligne récupère l'instance de l'utilisateur actuellement connecté
 
         // Filtrer l'image_path des données validées
         $validatedData = $request->validated();
@@ -160,8 +164,9 @@ class ProfileController extends Controller
         // Récupérer les événements de l'utilisateur
         $events = $user->events;
 
+        // Pour chaque evenement de l'utilisateur, on supprime la photo + l'événement
         foreach ($events as $event) {
-            // Supprimer la photo associée à l'événement
+           
             if($event->image_path) {
                 $filePath = $event->image_path;
                 if(Storage::disk('public')->exists($filePath)) {

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CheckBanned
 {
     /**
-     * Handle an incoming request.
+     * Vérifie si un utilisateur est bloquer ou non
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */

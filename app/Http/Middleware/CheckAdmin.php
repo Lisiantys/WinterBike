@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CheckAdmin
 {
     /**
-     * Handle an incoming request.
+     * Vérifie que l'utilisateur connecté et Administateur (role_id === 4).
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */

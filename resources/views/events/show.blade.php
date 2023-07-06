@@ -10,6 +10,7 @@
                 <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
             </div>
             
+            {{-- Le modal --}}
             <div id="myModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-2 overflow-x-hidden overflow-y-auto md:inset-0 h-[100vh] max-h-full items-center justify-center xl:mx-auto">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full max-w-4xl 2xl:max-w-5xl max-h-full mx-auto overflow-y-auto">
                     <!-- Modal content -->
@@ -167,6 +168,7 @@
     </script>
 
 <script>
+    // Code pour le modal
     function openModal() {
         document.getElementById("myModal").style.display = "flex";
         document.body.style.overflow = 'hidden'; // Disable scroll

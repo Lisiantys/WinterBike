@@ -41,7 +41,8 @@
                 Bienvenue !
             </h2>
             <p class="text-base">
-                Avant de commencer, pourriez-vous vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer par e-mail ? Si vous n'avez pas reçu l'e-mail, nous pouvons vous en renvoyer un autre.</p>
+                Avant de commencer, pourriez-vous vérifier votre adresse e-mail en cliquant sur le lien que nous venons de vous envoyer par e-mail ? Si vous n'avez pas reçu l'e-mail, nous pouvons vous en renvoyer un autre.
+            </p>
         </div>
     </div>
 </x-guest-layout>
