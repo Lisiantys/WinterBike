@@ -1,37 +1,24 @@
 <x-guest-layout>
     
-    <!-- Colonne de gauche -->
+    <!-- Colonne de droite -->
     <div class="px-4 py-6 md:px-6 md:py-12 flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-dark-green to-mint">
         <div class="mx-4 p-2 md:mx-6 md:p-12 text-white">
-            <h4 class="mb-6 text-xl font-semibold">
+            <h2 class="mb-6 text-xl font-semibold">
                 Site en cours de construction...
-            </h4>
-            <p class="text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco laboris nisi ut aliquip ex
-                ea commodo consequat.
+            </h2>
+            <p class="text-base">
+                Saisissez simplement vos identifiants dans les champs ci-dessous et vous serez prêt à explorer. Si vous avez oublié vos informations de connexion, ne vous inquiétez pas, nous sommes là pour vous aider à y accéder de nouveau.
             </p>
         </div>
     </div>   
 
-    <!-- Colonne de droite-->
+    <!-- Colonne de gauche -->
     <div class="px-4 md:px-0 lg:w-6/12">
         <div class="mx-4 p-2 md:mx-6 md:p-12">
-            <div class="pb-6 pt-6 md:pt-0">
-                <i class="fa-solid fa-arrow-left"></i>
-                <a href="{{ route('index') }}" class="font-medium text-blue-600 hover:text-blue-500">
-                    {{ __('Voir les événements') }}
-                </a>
-            </div>
-            <!--Logo-->
-            <div class="text-center">
-                <x-application-logo class="mx-auto w-24 fill-current text-gray-500" />
-                <h2 class="text-center text-3xl font-extrabold text-black">
-                    {{ __('Se connecter') }}
-                </h2>
-            </div>
+            @include('auth.partials.lien-evenements')
+
+            <!--Logo + H1 -->
+            <x-h1-logo-auth-view>Se connecter</x-h1-logo-auth-view>
 
             <x-auth-session-status class="mb-4 text-center text-sm text-red-600" :status="session('status')" />
 
@@ -46,24 +33,24 @@
                 <input type="hidden" name="remember" value="true">
                 <!--Username input-->
                 <div class="relative mb-4" data-te-input-wrapper-init>
-                <x-input-label for="email" :value="__('Adresse e-mail')" />
-                <x-text-input id="email" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <x-input-label for="email" :value="__('Adresse e-mail')" />
+                    <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                    <x-input-error :messages="$errors->get('email')"/>
                 </div>
 
                 <!--Password input-->
                 <div class="relative mb-4" data-te-input-wrapper-init>
-                <x-input-label for="password" :value="__('Mot de passe')" />
-                <x-text-input id="password" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" type="password" name="password" required autocomplete="current-password" />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    <x-input-label for="password" :value="__('Mot de passe')" />
+                    <x-text-input id="password" type="password" name="password" required autocomplete="current-password" />
+                    <x-input-error :messages="$errors->get('password')"/>
                 </div>
 
                 <!--Remember me-->
                 <div class="flex items-center">
-                <input id="remember_me" name="remember" type="checkbox" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
-                <label for="remember_me" class="ml-2 block text-sm text-gray-900">
-                    {{ __('Se souvenir de moi') }}
-                </label>
+                    <input id="remember_me" name="remember" type="checkbox" class="h-5 w-5 text-mint focus:ring-dark-green border-mint rounded">
+                    <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+                        {{ __('Se souvenir de moi') }}
+                    </label>
                 </div>
 
                 <!--Submit button-->
