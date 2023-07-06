@@ -15,7 +15,7 @@
                 <div class="relative bg-white rounded-lg shadow w-full max-w-4xl 2xl:max-w-5xl max-h-full mx-auto overflow-y-auto">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
-                        <h3 class="font-heebo font-bold text-lg md:text-xl lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
+                        <h3 class="font-heebo font-bold text-base md:text-lg lg:text-xl lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
                             {{ $event->name }}
                         </h3>
                         <button id="closeModal" type="button" class="p-1.5">

@@ -59,7 +59,7 @@
                     </x-events.button-gradient>
                 </div>
             </form>
-            <div class="flex items-center justify-between pt-6 pb-6 md:pb-0">
+            <div class="flex flex-col sm:flex-row items-center justify-between pt-6 pb-6 md:pb-0">
                 <p class="mb-0 mr-2">Vous avez déjà un compte ?</p>
                 <x-events.button-gradient href="{{ route('login') }}">
                     Se connecter

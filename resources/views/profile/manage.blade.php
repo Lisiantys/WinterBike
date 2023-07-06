@@ -19,7 +19,7 @@
             </div>
         </div>
     
-        <div class="flex flex-col sm:flex-row sm:items-end ">
+        <div class="flex flex-col sm:flex-row sm:items-end space-y-4 md:space-y-0 ">
             <div class="flex-grow">
                 <x-events.input-field type="text" name="search" label="Rechercher un utilisateur" :value="request('search')" />
             </div>

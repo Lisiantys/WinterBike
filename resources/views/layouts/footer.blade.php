@@ -4,7 +4,7 @@
         <x-application-logo-white class="w-32 h-32"/>
         <div class="text-white max-w-md space-y-4 md:space-y-2">
             <h3 class="font-extrabold text-xl tracking-wider">Winter Bike</h3>
-            <p> 
+            <p class="text-sm sm:text-base"> 
                 Participez aux rassemblements de moto pour une série d'événements
                 à travers la France. Que ce soit pour une balade apaisante, une exposition 
                 innovante, une hivernale revigorante ou un roadtrip captivant, chaque événement 

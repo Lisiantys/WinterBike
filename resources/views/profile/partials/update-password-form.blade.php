@@ -1,6 +1,6 @@
 <section>
     <header>
-        <p class="mt-1 text-base text-gray-600 font-semibold">
+        <p class="mt-1 text-sm sm:text-base text-gray-600 font-semibold">
             {{ __('Assurez-vous d\'utiliser un mot de passe aléatoire avec un minimum 8 caractères.') }}
         </p>
     </header>

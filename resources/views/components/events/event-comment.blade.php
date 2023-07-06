@@ -1,12 +1,13 @@
-<div class="bg-white  rounded-lg shadow-lg mb-4">
-    <div class="p-4 divide-y divide-gray-200 ">
+<div class="bg-white rounded-lg shadow-lg mb-4">
+    <div class="p-4">
         <div class="flex justify-between items-start mb-2">
             <div class="flex items-center space-x-4">
                 @if (isset($isProfilComment) && $isProfilComment)
-                    <div class="flex items-center ">
-                        <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" class="rounded-full w-12 h-12 object-cover">                    
+                    <div class="flex items-center">
+                        <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" class="rounded-full w-12 h-12 object-cover hidden md:block">                    
                         <div class="flex flex-col mb-2 ml-2">
-                            <p><strong>{{ $comment->user->name }}</strong> a posté un commentaire sur <strong><a href="{{ route('events.show', $comment->event->id) }}" class="text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-dark-green to-mint">{{ $comment->event->name }}</a></strong></p>
+                            <p class="hidden md:block"><strong>{{ $comment->user->name }}</strong> a posté un commentaire sur <strong><a href="{{ route('events.show', $comment->event->id) }}" class="text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-dark-green to-mint">{{ $comment->event->name }}</a></strong></p>
+                            <p class="md:hidden block"><strong>{{ $comment->user->name }}</strong> sur <strong><a href="{{ route('events.show', $comment->event->id) }}" class="text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-dark-green to-mint">{{ $comment->event->name }}</a></strong></p>
                             <span class="text-xs text-gray-500 ">{{ \Carbon\Carbon::parse($comment->created_at)->isoFormat('LLL') }}</span>
                         </div>
                     </div>
@@ -33,7 +34,7 @@
             @endauth
         </div>
         <div class="pt-2">
-            <p class="text-base text-black-800">{{ $comment->description }}</p>
+            <p class="text-sm sm:text-base text-black-800">{{ $comment->description }}</p>
         </div>
     </div>
 </div>

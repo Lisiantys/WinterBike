@@ -1,6 +1,6 @@
 <section class="space-y-6">
     <header>
-        <p class="mt-1 text-base text-gray-600 font-semibold">
+        <p class="mt-1 text-sm sm:text-base text-gray-600 font-semibold">
             {{ __('Une fois votre compte supprimé, toutes ses ressources, et données "Évènements et commentaires" seront définitivement effacées. ') }}
         </p>
     </header>
