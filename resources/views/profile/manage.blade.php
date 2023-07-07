@@ -42,7 +42,7 @@
                     <tr class="hover:bg-gray-50">
                         <td class="px-4 py-4 text-sm">
                             <div class="flex items-center mb-2 sm:mb-0">
-                                <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil" class="rounded-full w-12 h-12 object-cover">
+                                <img src="{{ asset('storage/' . $user->image_path) }}" alt="Image de profil" class="rounded-full w-12 h-12 object-cover">
                                 <div class="pl-2">
                                     <div>
                                         <a href="{{ route('profile.show', $user->id ) }}" class="text-gray-700 font-medium hover:text-mint">{{ $user->name }}</a>

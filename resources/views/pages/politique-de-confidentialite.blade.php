@@ -5,7 +5,6 @@
         <p>Le site web Winter Bike est détenu par Maxime POUZARGUE, qui est un contrôleur de données de vos données personnelles.</p>
 
         <p>Nous prenons soin de vos données personnelles et nous nous engageons à en garantir la confidentialité et la sécurité.</p>
-
     </div>
 
     <div class="space-y-4 mt-5">

@@ -5,7 +5,7 @@
         @method('PUT')
 
         <div class="flex w-full flex-col md:flex-row">
-            <x-events.image-preview id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image"></x-events.image-preview>
+            <x-events.image-preview id="image-preview" src="{{ asset('storage/' . $event->image_path) }}" alt="Aperçu de l'image"></x-events.image-preview>
     
             <x-events.image-upload name="image_path" label="Image" onchange="loadImagePreview(event)" accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" max-size="2048"></x-events.image-upload>
          </div>

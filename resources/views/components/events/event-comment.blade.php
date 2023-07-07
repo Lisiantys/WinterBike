@@ -4,7 +4,7 @@
             <div class="flex items-center space-x-4">
                 @if (isset($isProfilComment) && $isProfilComment)
                     <div class="flex items-center">
-                        <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image de l'utilisateur" class="rounded-full w-12 h-12 object-cover hidden md:block">                    
+                        <img src="{{ asset('storage/' . $comment->user->image_path) }}" alt="Image de l'utilisateur" class="rounded-full w-12 h-12 object-cover hidden md:block">                    
                         <div class="flex flex-col mb-2 ml-2">
                             <p class="hidden md:block"><strong>{{ $comment->user->name }}</strong> a posté un commentaire sur <strong><a href="{{ route('events.show', $comment->event->id) }}" class="text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-dark-green to-mint">{{ $comment->event->name }}</a></strong></p>
                             <p class="md:hidden block"><strong>{{ $comment->user->name }}</strong> sur <strong><a href="{{ route('events.show', $comment->event->id) }}" class="text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-dark-green to-mint">{{ $comment->event->name }}</a></strong></p>
@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 @else
-                    <img src="{{ Storage::url($comment->user->image_path) }}" alt="Image" class="w-12 h-12 rounded-full object-cover">
+                    <img src="{{ asset('storage/' . $comment->user->image_path) }}" alt="Image" class="w-12 h-12 rounded-full object-cover">
                     <div>
                         <h4 class="font-semibold text-gray-900 ">
                             <a href="{{ route('profile.show', $comment->user->id) }}">{{ $comment->user->name }}</a>

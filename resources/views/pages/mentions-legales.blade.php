@@ -1,5 +1,4 @@
 <x-app-layout title="Mentions Légales">
-   
     <div class="space-y-4">
         <h2 class="font-semibold text-lg md:text-2xl">Propriétaire du site : </h2>
 
@@ -8,8 +7,6 @@
         <p>Adresse : 237 Bis Avenue François Mitterand, 85340 Les Sables d'Olonne.</p>
 
         <p>Contact : contact@winterbike.fr OU 06 27 34 07 55</p>
-
-        
     </div>
 
     <div class="space-y-4 mt-5">
@@ -33,5 +30,4 @@
         <h2 class="font-semibold text-lg md:text-2xl">Hébergeur :</h2>
         <p>Hostinger INTERNATIONAL LTD – <a href="https://www.hostinger.fr/" class="text-dark-green font-semibold">https://www.hostinger.fr/</a> 6023 Hostinger International Ltd.61 rue Lordou Vironos, – Téléphone : +37064503378</p>
     </div>
-   
 </x-app-layout>

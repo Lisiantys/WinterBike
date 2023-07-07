@@ -1,6 +1,6 @@
 <section class="flex flex-col md:flex-row">
 
-    <img src="{{ Storage::url($user->image_path) }}" alt="Image de profil de {{ $user->name }}" class="rounded-full w-36 h-36 mt-4 md:mr-4 mx-auto object-cover">
+    <img src="{{ asset('storage/' . $user->image_path) }}" alt="Image de profil de {{ $user->name }}" class="rounded-full w-36 h-36 mt-4 md:mr-4 mx-auto object-cover">
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf

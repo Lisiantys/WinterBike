@@ -9,7 +9,7 @@
         @endif
         <div class="md:col-span-2 grid md:grid-cols-2 w-full md:px-6 md:py-10 md:gap-6 rounded-lg bg-greyed">
             <div class="w-full h-full md:h-96 flex items-center justify-center cursor-pointer" onclick="openModal()">
-                <img id="image-preview" src="{{ Storage::url($event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
+                <img id="image-preview" src="{{ asset('storage/' . $event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
             </div>
             
             {{-- Le modal --}}
@@ -17,7 +17,7 @@
                 <div class="relative bg-white rounded-lg shadow w-full max-w-4xl 2xl:max-w-5xl max-h-full mx-auto overflow-y-auto">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
-                        <h3 class="font-heebo font-bold text-base md:text-lg lg:text-xl lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
+                        <h3 class="font-heebo font-bold text-base md:text-lg lg:text-2xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
                             {{ $event->name }}
                         </h3>
                         <button id="closeModal" type="button" class="p-1.5">
@@ -26,13 +26,13 @@
                     </div>
                     <!-- Modal body -->
                     <div class="p-2 space-y-6">
-                        <img id="modal-image" src="{{ Storage::url($event->image_path) }}" class="object-contain w-full h-auto max-h-50vh rounded-lg">
+                        <img id="modal-image" src="{{ asset('storage/' . $event->image_path) }}" class="object-contain w-full h-auto max-h-50vh rounded-lg">
                     </div>
                 </div>
             </div>
             
             <div class="px-4 md:px-0 space-y-4 py-6 md:py-0">
-                <h2 class="font-heebo font-bold text-xl md:text-2xl lg:text-3xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
+                <h2 class="font-bold text-xl md:text-2xl lg:text-3xl text-transparent bg-gradient-to-r bg-clip-text from-dark-green to-mint">
                     {{ $event->name }}
                 </h2>
                 <p class="mt-2 text-gray-800">Du <strong>{{ \Carbon\Carbon::parse($event->beginningDate)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($event->endDate)->format('d/m/Y') }}</strong> - {{ $event->type->name }}</p>
@@ -40,7 +40,7 @@
                 <p class="text-black font-semibold">{{ $event->description }}</p>
                 <div class="flex items-center justify-between mt-4">
                     <div class="flex items-center">
-                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Storage::url($event->user->image_path) }}" alt="Image de l'utilisateur">
+                        <img class="h-10 w-10 rounded-full object-cover" src="{{ asset('storage/' . $event->user->image_path) }}" alt="Image de l'utilisateur">
                         <a href="{{ route('profile.show', $event->user->id) }}" class="ml-2">{{ $event->user->name }}</a>
                     </div>
                 
