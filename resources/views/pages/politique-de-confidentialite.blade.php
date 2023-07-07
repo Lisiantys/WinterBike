@@ -1,3 +1,69 @@
 <x-app-layout title="Politique de confidentialité">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nemo tenetur commodi quae nam suscipit harum. Similique itaque, expedita obcaecati molestias libero quis inventore, officiis reprehenderit ratione a non rerum error assumenda ducimus, numquam ea maxime? Suscipit itaque nemo reprehenderit doloribus neque repudiandae vitae voluptatem quidem quo tempora architecto accusantium, placeat dolor explicabo incidunt ea voluptates sit facilis? Magni, iure eius, dolore aperiam perspiciatis at excepturi nulla expedita deserunt, nesciunt delectus tenetur placeat sunt aliquam. Illum cupiditate omnis rem ducimus tempore vero, reiciendis sapiente facere officia magnam adipisci? Atque, praesentium quam corrupti, minus aperiam ipsa ea quidem voluptatum soluta accusantium cupiditate, ad animi. Voluptate, officiis vitae necessitatibus ducimus nesciunt sequi laudantium! Magnam commodi ad deserunt quia eum magni, explicabo laudantium numquam sed atque fugit possimus eos, quos reiciendis beatae veritatis exercitationem vel quis neque hic pariatur, ut veniam ipsa molestiae! Sequi cumque labore libero modi, ullam maiores ut! Repellat id vel soluta omnis vitae sapiente eius assumenda hic beatae! Voluptatibus nobis deleniti cum laboriosam. Facere, incidunt tempore! Enim maxime nemo porro repellendus fuga error cum placeat laborum esse impedit? Recusandae saepe id ullam consequatur, earum iure placeat officiis rem quae voluptatem quaerat nemo ab incidunt dolorem, repudiandae ducimus laudantium. Eum mollitia harum assumenda sed repellat reiciendis explicabo dolorem dolor corporis deserunt nesciunt nemo eius, eos odio sint tempore voluptate consectetur ullam nulla quisquam culpa unde! Fugiat quisquam ullam est dolores? Ea facilis reprehenderit sunt est laborum qui enim voluptate itaque sint aut ipsa veniam voluptas, perferendis unde error at inventore ex voluptates a iste molestiae deserunt dolores cumque. Eveniet eos laudantium iure facilis deserunt sapiente voluptatum, ratione aliquam atque distinctio quo animi incidunt molestias consequuntur quia voluptate, adipisci, unde perferendis! Quibusdam aliquam cum cupiditate accusamus voluptates soluta qui, officia architecto. Impedit iure maiores sed. Dolores culpa facilis accusamus beatae nihil nam nulla non laudantium dignissimos consequuntur ab harum, nostrum rem alias praesentium, porro debitis eveniet! Commodi veritatis perspiciatis quaerat magnam ipsam amet veniam porro repellendus reprehenderit numquam voluptate, ex quod pariatur labore eveniet. Similique earum, quod necessitatibus numquam nam, culpa minima animi natus magni cupiditate quasi maiores. Quas aspernatur quidem voluptas quia doloremque, cum voluptate qui nostrum doloribus voluptatibus, quibusdam nisi beatae dignissimos eius labore dolores fugit quam neque ipsa officiis. Amet repellat id dolor qui perspiciatis molestiae sequi inventore magni quis eligendi accusamus laboriosam possimus quo voluptates nobis, enim voluptatibus ipsam officia accusantium, voluptatum ducimus? Cupiditate veritatis illum adipisci cum repellat maiores ut est animi iste recusandae totam eveniet, quas quos nobis harum accusantium odio in rem blanditiis aperiam temporibus voluptate. Autem nulla deserunt dolorem, magnam eius quo ipsa ex, numquam provident nobis, reiciendis rerum modi possimus quos expedita excepturi? Et earum amet omnis pariatur qui corporis quod iure, hic eius consectetur distinctio deleniti incidunt in quas nesciunt quis! Eveniet sapiente odio, ipsum in deleniti alias repellat iusto? Id laboriosam iure, nam nihil provident consequuntur harum perspiciatis assumenda esse quo culpa nemo qui eum in dignissimos non corrupti. Perspiciatis atque omnis, laudantium, nobis, qui pariatur dicta alias officia est minima laborum quam ipsa sed eligendi vitae quibusdam odit exercitationem totam nulla ad iusto ducimus odio unde? Repudiandae mollitia minus possimus explicabo inventore harum perferendis rerum necessitatibus ut minima reprehenderit voluptas excepturi impedit nihil nulla quia, similique, ullam iure? Corporis sapiente iusto quos similique modi, atque neque fuga soluta maiores perferendis optio ea non. Enim omnis consectetur ducimus, quae voluptatem voluptate. Quisquam hic dolorum voluptate! Maxime veniam perferendis accusamus at eius! Ut, quibusdam numquam, maiores repellat non veniam aperiam doloribus consequuntur iste id praesentium. Est ipsum sapiente eaque itaque laboriosam aperiam nostrum, totam voluptatum saepe dolorum, ratione reprehenderit possimus minima quis? Voluptatem magnam reiciendis libero autem culpa fugiat labore tempore placeat iste voluptates quam dolorum animi itaque deserunt ullam necessitatibus explicabo ea ratione corporis consequuntur quaerat, esse eum sunt. Incidunt dolor eligendi at? Mollitia, delectus, neque quibusdam aliquam rem dicta corrupti sint magnam obcaecati sapiente enim fugit impedit deleniti fuga molestiae ullam doloribus architecto laborum quas ratione soluta labore culpa tempore distinctio? Enim temporibus aspernatur, tempore molestiae porro optio voluptatibus, soluta esse animi ex fugiat officia! Nam quod laborum pariatur unde soluta molestiae quo tempore animi necessitatibus, quam beatae odit doloremque labore? A voluptatem doloremque eum. Reprehenderit soluta officiis sint perferendis quod assumenda minus reiciendis, fuga optio vitae cupiditate quaerat cumque sapiente neque repellendus maiores dolore, hic quae alias eos voluptas omnis nesciunt voluptatibus. Placeat omnis enim consequuntur saepe neque magni expedita perferendis et ab explicabo! Eum praesentium nemo dolorem facere dolorum voluptates provident, autem eius perspiciatis vero. Animi consectetur expedita reprehenderit eveniet! Ut exercitationem accusantium magni eum ipsam alias odit inventore commodi ratione cum eligendi magnam atque iusto voluptate porro explicabo, illum expedita ad, perferendis fugiat veritatis nemo sunt quos. Blanditiis inventore pariatur rem necessitatibus ut labore tenetur accusamus, doloremque dolorum illum nisi, aspernatur odio laudantium ullam exercitationem ipsum. Dolor, recusandae laudantium? Pariatur corporis incidunt, voluptates hic ipsum quaerat, obcaecati autem atque ullam laborum sunt veniam. Iste tenetur doloremque quia repudiandae dicta vero quae sequi consequatur blanditiis? Debitis, dignissimos iure ducimus modi iusto nam voluptatum minus autem repudiandae ipsam dolor saepe veniam officia doloribus voluptates nisi quidem recusandae velit quibusdam consectetur. Corrupti officia pariatur dolor fuga soluta. Iure magni laborum dicta atque in? Ullam cum amet vel rem, molestias quidem sapiente similique quibusdam perspiciatis fugit officiis repellendus autem repellat distinctio facilis velit qui nobis omnis iure odit ducimus recusandae, odio repudiandae accusamus. Magni veritatis quia nesciunt vitae praesentium aut quaerat ab facilis odit modi officia repellat, illo nulla reprehenderit quibusdam accusamus eius consectetur ullam, quod quis facere dolor debitis voluptatibus. Voluptates quae in exercitationem quasi nisi suscipit illum doloremque praesentium quidem laudantium hic, cupiditate optio doloribus a! Ut suscipit voluptates veritatis, facilis harum commodi asperiores quaerat aperiam nostrum. Tenetur dicta hic beatae facere atque magni, facilis tempora impedit corporis? Nisi reprehenderit facilis perferendis, quae esse at omnis vitae accusantium molestiae iste odio sequi asperiores labore, maiores eum sunt. Eius, cum! Debitis perspiciatis cumque culpa, harum illum soluta maiores voluptatibus esse nesciunt illo adipisci alias, ex deserunt laborum impedit libero.</p>
+    <div class="space-y-4">
+        <h2 class="font-semibold text-lg md:text-2xl">Propriétaire du site : </h2>
+
+        <p>Le site web Winter Bike est détenu par Maxime POUZARGUE, qui est un contrôleur de données de vos données personnelles.</p>
+
+        <p>Nous prenons soin de vos données personnelles et nous nous engageons à en garantir la confidentialité et la sécurité.</p>
+
+    </div>
+
+    <div class="space-y-4 mt-5">
+        <h2 class="font-semibold text-lg md:text-2xl">Les informations personnelles que nous collectons</h2>
+        <p class="leading-9">
+            Lorsque vous visitez le Winter Bike, nous recueillons automatiquement certaines informations sur votre appareil, notamment des informations sur votre navigateur web, votre adresse IP, votre fuseau horaire et certains des cookies installés sur votre appareil. En outre, lorsque vous naviguez sur le site, nous recueillons des informations sur les pages web que vous consultez, sur les sites web ou les termes de recherche qui vous ont renvoyé au site et sur la manière dont vous interagissez avec le site. Nous désignons ces informations collectées automatiquement par le terme "informations sur les appareils". En outre, nous pourrions collecter les données personnelles que vous nous fournissez (y compris, mais sans s'y limiter, le nom, le prénom, l'adresse, etc.) lors de la création d'événement ou de compte sur notre site.        
+        </p>
+    </div>
+
+    <div class="space-y-4 mt-5">
+        <h2 class="font-semibold text-lg md:text-2xl">Pourquoi traitons-nous vos données ?</h2>
+        <p class="leading-9">
+            Notre priorité absolue est la sécurité des données des clients et, à ce titre, nous ne pouvons traiter que des données minimales sur les utilisateurs, uniquement dans la mesure où cela est absolument nécessaire pour maintenir le site web. Les informations collectées automatiquement sont utilisées uniquement pour identifier les cas potentiels d'abus et établir des informations statistiques concernant l'utilisation du site web. Ces informations statistiques ne sont pas autrement agrégées de manière à identifier un utilisateur particulier du système.
+            Vous pouvez visiter le site web sans nous dire qui vous êtes ni révéler d'informations, par lesquelles quelqu'un pourrait vous identifier comme un individu spécifique et identifiable. Toutefois, si vous souhaitez utiliser certaines fonctionnalités du site web, ou si vous souhaitez recevoir notre lettre d'information ou fournir d'autres détails en remplissant un formulaire, vous pouvez nous fournir des données personnelles, telles que votre e-mail, votre prénom, votre nom, votre ville de résidence, votre organisation, votre numéro de téléphone. Vous pouvez choisir de ne pas nous fournir vos données personnelles, mais il se peut alors que vous ne puissiez pas profiter de certaines fonctionnalités du site web. Les utilisateurs qui ne savent pas quelles informations sont obligatoires sont invités à nous contacter via contact@winterbike.fr.
+        </p>
+    </div>
+
+    <div class="space-y-4 mt-5">
+        <h2 class="font-semibold text-lg md:text-2xl">Vos droits :</h2>
+        <p class="leading-9">
+            Si vous êtes un résident européen, vous disposez des droits suivants liés à vos données personnelles :
+
+            Le droit d'être informé.
+            Le droit de demander la limitation du traitement de vos Données.
+            Le droit de demander la suppression de vos Données.
+            Le droit de rectification.
+            Le droit à la portabilité des données.
+            Si vous souhaitez exercer ce droit, veuillez nous contacter via les coordonnées ci-dessous.
+            <br>
+            contact@winterbike.fr
+        </p>
+    </div>
+
+    <div class="space-y-4 mt-5">
+        <h2 class="font-semibold text-lg md:text-2xl">Liens vers d'autres sites web :</h2>
+        <p class="leading-9">
+            Notre site web peut contenir des liens vers d'autres sites web qui ne sont pas détenus ou contrôlés par nous. Sachez que nous ne sommes pas responsables de ces autres sites web ou des pratiques de confidentialité des tiers. Nous vous encourageons à être attentif lorsque vous quittez notre site web et à lire les déclarations de confidentialité de chaque site web susceptible de collecter des informations personnelles.        
+        </p>
+    </div>
+
+    <div class="space-y-4 mt-5">
+        <h2 class="font-semibold text-lg md:text-2xl">Sécurité de l'information :</h2>
+        <p class="leading-9">
+            Nous sécurisons les informations que vous fournissez sur des serveurs informatiques dans un environnement contrôlé et sécurisé, protégé contre tout accès, utilisation ou divulgation non autorisés. Nous conservons des garanties administratives, techniques et physiques raisonnables pour nous protéger contre tout accès, utilisation, modification et divulgation non autorisés des données personnelles sous son contrôle et sa garde. Toutefois, aucune transmission de données sur Internet ou sur un réseau sans fil ne peut être garantie.        
+        </p>
+    </div>
+
+    <div class="space-y-4 mt-5">
+        <h2 class="font-semibold text-lg md:text-2xl">Divulgation légale :</h2>
+        <p class="leading-9">
+            Nous divulguerons toute information que nous collectons, utilisons ou recevons si la loi l'exige ou l'autorise, par exemple pour nous conformer à une citation à comparaître ou à une procédure judiciaire similaire, et lorsque nous pensons de bonne foi que la divulgation est nécessaire pour protéger nos droits, votre sécurité ou celle d'autrui, enquêter sur une fraude ou répondre à une demande du gouvernement.        
+        </p>
+    </div>
+
+    <div class="space-y-4 mt-5">
+        <h2 class="font-semibold text-lg md:text-2xl">Informations de contact :</h2>
+        <p class="leading-9">
+            Si vous souhaitez nous contacter pour comprendre davantage la présente politique ou si vous souhaitez nous contacter concernant toute question relative aux droits individuels et à vos informations personnelles, vous pouvez envoyer un courriel à contact@winterbike.fr.        
+        </p>
+    </div>
 </x-app-layout>

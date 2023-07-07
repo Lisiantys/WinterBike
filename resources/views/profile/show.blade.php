@@ -4,7 +4,7 @@
         <div class="flex flex-col">
             <div class="w-full flex items-center justify-start bg-gradient-to-bl from-dark-green to-mint text-white p-6 rounded-t-lg shadow-md">
                 <img src="{{ Storage::url($user->image_path) }}"
-                    alt="Image de l'utilisateur" class="rounded-full w-20 h-20 sm:w-32 sm:h-32 object-cover border-2 border-blue-300"
+                    alt="Image de l'utilisateur" class="rounded-full w-20 h-20 sm:w-32 sm:h-32 object-cover border-2 border-white"
                 >  
                 <div class="ml-5">
                     <h1 class="font-semibold text-lg md:text-2xl sm:text-3xl">{{ $user->name }}</h1>

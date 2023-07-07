@@ -2,6 +2,8 @@
     <div id="overlay" class="fixed top-0 left-0 w-full h-full z-50 bg-black bg-opacity-50 hidden"></div>
 
     <div class="relative bg-white overflow-hidden shadow-xl sm:rounded-lg grid md:grid-cols-2 mb-6 mt-20 lg:mt-0">
+        @include('auth.partials.lien-evenements')
+
         @if ($event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
             <div class="absolute top-0 text-center font-semibold inset-x-0 md:inset-auto md:right-0 bg-red-500 text-white px-3 py-2 md:rounded-bl-lg">Événement en cours de validation par l'équipe de Winter Bike...</div>
         @endif

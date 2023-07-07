@@ -20,21 +20,19 @@
     </head>
     
     <body class="flex flex-col min-h-screen">
-        <div class="flex-grow">
-            @include('layouts.side')
+        @include('layouts.side')
 
-            <!-- Page Content -->
-            <div class="lg:ml-64">     
+        <!-- Page Content -->
+        <div class="lg:ml-64">     
 
-                @isset($title)
-                    <x-h1-title>{{ $title }}</x-h1-title>
-                @endisset
-                
-                <div class="p-4 rounded-lg">
-                    <main>
-                        {{ $slot }}
-                    </main>
-                </div>
+            @isset($title)
+                <x-h1-title>{{ $title }}</x-h1-title>
+            @endisset
+            
+            <div class="p-4 rounded-lg">
+                <main>
+                    {{ $slot }}
+                </main>
             </div>
         </div>
         <div class="lg:ml-64">
