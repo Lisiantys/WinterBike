@@ -9,6 +9,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 //Request permet de récuperer les informations passées par le protocole http (get / post)
 
@@ -216,6 +217,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        if (Gate::denies('view', $event)) {
+            return redirect()->route('events.index');
+        }
+
         $topFavorites = $this->getTopFavorites();
         
         $comments = $event->comments()->with('user')->orderBy('created_at', 'desc')->paginate(5);

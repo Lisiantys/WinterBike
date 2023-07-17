@@ -4,7 +4,7 @@
         <x-application-logo-white class="w-32 h-32"/>
         <div class="text-white max-w-md space-y-4 md:space-y-2">
             <h3 class="font-extrabold text-xl tracking-wider">Winter Bike</h3>
-            <p class="text-sm sm:text-base"> 
+            <p class="text-sm sm:text-base leading-7"> 
                 Participez aux rassemblements de moto pour une série d'événements
                 à travers la France. Que ce soit pour une balade apaisante, une exposition 
                 innovante, une hivernale revigorante ou un roadtrip captivant, chaque événement 
@@ -19,7 +19,7 @@
             </li>
             <li class="space-x-3">
                 <i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i>
-                <a href="mailto:example@example.com" class="hover:underline">Contactez-nous</a>
+                <a href="mailto:contact@winterbike24.fr" class="hover:underline">Contactez-nous</a>
             </li>
             <li class="space-x-3">
                 <i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i>
@@ -32,6 +32,6 @@
         </ul>
     </div>
     <hr class="my-6 w-full sm:w-1/2 border-white mx-auto lg:my-8" />
-    <span class="block text-sm text-white text-center">© 2023 <a href="https://winterbike.fr/" class="hover:underline">Winter Bike</a>. Tous droits réservés.</span>
+    <span class="block text-sm text-white text-center">© 2023 <a href="https://winterbike24.fr/" class="hover:underline">Winter Bike</a>. Tous droits réservés.</span>
 </footer>
 

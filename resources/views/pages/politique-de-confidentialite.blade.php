@@ -18,7 +18,7 @@
         <h2 class="font-semibold text-lg md:text-2xl">Pourquoi traitons-nous vos données ?</h2>
         <p class="leading-9">
             Notre priorité absolue est la sécurité des données des clients et, à ce titre, nous ne pouvons traiter que des données minimales sur les utilisateurs, uniquement dans la mesure où cela est absolument nécessaire pour maintenir le site web. Les informations collectées automatiquement sont utilisées uniquement pour identifier les cas potentiels d'abus et établir des informations statistiques concernant l'utilisation du site web. Ces informations statistiques ne sont pas autrement agrégées de manière à identifier un utilisateur particulier du système.
-            Vous pouvez visiter le site web sans nous dire qui vous êtes ni révéler d'informations, par lesquelles quelqu'un pourrait vous identifier comme un individu spécifique et identifiable. Toutefois, si vous souhaitez utiliser certaines fonctionnalités du site web, ou si vous souhaitez recevoir notre lettre d'information ou fournir d'autres détails en remplissant un formulaire, vous pouvez nous fournir des données personnelles, telles que votre e-mail, votre prénom, votre nom, votre ville de résidence, votre organisation, votre numéro de téléphone. Vous pouvez choisir de ne pas nous fournir vos données personnelles, mais il se peut alors que vous ne puissiez pas profiter de certaines fonctionnalités du site web. Les utilisateurs qui ne savent pas quelles informations sont obligatoires sont invités à nous contacter via contact@winterbike.fr.
+            Vous pouvez visiter le site web sans nous dire qui vous êtes ni révéler d'informations, par lesquelles quelqu'un pourrait vous identifier comme un individu spécifique et identifiable. Toutefois, si vous souhaitez utiliser certaines fonctionnalités du site web, ou si vous souhaitez recevoir notre lettre d'information ou fournir d'autres détails en remplissant un formulaire, vous pouvez nous fournir des données personnelles, telles que votre e-mail, votre prénom, votre nom, votre ville de résidence, votre organisation, votre numéro de téléphone. Vous pouvez choisir de ne pas nous fournir vos données personnelles, mais il se peut alors que vous ne puissiez pas profiter de certaines fonctionnalités du site web. Les utilisateurs qui ne savent pas quelles informations sont obligatoires sont invités à nous contacter via contact@winterbike24.fr
         </p>
     </div>
 
@@ -34,7 +34,7 @@
             Le droit à la portabilité des données.
             Si vous souhaitez exercer ce droit, veuillez nous contacter via les coordonnées ci-dessous.
             <br>
-            contact@winterbike.fr
+            contact@winterbike24.fr
         </p>
     </div>
 
@@ -62,7 +62,7 @@
     <div class="space-y-4 mt-5">
         <h2 class="font-semibold text-lg md:text-2xl">Informations de contact :</h2>
         <p class="leading-9">
-            Si vous souhaitez nous contacter pour comprendre davantage la présente politique ou si vous souhaitez nous contacter concernant toute question relative aux droits individuels et à vos informations personnelles, vous pouvez envoyer un courriel à contact@winterbike.fr.        
+            Si vous souhaitez nous contacter pour comprendre davantage la présente politique ou si vous souhaitez nous contacter concernant toute question relative aux droits individuels et à vos informations personnelles, vous pouvez envoyer un courriel à contact@winterbike24.fr   
         </p>
     </div>
 </x-app-layout>

@@ -23,7 +23,7 @@ class CheckBanned
 
             $request->session()->regenerateToken();
 
-            return redirect()->route('login')->with('error', 'Votre compte est suspendu, veuillez contacter : contact@winterbike.fr');
+            return redirect()->route('login')->with('error', 'Votre compte est suspendu, veuillez contacter : contact@winterbike24.fr');
         }
         return $next($request);
     }

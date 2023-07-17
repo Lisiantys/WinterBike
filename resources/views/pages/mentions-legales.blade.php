@@ -6,7 +6,7 @@
 
         <p>Adresse : 237 Bis Avenue François Mitterand, 85340 Les Sables d'Olonne.</p>
 
-        <p>Contact : contact@winterbike.fr OU 06 27 34 07 55</p>
+        <p>Contact : contact@winterbike24.fr OU 06 27 34 07 55</p>
     </div>
 
     <div class="space-y-4 mt-5">

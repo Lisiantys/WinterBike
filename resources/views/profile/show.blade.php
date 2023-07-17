@@ -46,7 +46,7 @@
     </section>
 
     {{-- Section événements --}}
-    <div class="mt-8 p-4">
+    <div class="mt-8 py-4 px-0 lg:px-2">
         <div>
             <h2 class="text-lg md:text-2xl mb-4 py-4 px-6 bg-mint rounded-lg font-semibold text-white">
                 Événements créés par l'utilisateur</h2>

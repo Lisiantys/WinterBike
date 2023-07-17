@@ -22,9 +22,20 @@ class EventPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Event $event): bool
+    public function view(?User $user, Event $event): bool
     {
-        //
+        // Si l'événement est validé, tout le monde peut le voir
+        if($event->is_validated == 1){
+            return true;
+        }
+
+        // Si l'événement n'est pas validé, seul le créateur ou un utilisateur avec un role_id de 3 ou 4 peut le voir
+        if ($user && ($event->user_id == $user->id || $user->role_id == 3 || $user->role_id == 4)){
+            return true;
+        }
+
+        // Dans tous les autres cas, l'accès est refusé
+        return false;
     }
 
     /**

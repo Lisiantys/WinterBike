@@ -4,7 +4,7 @@
 
     <div class="z-50 bg-white border-b-2 border-dark-green px-3 py-2 lg:px-5 lg:hidden">
         <div class="flex items-center justify-between">
-            <a href="https://winterbike.fr" class="flex ml-2 md:mr-24">
+            <a href="https://winterbike24.fr" class="flex ml-2 md:mr-24">
                 <x-application-logo class="w-16 h-16" />
             </a>
             <div class="-mr-2 flex items-center lg:hidden">

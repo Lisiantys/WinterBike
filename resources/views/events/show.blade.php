@@ -1,13 +1,14 @@
 <x-app-layout>
     <div id="overlay" class="fixed top-0 left-0 w-full h-full z-50 bg-black bg-opacity-50 hidden"></div>
 
-    <div class="relative bg-white overflow-hidden shadow-xl sm:rounded-lg grid md:grid-cols-2 mb-6 mt-20 lg:mt-0">
+    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full p-2 md:p-6 mt-20 lg:mt-0 rounded-lg bg-greyed">
+
         @include('auth.partials.lien-evenements')
 
         @if ($event->is_validated === 0 && (auth()->user()->role->id === 3 || auth()->user()->role->id === 4 || $event->user->id === auth()->user()->id))
-            <div class="absolute top-0 text-center font-semibold inset-x-0 md:inset-auto md:right-0 bg-red-500 text-white px-3 py-2 md:rounded-bl-lg">Événement en cours de validation par l'équipe de Winter Bike...</div>
+            <div class="absolute top-14 md:top-0 text-center text-sm md:text-base font-semibold inset-x-0 md:inset-auto md:right-0 bg-red-500 text-white px-3 py-2 md:rounded-bl-lg">Événement en cours de validation par l'équipe de Winter Bike...</div>
         @endif
-        <div class="md:col-span-2 grid md:grid-cols-2 w-full md:px-6 md:py-10 md:gap-6 rounded-lg bg-greyed">
+        <div class="md:col-span-2 grid md:grid-cols-2 w-full md:px-2 md:py-6 md:gap-6 rounded-lg bg-greyed">
             <div class="w-full h-full md:h-96 flex items-center justify-center cursor-pointer" onclick="openModal()">
                 <img id="image-preview" src="{{ asset('storage/' . $event->image_path) }}" alt="Aperçu de l'image" class="w-full h-full object-cover rounded-lg">
             </div>
@@ -41,7 +42,7 @@
                 <div class="flex items-center justify-between mt-4">
                     <div class="flex items-center">
                         <img class="h-10 w-10 rounded-full object-cover" src="{{ asset('storage/' . $event->user->image_path) }}" alt="Image de l'utilisateur">
-                        <a href="{{ route('profile.show', $event->user->id) }}" class="ml-2">{{ $event->user->name }}</a>
+                        <a href="{{ route('profile.show', $event->user->id) }}" class="ml-2 text-sm md:text-base">{{ $event->user->name }}</a>
                     </div>
                 
                     @if (auth()->user() && $event->favoritedBy->contains(auth()->user()->id))
@@ -53,7 +54,7 @@
             </div>
         </div>
         <x-events.event-link :event="$event"/>
-        <div class="px-4 md:px-6 pb-6 space-y-4 col-span-full">
+        <div class="px-4 md:px-2 pb-6 space-y-4 col-span-full">
             @auth
                 @if(auth()->user()->email_verified_at !== null) 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -90,10 +91,10 @@
         <div class="w-full lg:w-2/3 mx-auto my-10">
             @auth
                 @if(auth()->user()->email_verified_at !== null)
-                    <div class="flex md:flex-row items-center md:space-x-4 mb-6">
-                        <h2 class="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-0">Commentaires ({{ $comments->count() }})</h2>
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-4 mb-6">
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-0">Commentaires ({{ $comments->count() }})</h3>
                         <div class="flex items-center">
-                            <div class="flex items-center ml-4 space-x-2 a2a_kit a2a_kit_size_32 a2a_default_style">
+                            <div class="flex items-center md:ml-4 space-x-2 a2a_kit a2a_kit_size_32 a2a_default_style">
                                 <a class="a2a_button_facebook"></a>
                                 <a class="a2a_button_twitter"></a>
                                 <a class="a2a_button_skype"></a>
@@ -116,12 +117,12 @@
                         <x-events.button-gradient type="submit">Commenter</x-events.button-gradient>
                     </form>
                 @else
-                    <h3 class="text-gray-800">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+                    <h3 class="text-gray-800 text-center mb-3 font-semibold">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
                 @endif
             @endauth
 
             @guest
-            <h3 class="text-gray-800">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
+            <h3 class="text-gray-800 text-center mb-3 font-semibold">Veuillez-vous connecter et vérifier votre compte pour publier un commentaire.</h3>
             @endguest
 
             
