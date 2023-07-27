@@ -1,5 +1,5 @@
 <style>
-    .font-heebo {
+    .font-open-sans {
         font-family: 'Open Sans', sans-serif;
         text-shadow: 2px 2px #000;
     }
@@ -8,7 +8,7 @@
     }
 </style>
 
-<h1 {{ $attributes->merge(['class' => 'text-white font-heebo text-2xl md:text-3xl lg:text-4xl xl-size bg-gradient-to-t from-dark-green to-mint w-full px-6 pt-16 mt-20 h-36 lg:mt-0 '])  }}>
+<h1 {{ $attributes->merge(['class' => 'text-white font-open-sans xl-size bg-gradient-to-t from-dark-green to-mint w-full px-6 pt-16 mt-20 h-36 lg:mt-0 '])  }}>
     {{ $slot }}
 </h1>
 <div class="w-full h-16" style="background: linear-gradient(178deg, #10564f 50%, white 50%);"></div>
