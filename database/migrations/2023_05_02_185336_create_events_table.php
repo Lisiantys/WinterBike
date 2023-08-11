@@ -21,10 +21,10 @@ return new class extends Migration
             $table->date('endDate')->nullable();
             $table->string('address');
             $table->string('email')->nullable()->default(null);
-            $table->string('phone')->nullable()->default(null);
+            $table->string('phone', 14)->nullable()->default(null);
             $table->string('website')->nullable()->default(null);
             $table->string('facebook')->nullable()->default(null);
-            $table->mediumText('description');
+            $table->text('description');
             $table->string('staffMessage')->nullable()->default(null);
             $table->boolean('is_validated')->default(0);
             $table->timestamps();

@@ -15,7 +15,7 @@ return new class extends Migration
 
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('description');
+            $table->text('description');
             $table->timestamps();
             $table->softDeletes();
             $table->unsignedBigInteger('user_id');
