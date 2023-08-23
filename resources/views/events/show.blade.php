@@ -73,7 +73,7 @@
                                 <button type="submit" class="w-full h-10 font-semibold bg-dark-green text-white py-2 px-4 rounded text-base">Ajouter aux favoris</button>
                             </form>
                         @endif
-                        @if(auth()->user()->role->id === 3 || auth()->user()->role->id === 4)
+                        @if(auth()->user()->id === $event->user_id || auth()->user()->role->id === 4)
                             <a href="{{ route('events.edit', $event->id) }}" class="col-span-1 h-10 font-semibold bg-mint text-white py-2 px-4 rounded text-base flex items-center justify-center">Modifier l'événement</a>
                             <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="col-span-1">
                                 @csrf
