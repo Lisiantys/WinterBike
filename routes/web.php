@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
          
         Route::group(['prefix' => 'events'], function () {
             Route::get('/create', [EventController::class, 'create'])->name('events.create');
+            Route::get('/{event}', [EventController::class, 'show'])->name('events.show');
             Route::post('/', [EventController::class, 'store'])->name('events.store');
             Route::get('/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
             Route::put('/{event}', [EventController::class, 'update'])->name('events.update');
@@ -63,8 +64,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// Route show en dessous de create, sinon Erreur 404 sur la route create
-Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
+
 
 Route::view('/mentions-legales', 'pages/mentions-legales')->name('mentions-legales');
 Route::view('/politique-de-confidentialite', 'pages/politique-de-confidentialite')->name('politique-de-confidentialite');

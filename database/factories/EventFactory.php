@@ -10,22 +10,18 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class EventFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    
     public function definition(): array
     {
-        $faker = \Faker\Factory::create('fr_FR'); // Utiliser le générateur de données Faker en français
+        $faker = \Faker\Factory::create('fr_FR');
         return [
             'name' => $faker->sentence,
-            'image_path' => 'events/fake-image-events.jpg', // A retirer pour le developpement
+            'image_path' => 'events/fake-image-events.jpg',
             'beginningDate' => $faker->dateTimeBetween('now', '+1 month'),
             'endDate' => $faker->dateTimeBetween('+1 month', '+2 months'),
             'address' => $faker->address,
             'email' => $faker->companyEmail,
-            'phone' => '00 01 02 03 04',
+            'phone' => '0001020304',
             'website' => $faker->url,
             'facebook' => $faker->url,
             'description' => $faker->paragraph,
@@ -35,7 +31,7 @@ class EventFactory extends Factory
             'region_id' => rand(1, 13), //13 Régions générés au préalable
             'type_id' => rand(1, 5), //5 Types générés au préalable
             'user_id' => function () {
-                return User::inRandomOrder()->first()->id; //le user->id est selectionné aléatoirement dans une liste des utilisateurs générés. First prends le premier de la liste aléatoire.
+                return User::inRandomOrder()->first()->id;
             },        
         ];
     }
