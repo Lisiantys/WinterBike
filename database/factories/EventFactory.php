@@ -25,7 +25,7 @@ class EventFactory extends Factory
             'endDate' => $faker->dateTimeBetween('+1 month', '+2 months'),
             'address' => $faker->address,
             'email' => $faker->companyEmail,
-            'phone' => $faker->phoneNumber,
+            'phone' => '00 01 02 03 04',
             'website' => $faker->url,
             'facebook' => $faker->url,
             'description' => $faker->paragraph,
