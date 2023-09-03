@@ -164,6 +164,7 @@
     </script>
 
     <script>
+        //Bouton de partage
         var a2a_config = a2a_config || {};
         a2a_config.locale = "fr";
         a2a_config.num_services = 4;
@@ -209,5 +210,9 @@
 
 </script>
 
+{{-- Bouton de partage --}}
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 </x-app-layout>
+
+
+

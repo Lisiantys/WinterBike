@@ -1,4 +1,4 @@
-<form action="{{ route('events.index') }}" method="get" class="w-full bg-greyed rounded-lg p-5 space-y-2" id="searchForm">
+<form action="{{ route('events.index') }}" method="get" class="w-full bg-greyed rounded-lg p-5 space-y-2">
 
     <x-events.input-field name="keyword" label="Mot-clé" :value="$request->input('keyword')" />
 
