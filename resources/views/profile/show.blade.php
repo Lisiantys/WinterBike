@@ -10,7 +10,7 @@
                     <h1 class="font-semibold text-lg md:text-2xl sm:text-3xl">{{ $user->name }}</h1>
                     <p class="text-sm sm:text-base text-white mb-2">{{ $user->role->name }}</p>
                     <p class="text-sm sm:text-base text-white">
-                        Inscription le :{{ \Carbon\Carbon::parse($user->created_at)->isoFormat('LL') }}
+                        Inscription le : {{ \Carbon\Carbon::parse($user->created_at)->isoFormat('LL') }}
                     </p>
                 </div>
             </div>
