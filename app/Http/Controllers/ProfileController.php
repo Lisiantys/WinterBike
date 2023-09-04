@@ -166,15 +166,12 @@ class ProfileController extends Controller
 
         // Pour chaque evenement de l'utilisateur, on supprime la photo + l'événement
         foreach ($events as $event) {
-           
             if($event->image_path) {
                 $filePath = $event->image_path;
                 if(Storage::disk('public')->exists($filePath)) {
                     Storage::disk('public')->delete($filePath);
                 } 
             }
-            // Supprimer l'événement
-            $event->delete();
         }
 
         // Supprimer la photo associée à l'utilisateur
