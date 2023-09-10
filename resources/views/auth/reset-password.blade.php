@@ -24,17 +24,23 @@
                      <!--Mot de passe input-->
                     <div class="mt-4">
                         <x-input-label for="password" :value="__('Mot de passe')" />
-                        <x-text-input id="password" type="password" name="password" required autocomplete="new-password" />
+                        <x-text-input id="password" type="password" name="password" required autocomplete="new-password" minlength="12" />
                         <x-input-error :messages="$errors->get('password')"/>
+                        <ul class="list-disc">Le mot de passe doit contenir :
+                            <li class="ml-8">au moins 12 caractères.</li>
+                            <li class="ml-8">au moins une majuscule et une minuscule.</li>
+                            <li class="ml-8">au moins un symbole (!, / ,@ ?, ^, ...).</li>
+                            <li class="ml-8">au moins 1 chiffre.</li>
+                        </ul>
                     </div>
 
                     <!--Confirmer le mot de passe input-->
                     <div class="mt-4">
-                        <x-input-label for="password_confirmation" :value="__('Confirmer le mot de passe')" />
+                        <x-input-label for="password_confirmation" :value="__('Confirmer le mot de passe')"  />
 
                         <x-text-input id="password_confirmation"
                             type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation" required autocomplete="new-password" minlength="12"/>
                         <x-input-error :messages="$errors->get('password_confirmation')"/>
                     </div>
 

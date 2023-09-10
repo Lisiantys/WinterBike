@@ -4,10 +4,10 @@
     <div class="px-4 py-6 md:px-6 md:py-12 flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-dark-green to-mint">
         <div class="mx-4 p-2 md:mx-6 md:p-12 text-white">
             <h2 class="mb-6 text-xl font-semibold">
-                Site en cours de construction...
+                Ravie de vous revoir ! 
             </h2>
             <p class="text-base">
-                Saisissez simplement vos identifiants dans les champs ci-dessous et vous serez prêt à explorer. Si vous avez oublié vos informations de connexion, ne vous inquiétez pas, nous sommes là pour vous aider à y accéder de nouveau.
+                Saisissez simplement vos identifiants dans les champs ci-dessous et vous serez prêt à accèder à votre compte. Si vous avez oublié vos informations de connexion, ne vous inquiétez pas, nous sommes là pour vous aider à y accéder de nouveau.
             </p>
         </div>
     </div>   

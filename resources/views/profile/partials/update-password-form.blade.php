@@ -1,8 +1,11 @@
 <section>
     <header>
-        <p class="mt-1 text-sm sm:text-base text-gray-600 font-semibold">
-            {{ __('Assurez-vous d\'utiliser un mot de passe aléatoire avec un minimum 8 caractères.') }}
-        </p>
+        <ul class="list-disc mt-1 text-sm sm:text-base text-gray-600 font-semibold">Le mot de passe doit contenir :
+            <li class="ml-8">au moins 12 caractères.</li>
+            <li class="ml-8">au moins une majuscule et une minuscule.</li>
+            <li class="ml-8">au moins un symbole (!, / ,@ ?, ^, ...).</li>
+            <li class="ml-8">au moins 1 chiffre.</li>
+        </ul>
     </header>
 
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
@@ -17,13 +20,13 @@
 
         <div>
             <x-input-label for="password" :value="__('Nouveau mot de passe')" />
-            <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" minlength="8" autocomplete="new-password" />
+            <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" minlength="12" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="password_confirmation" :value="__('Confirmer votre mot de passe')" />
-            <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" minlength="8" autocomplete="new-password" />
+            <x-text-input id="password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" minlength="12" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 

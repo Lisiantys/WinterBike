@@ -74,7 +74,7 @@
             @empty
                 <div class="bg-white shadow rounded-lg p-4">
                     <x-events.empty-message>
-                        Aucun commentaire publié l'utilisateur.
+                        Aucun commentaire publié par l'utilisateur.
                     </x-events.empty-message>
                 </div>
             @endforelse

@@ -4,7 +4,7 @@
     <div class="px-4 py-6 md:px-6 md:py-12 flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-dark-green to-mint">
         <div class="mx-4 p-2 md:mx-6 md:p-12 text-white">
             <h2 class="mb-6 text-xl font-semibold">
-                Site en cours de construction...
+                Bienvenue sur Winterbike ! 
             </h2>
             <p class="text-base">
                 Nous sommes ravis de vous voir ici ! Remplissez simplement les informations requises ci-dessous pour créer un compte. Une fois cette étape franchie, vous serez prêt à profiter de toutes les fonctionnalités que nous avons à offrir. Ne vous inquiétez pas, nous gardons vos données en sécurité.
@@ -41,14 +41,20 @@
                 <!--Mot de passe input-->
                 <div class="relative mb-4" data-te-input-wrapper-init>
                     <x-input-label for="password" :value="__('Mot de passe')" />
-                    <x-text-input id="password" type="password" name="password" required autocomplete="new-password" minlength="8" />
+                    <x-text-input id="password" type="password" name="password" required autocomplete="new-password" minlength="12" />
                     <x-input-error :messages="$errors->get('password')"/>
+                    <ul class="list-disc">Le mot de passe doit contenir :
+                        <li class="ml-8">au moins 12 caractères.</li>
+                        <li class="ml-8">au moins une majuscule et une minuscule.</li>
+                        <li class="ml-8">au moins un symbole (!, / ,@ ?, ^, ...).</li>
+                        <li class="ml-8">au moins 1 chiffre.</li>
+                    </ul>
                 </div>
 
                 <!--Confirmer le mot de passe input-->
                 <div class="relative mb-4" data-te-input-wrapper-init>
                     <x-input-label for="password_confirmation" :value="__('Confirmer le mot de passe')" />
-                    <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" minlength="8" />
+                    <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" minlength="12" />
                     <x-input-error :messages="$errors->get('password_confirmation')"/>
                 </div>
 
