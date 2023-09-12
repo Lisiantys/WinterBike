@@ -30,9 +30,7 @@ class EventFactory extends Factory
             'department_id' => rand(1, 96), //96 Départements générés au préalable
             'region_id' => rand(1, 13), //13 Régions générés au préalable
             'type_id' => rand(1, 5), //5 Types générés au préalable
-            'user_id' => function () {
-                return User::inRandomOrder()->first()->id;
-            },        
+            'user_id' => User::inRandomOrder()->first()        
         ];
     }
 }

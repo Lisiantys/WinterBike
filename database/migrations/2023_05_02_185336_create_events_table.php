@@ -15,17 +15,17 @@ return new class extends Migration
 
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 75);
             $table->string('image_path');
             $table->date('beginningDate')->useCurrent();
             $table->date('endDate')->nullable();
             $table->string('address');
-            $table->string('email')->nullable()->default(null);
-            $table->string('phone', 10)->nullable()->default(null);
-            $table->string('website')->nullable()->default(null);
-            $table->string('facebook')->nullable()->default(null);
-            $table->text('description');
-            $table->string('staffMessage')->nullable()->default(null);
+            $table->string('email')->nullable();
+            $table->string('phone', 10)->nullable();
+            $table->string('website')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('description', 2048);
+            $table->string('staffMessage')->nullable();
             $table->boolean('is_validated')->default(0);
             $table->timestamps();
             $table->unsignedTinyInteger('department_id');

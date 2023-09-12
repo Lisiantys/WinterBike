@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         
         //Les factories accueillent un nombre dynamique
         User::factory(10)->create();
-        Event::factory(300)->create();
-        Comment::factory(1000)->create();
+        Event::factory(30)->create();
+        Comment::factory(100)->create();
     }
 }

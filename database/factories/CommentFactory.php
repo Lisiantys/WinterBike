@@ -22,12 +22,8 @@ class CommentFactory extends Factory
         
         return [
             'description' => $faker->paragraph(3),
-            'user_id' => function () {
-                return User::inRandomOrder()->first()->id;
-            },
-            'event_id' => function () {
-                return Event::inRandomOrder()->first()->id;
-            },
+            'user_id' => User::inRandomOrder()->first(),
+            'event_id' => Event::inRandomOrder()->first()
         ];
     }
 }

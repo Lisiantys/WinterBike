@@ -107,7 +107,7 @@
                     <form action="{{ route('comments.store', $event->id) }}" method="POST" class="mb-6 space-y-4">
                         @csrf
                         <div class="bg-white rounded-lg shadow-lg border border-mint">
-                            <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="999">{{ old('description') }}</textarea>
+                            <textarea id="description" name="description" rows="6" class="px-3 py-2 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none rounded-lg resize-none" placeholder="Écrire un commentaire..." required minlength="3" maxlength="500">{{ old('description') }}</textarea>
                         </div>
                         @error('description')
                             <div class="text-red-500 mt-2 text-sm">

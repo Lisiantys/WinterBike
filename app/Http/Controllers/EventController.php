@@ -166,7 +166,7 @@ class EventController extends Controller
     private function validationRules($isUpdate = false)
     {
         $rules = [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:75',
             'image_path' => ($isUpdate ? ['nullable'] : ['required']) + ['image', 'mimes:jpeg,png,jpg,svg,webp', 'max:2048'],
             'beginningDate' => 'required|date',
             'endDate' => 'required|date|after_or_equal:beginningDate',
