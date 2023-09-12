@@ -217,9 +217,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        if (Gate::denies('view', $event)) {
-            return redirect()->route('events.index');
-        }
+        $this->authorize('view', $event);
 
         $topFavorites = $this->getTopFavorites();
         
