@@ -10,12 +10,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class EventFactory extends Factory
 {
-    
     public function definition(): array
     {
         $faker = \Faker\Factory::create('fr_FR');
         return [
-            'name' => $faker->sentence,
+            'name' => $faker->text(70),
             'image_path' => 'events/fake-image-events.jpg',
             'beginningDate' => $faker->dateTimeBetween('now', '+1 month'),
             'endDate' => $faker->dateTimeBetween('+1 month', '+2 months'),
